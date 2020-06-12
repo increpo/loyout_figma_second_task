@@ -1,0 +1,22 @@
+extends ../layout/main
+
+block variables
+  - var title = 'My second staps in pug';
+  - var description = 'Descriptions for my first staps';
+  - var pageClass = 'index-page';
+
+block content
+  section
+    .container
+      h1 It's my second staps in Pug
+      p Hyyyy!!!
+    #container.col
+      p I made my second page
+
+    section
+      .container
+        +item('second title from mixin', 'My second mixin\'s description')
+
+
+  block sctipt
+    example-component

@@ -1,0 +1,27 @@
+extends ../layout/main
+
+block variables
+  - var title = 'My first staps in pug';
+  - var description = 'Descriptions for my first staps';
+  - var pageClass = 'index-page';
+
+block content
+  section
+    .container
+      h1 It's my first staps in Pug
+      p Hello!!!
+    #container.col
+      p You are amazing
+      p
+        | Jade is a terse and simple
+        | templating language with a
+        | strong focus on performance
+        | and powerful features.
+
+    section
+      .container
+        +item('New title from mixin', 'My mixin\'s description')
+
+
+  block sctipt
+    example-component
