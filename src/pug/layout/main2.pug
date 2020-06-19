@@ -1,0 +1,21 @@
+include ../utils/mixins
+
+doctype html
+html(lang='ru')
+  head
+    block metatags
+      include ../includes/modules/metatags
+    block title
+      title #{title}
+    block links
+      link(href='#')
+    block head
+  body(class=pageClass)
+    .wrapper
+      #app
+        include ../includes/modules/header2
+        .content-wrapper
+          block content
+        include ../includes/modules/footer2
+
+    block script

@@ -1,0 +1,19 @@
+//- var currentURL = 'index.html'
+block variables
+
+mixin menu(menu_items)
+  ul.header__navbar
+    each item in menu_items
+      li.navbar__list: a.navbar__link(href=item.href class=currentURL == item.href ? 'active' : '') #{item.title}
+
+header
+  .header__label
+    img(src="../assets/img/Label.png")
+  .header
+    nav
+      +menu([{'title' : 'Главная страница', 'href' : 'index.html'}])
+    nav
+      +menu([{'title' : 'Блог', 'href' : 'blog.html'}])
+    nav
+      +menu([{'title' : 'Colors & Type', 'href' : 'colors&type.html'}])
+    

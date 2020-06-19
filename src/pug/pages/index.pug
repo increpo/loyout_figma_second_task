@@ -1,9 +1,26 @@
-extends ../layout/main
+extends ../layout/main2
 
 block variables
   - var title = 'My first staps in pug';
   - var description = 'Descriptions for my first staps';
   - var pageClass = 'index-page';
+  - var currentURL = 'index.html'
+
+  
+append links
+  style
+    :scss
+      ul.new_list {
+        list-style: none;
+        li {
+          color: blue;
+        }
+      }
+      a.active {
+        color: black;
+      }
+    
+      
 
 block content
   section
@@ -17,6 +34,9 @@ block content
         | templating language with a
         | strong focus on performance
         | and powerful features.
+      ul.new_list
+        li first
+        li second
 
     section
       .container

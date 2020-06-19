@@ -2,6 +2,7 @@ import './js/common.js'
 import './styles/styles.css'
 import './assets/css/main.css'
 import './assets/scss/main.scss'
+import './assets/scss/colors&types/colors&types.scss'
 
 window.Vue = require('vue')
 import store from './store'
