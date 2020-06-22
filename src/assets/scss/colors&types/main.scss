@@ -1,0 +1,77 @@
+@import "vars";
+@import "mixins";
+@import "fonts";
+
+.colorsTypes {
+  display: grid;
+  width: 100%;
+  grid-template-areas:
+    "colors types";
+  grid-template-columns: 1fr 1fr;
+//  background-color: yellow;
+//  grid-column-gap: 1%;
+//  grid-row-gap: 1%;
+}
+
+.colors {
+//  background-color: pink;
+  grid-area: colors;
+}
+
+.color__shade-100 {
+  @include color($shade-100);
+}
+
+.color__shade-75 {
+  @include color($shade-75);
+  margin-top: 2%;
+}
+
+.color__shade-50 {
+  @include color($shade-50);
+  margin-top: 2%;
+}
+
+.color__shade-25 {
+  @include color($shade-25);
+  margin-top: 2%;
+}
+
+.color__shade-5 {
+  @include color($shade-5);
+  margin-top: 2%;
+}
+
+.color__purple {
+  @include color($purple);
+  margin-top: 2%;
+}
+
+.color__green {
+  @include color($green);
+  margin-top: 2%;
+}
+
+.types {
+//  background-color: blue;
+  grid-area: types;
+}
+
+.type__h1 {
+  @include type($font-item: $h1-item, $font-desc: $h1-desc, $font-size: $h1-size)
+}
+
+.type__h2 {
+  @include type($font-item: $h2-item, $font-desc: $h2-desc, $font-size: $h2-size)
+  margin-top: 2%;
+}
+
+.type__h3 {
+  @include type($font-item: $h3-item, $font-desc: $h3-desc, $font-size: $h3-size)
+  margin-top: 2%;
+}
+
+.type__body {
+  @include type($font-item: $body-item, $font-desc: $body-desc, $font-size: $body-size)
+  margin-top: 2%;
+}

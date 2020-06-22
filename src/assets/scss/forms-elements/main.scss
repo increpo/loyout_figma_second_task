@@ -1,0 +1,120 @@
+@import "fonts";
+@import "vars";
+@import "mixins";
+
+.formElements {
+  width: 100%;
+  display: grid;
+  grid-template-areas:
+    ". forms buttons sliders .";
+  grid-template-columns: 0.1fr 2fr 2fr 2fr 0.1fr;
+  grid-column-gap: 10%;
+//  grid-template-rows: 6em;
+//  background-color: gray;
+
+  .forms {
+    grid-area: forms;
+//    background-color: yellow;
+  //  grid-row: 4/8;
+  }
+
+  .textForm {
+    .formHead {
+      @include form_head;
+    };
+    .formContent {
+      @include form_style;
+      @include form_content($formColorGrey75);
+    }
+    margin-bottom: 4%;
+  }
+
+  .light {
+    .textForm {
+      .formContent {
+        @include form_content($formColorGrey25);
+      }
+    }
+  }
+
+  .formMenu {
+    .formHead{
+      @include form_head;
+    }
+    .contMenu {
+      @include form_style;
+      @include form_menu($formColorGrey75, $formColorGrey5);
+    }
+    margin-bottom: 4%;
+  }
+
+  .mini {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 5%;
+  }
+
+  .form75 {
+    width: 75%;
+  }
+
+  .sub{.formMenu{.contMenu{.content{
+    > .cont {
+      color: $formColorGrey25;
+    }
+    > .menu {
+      color: $colorFontGrad;
+    }
+  }}}}
+
+  .dropCont {
+//    background-color: blue;
+    > .formMenu {
+      > .formHead{
+        @include form_head;
+      }
+      > .contMenu {
+        @include form_style;
+        border-color: $formColorGrey5;
+        @include form_menu($formColorGrey75, $formColorGrey5);
+        @include drop($formColorGrey5, $formColorGrey25);
+//          margin: 0;
+        > .light {
+          @include drop($formColorGrey25, $formColorGrey1);
+          margin-bottom: 2%;
+        }
+      }
+      margin-bottom: 4%;
+    }
+  }
+
+  hr {
+    color: $formColorGrey5;
+    margin: 0 0 2% 0;
+  }
+
+  @include checkList;
+
+  .checkContent {
+    margin: 0% 0% 0% 0%;
+    padding-left: 2%;
+    @include checkItem;
+  }
+
+  @include addition;
+
+
+  .buttons {
+    grid-area: buttons;
+    background-color: orange;
+    > p {
+      font-family: 'Material Icons', serif;
+    }
+  }
+
+  .sliders {
+    grid-area: sliders;
+    background-color: pink;
+
+  }
+}

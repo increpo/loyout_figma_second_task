@@ -1,0 +1,271 @@
+@mixin icon_style {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+
+@mixin form_head {
+  .headCont {
+    display: grid;
+    grid-template-areas:
+      "title desc";
+    > .title {
+      grid-area: title;
+      font-family: $formTitleFont;
+      font-size: $formTitleSize;
+      color: $formTitleColor;
+//      background-color: green;
+    }
+    > .desc {
+      grid-area: desc;
+      text-align: right;
+      font-family: $formFont;
+      font-size: $formTitleSize;
+      color: $formColorGrey5;
+    }
+  }
+}
+
+@mixin form_style {
+  border: 1px solid $formColorGrey25;
+  border-radius: 4px;
+  box-sizing: border-box;
+  background-color: #ffffff;
+}
+
+@mixin form_content($cont_color) {
+  .content {
+    margin-bottom: 1%;
+    > p {
+      margin: 4% 0 4% 4%;
+      color: $cont_color;
+      font-family: $formFont;
+      font-size: $formContSize;
+    }
+  }
+}
+
+@mixin form_menu($cont_color, $menu_color) {
+  .content {
+    display: grid;
+    grid-template-areas:
+      "cont menu";
+    grid-template-columns: 5fr 1fr;
+//    grid-template-rows: 2.6em;
+
+    > .cont {
+      grid-area: cont;
+//      background-color: blue;
+      align-self: center;
+      color: $cont_color;
+      font-family: $formFont;
+      font-size: $formContSize;
+      margin: 5% 0 5% 4%;
+    }
+
+    > .menu {
+//      background-color: blue;
+      grid-area: menu;
+      font-family: "Material Icons";
+      font-size: 150%;
+      color: $menu_color;
+      width: 1.6em;
+      text-align: center;
+      padding-top: 10%;
+      justify-self: end;
+    }
+  }
+}
+
+
+@mixin drop($minusColor, $minusBorderColor) {
+  .drop {
+//    border-top: 1px solid blue;
+    display: grid;
+    grid-template-areas:
+      "text butMinus but butPlus";
+    grid-template-columns: 6fr 1fr 1fr 1fr;
+    padding-right: 4%;
+    > .text {
+      grid-area: text;
+      margin: 2% 0 2% 4%;
+      font-family: $formTitleFont;
+      font-size: 80%;
+    }
+    > .butMinus {
+      grid-area: butMinus;
+      align-self: center;
+      justify-self: center;
+      border: 1px solid $minusBorderColor;
+      border-radius: 50%;
+      color: $minusColor;
+      width: 1.2em;
+      height: 1.2em;
+      text-align: center;
+      > p {
+        margin-top: -6%;
+        font-weight: 900;
+      }
+    }
+    > .but {
+      grid-area: but;
+      justify-self: center;
+      align-self: center;
+      color: #1F2041;
+      font-family: $formTitleFont;
+      font-size: 80%;
+    }
+    > .butPlus {
+      grid-area: butPlus;
+      align-self: center;
+      justify-self: center;
+      border: 1px solid $formColorGrey25;
+      border-radius: 50%;
+      color: $formColorGrey5;
+      font-family: $formTitleFont;
+      width: 1.2em;
+      height: 1.2em;
+      text-align: center;
+      > p {
+//        background-color: blue;
+        font-size: 100%;
+        margin-top: -15%;
+        font-weight: 400;
+      }
+    }
+  }
+}
+
+@mixin decision {
+  .decision {
+//    background-color: green;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 2% 0% 2% 0%;
+    .clr {
+      margin-left: 10%;
+      font-family: $formTitleFont;
+      color: $formColorGrey5;
+    }
+    .apply {
+      margin-right: 10%;
+      justify-self: end;
+      font-family: $formTitleFont;
+      color: $colorFontGrad;
+    }
+  }
+}
+
+@mixin checkList {
+  .checkList {
+    .formMenu {
+      .contMenu {
+        border-style: none;
+        .content {
+          .cont {
+            font-size: 70%;
+            font-family: $formTitleFont;
+            color: $formTitleColor;
+          }
+        }
+      }
+    }
+  }
+}
+
+@mixin checkItem {
+  .checkItem {
+  //      background-color: orange;
+    display: grid;
+    grid-template-columns: 0.8fr 6fr;
+    align-items: center;
+    margin: 3% 0 3% 3%;
+    > .checkBox {
+      border: 1px solid $formColorGrey25;
+      border-radius: 20%;
+      width: 1em;
+      height: 1em;
+    }
+    > .checkText {
+      > p {
+        font-family: $formFont;
+        font-size: 90%;
+        color: $formColorGrey5;
+        margin: 0;
+      }
+    }
+    +.checked {
+      > .checkBox {
+  //          background-color: blue;
+        border-color: $colorFontGrad;
+        color: $colorFontGrad;
+        text-align: center;
+        > p {
+  //          background-color: orange;
+          font-family: "Material Icons";
+          font-weight: 900;
+          font-size: 70%;
+          margin-top: 5%;
+        }
+      }
+      > .checkText {
+        > p {
+          color:$colorFontGrad;
+        }
+      }
+    }
+  }
+}
+
+@mixin addition {
+  .addition {
+    > .addCont {
+//      background-color: blue;
+      display: grid;
+      grid-template-columns: 1fr 5fr;
+      margin: 2% 0 2% 0;
+      > .icon {
+        > p {
+          font-family: "Material Icons";
+          font-size: 400%;
+          color: $colorFontGrad;
+          margin: 0;
+        }
+      }
+      > .text {
+        font-style: none;
+        align-self: center;
+        > p {
+          font-family: $formTitleFont;
+          font-size: 75%;
+          margin: 8% 0% 8% 2%;
+        }
+        > p.title {
+          color: $formTitleColor;
+          font-weight: 600;
+        }
+        > p.desc {
+          color: $formColorGrey75;
+          font-weight: 200;
+        }
+      }
+    }
+  }
+}

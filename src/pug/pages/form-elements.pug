@@ -1,0 +1,112 @@
+extends ../layout/main
+
+block variables
+  - var currentURL = 'form-elements.html';
+  - var title = 'Form Elements';
+
+mixin commonForm(title, desc, cont)
+  .textForm
+    .formHead
+      .headCont
+        .title= title
+        .desc= desc
+    .formContent
+      .content
+        p= cont
+
+mixin formMenu(title, desc, cont, menu)
+  .formMenu
+    .formHead
+      .headCont
+        .title= title
+        .desc= desc
+    .contMenu
+      .content
+        .cont= cont
+        .menu= menu
+      if block
+        block
+
+mixin drop(text, but)
+  .drop
+    .text= text 
+    .butMinus
+      p -
+    .but= but
+    .butPlus
+      p +
+mixin decision(clr, apply)
+  .decision
+    .clr= clr
+    .apply= apply
+    
+mixin checkItem(text)
+  .checkItem 
+    .checkBox
+    .checkText
+      p= text
+      
+mixin checkedItem(text)
+  .checkItem.checked
+    .checkBox
+      p check
+    .checkText 
+      p= text
+
+mixin addition(icon, title, desc)
+  .addition
+    .addCont
+      .icon
+        p= icon
+      .text 
+        p.title= title 
+        p.desc=desc
+
+
+block content
+  .formElements
+    .forms
+      .light
+        +commonForm('TEXT FIELD', desc= 'DEFAULT', cont= 'Email')
+      +commonForm('TEST FIELD', 'HOVER/FOCUS', 'This is pretty awesome')
+      +formMenu('DROPDOWN', 'DEFAULT', 'Сколько гостей', 'keyboard_arrow_down')
+      .light
+        +commonForm('MASKED TEXT FIELD', 'DEFAULT', 'ДД.ММ.ГГГГ')
+      .mini
+        +formMenu('DATE DROPDOWN', '', 'ДД.ММ.ГГГГ', 'keyboard_arrow_down')
+        +formMenu('DATE DROPDOWN', '', '19.08.2019', 'expand_more')
+      .form75
+        +formMenu('FILTER DATE DROPDOWN', '', '19 авг-23 авг', 'keyboard_arrow_down')
+        .sub
+          +formMenu('SUBSCIPTION TEXT DROPDOWN', '', 'Email', 'arrow_forward')
+        +formMenu('DROPDOWN', 'DEFAULT', '2 спальни, 2 кровати...', 'expand_more')
+        .dropCont
+          +formMenu('DROPDOWN', 'EXPANDED', '2 спальни, 2 кровати...', 'expand_more')
+            hr
+            +drop('спальни', '2')
+            +drop('кровати', '2')
+            .light
+              +drop('ванные комнаты', '0')
+        .checkList
+          +formMenu('', '', 'EXPANDABLE CHECKBOX LIST', 'expand_more')
+          +formMenu('', '', 'EXPANDABLE CHECKBOX LIST', 'expand_less')
+            .checkContent
+              +checkItem('Завтрак')
+              +checkedItem('Письменный стол')
+              +checkedItem('Стул для кормления')
+              +checkedItem('Кроватка')
+              +checkItem('Телевизор')
+              +checkItem('Шампунь')
+              +checkItem('Телевизор')
+              +checkItem('Шампунь')
+        +addition('mood', 'Комфорт', 'Шумопоглощающие стены')
+              
+              
+
+          
+          
+    .buttons here is buttons
+
+    .sliders here is sliders
+      
+    

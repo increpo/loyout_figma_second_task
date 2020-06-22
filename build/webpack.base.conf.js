@@ -26,7 +26,8 @@ module.exports = {
 		paths: PATHS
 	},
 	entry: {
-		main: ['@babel/polyfill', `${PATHS.src}`]
+		main: ['@babel/polyfill', `${PATHS.src}`],
+//		formElements: ['@babel/polyfill', `${PATHS.src}/js/pages/formElements.js`]
 	},
 	output: {
 		filename: `${PATHS.assets}/js/[name].[hash].js`,
@@ -54,7 +55,8 @@ module.exports = {
 		new CleanWebpackPlugin(),
 		...PAGES.map(page => new HTMLWebpackPlugin({
 			template: `${PAGES_DIR}/${page}`, //.pug
-			filename: `./${page.replace(/\.pug/,'.html')}` //.html
+			filename: `./${page.replace(/\.pug/,'.html')}`, //.html
+//			chunks: `${PAGES_DIR}/js/pages/${page}.js`,
 		}))
 //		new HTMLWebpackPlugin({
 //			template: './src/pug/index.pug',

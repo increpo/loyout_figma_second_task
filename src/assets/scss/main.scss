@@ -4,9 +4,9 @@
 @import "utils/fonts";
 
 html {
-	line-height: $mainLineHeight;
+//	line-height: $mainLineHeight;
 	font-size: $mainFontSize;
-	color: $mainFontColor;
+//	color: $mainFontColor;
 	height: 100%;
 	@media screen and (max-width: $desktopWidth) {
 		font-size: 16px;
@@ -20,11 +20,16 @@ html {
 }
 
 body {
-	font-family: $mainFont;
-	font-family: $mainFontSize;
-	font-weight: $mainFontWeight;
-	-webkit-font-smoothing:antialiased;
-	-moz-osx-font-smoothing: grayscale;
+//	font-family: $mainFont;
+//	font-family: $mainFontSize;
+//	font-weight: $mainFontWeight;
+//	-webkit-font-smoothing:antialiased;
+//	-moz-osx-font-smoothing: grayscale;
 	margin: 0;
 	padding: 0;
+}
+
+
+.wrapper {
+  width: 100%;
 }
