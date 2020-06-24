@@ -20,6 +20,14 @@
   font-feature-settings: 'liga';
 }
 
+@mixin gradColor($color) {
+  background: $color;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #0B2349;
+  display: table;
+}
+
 @mixin form_head {
   .headCont {
     display: grid;
@@ -29,6 +37,7 @@
       grid-area: title;
       font-family: $formTitleFont;
       font-size: $formTitleSize;
+      text-transform: uppercase;
       color: $formTitleColor;
 //      background-color: green;
     }
@@ -37,6 +46,7 @@
       text-align: right;
       font-family: $formFont;
       font-size: $formTitleSize;
+      text-transform: uppercase;
       color: $formColorGrey5;
     }
   }
@@ -51,7 +61,8 @@
 
 @mixin form_content($cont_color) {
   .content {
-    margin-bottom: 1%;
+//    background-color: blue;
+//    margin-bottom: 1%;
     > p {
       margin: 4% 0 4% 4%;
       color: $cont_color;
@@ -106,7 +117,7 @@
       grid-area: text;
       margin: 2% 0 2% 4%;
       font-family: $formTitleFont;
-      font-size: 80%;
+      font-size: $formContSize;
     }
     > .butMinus {
       grid-area: butMinus;
@@ -129,7 +140,7 @@
       align-self: center;
       color: #1F2041;
       font-family: $formTitleFont;
-      font-size: 80%;
+      font-size: $formTitleSize;
     }
     > .butPlus {
       grid-area: butPlus;
@@ -142,11 +153,15 @@
       width: 1.2em;
       height: 1.2em;
       text-align: center;
+      display: flex;
+      justify-content: center;
+//      align-items: center;
       > p {
 //        background-color: blue;
-        font-size: 100%;
-        margin-top: -15%;
+        font-size: $formTitleSize;
+  //      margin-top: -15%;
         font-weight: 400;
+        align-self: center;
       }
     }
   }
@@ -180,9 +195,10 @@
         border-style: none;
         .content {
           .cont {
-            font-size: 70%;
+            font-size: $formTitleSize;
             font-family: $formTitleFont;
             color: $formTitleColor;
+            margin-left: 0;
           }
         }
       }
@@ -195,8 +211,8 @@
   //      background-color: orange;
     display: grid;
     grid-template-columns: 0.8fr 6fr;
-    align-items: center;
-    margin: 3% 0 3% 3%;
+    align-items: start;
+    margin: 3% 0 3% 0%;
     > .checkBox {
       border: 1px solid $formColorGrey25;
       border-radius: 20%;
@@ -206,7 +222,7 @@
     > .checkText {
       > p {
         font-family: $formFont;
-        font-size: 90%;
+        font-size: $formContSize;
         color: $formColorGrey5;
         margin: 0;
       }
@@ -215,19 +231,19 @@
       > .checkBox {
   //          background-color: blue;
         border-color: $colorFontGrad;
-        color: $colorFontGrad;
+        @include gradColor($colorGrad);
         text-align: center;
         > p {
   //          background-color: orange;
           font-family: "Material Icons";
           font-weight: 900;
-          font-size: 70%;
-          margin-top: 5%;
+          font-size: $formTitleSize;
+          margin: 2px 0 0 0;
         }
       }
       > .checkText {
         > p {
-          color:$colorFontGrad;
+          color: $colorFontGrad;
         }
       }
     }
@@ -244,8 +260,8 @@
       > .icon {
         > p {
           font-family: "Material Icons";
-          font-size: 400%;
-          color: $colorFontGrad;
+          font-size: 300%;
+          @include gradColor($colorGrad);
           margin: 0;
         }
       }
@@ -254,8 +270,8 @@
         align-self: center;
         > p {
           font-family: $formTitleFont;
-          font-size: 75%;
-          margin: 8% 0% 8% 2%;
+          font-size: $formTitleSize;
+          margin: 3% 0% 3% 2%;
         }
         > p.title {
           color: $formTitleColor;
@@ -266,6 +282,208 @@
           font-weight: 200;
         }
       }
+    }
+    > hr {
+      border-top: 1px solid $formColorGrey1;
+      margin: 0 0 10% 0;
+    }
+  }
+}
+
+@mixin radioItem {
+  .radioItem {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    .btn {
+      font-family: "Material Icons";
+      font-size: 140%;
+      color: $formColorGrey25;
+      align-self: center;
+    }
+    .desc {
+      font-family: $formFont;
+      font-size: $formContSize;
+      color: $formColorGrey5;
+      align-self: center;
+    }
+  }
+  .checked {
+    .btn {
+      @include gradColor($colorGrad);
+    }
+    .desc {
+      color: $formColorGrey75;
+    }
+  }
+}
+
+@mixin toggleItem {
+  .toggleItem {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    > .btn {
+//      background-color: blue;
+      width: 40px;
+      height: 20px;
+      border: 1px solid $formColorGrey25;
+      border-radius: 10px;
+      color: red;
+      font-size: 70%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      .round {
+        width: 12px;
+        height: 12px;
+        background-color: $formColorGrey25;
+        border-radius: 50%;
+        margin-right: 10%;
+      }
+    }
+    > .desc {
+      font-family: $formFont;
+      font-size: $formContSize;
+      color: $formColorGrey75;
+    }
+  }
+  >.checked {
+    margin: 2% 0 2% 0;
+    .btn {
+      height: 20px;
+      width: 40px;
+      border: 1px solid $colorFontGrad;
+      border-radius: 10px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      .round {
+        width: 12px;
+        height: 12px;
+        background: $colorGrad;
+        margin-right: 10%;
+        border-radius: 50%;
+      }
+    }
+    .desc {
+      font-family: $formFont;
+      font-size: $formContSize;
+      color: $formColorGrey75;
+    }
+  }
+}
+
+@mixin likeItem {
+  .likeItem {
+    margin: 30% 0 30% 0;
+    width: 40px;
+    height: 20px;
+    border: 1px solid $formColorGrey25;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: 3.5fr 5fr;
+    justify-items: center;
+    align-items: center;
+    > .icon {
+      font-family: "Material Icons";
+      font-size: 12px;
+      color: $formColorGrey25;
+    }
+    > .num {
+      font-family: $formFont;
+      font-size: 12px;
+      color: $formColorGrey25;
+    }
+  }
+  .liked {
+    > .likeItem {
+      border-color: $colorFontGrad;
+      > .icon {
+        @include gradColor($colorGrad);
+      }
+      > .num {
+        @include gradColor($colorGrad);
+      }
+    }
+  }
+}
+
+@mixin rateItem {
+  .rateItem {
+    .item {
+      float: left;
+      font-family: "Material Icons";
+      font-size: 24px;
+      @include gradColor($colorGrad);
+
+    }
+  }
+}
+
+@mixin slider {
+  .slider {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
+    align-items: center;
+    .line {
+      grid-column: 1/4;
+      grid-row: 1/2;
+      height: 6px;
+//        width: 266px;
+      border: 1px solid $formColorGrey25;
+      border-radius: 3px;
+    }
+    .round {
+      grid-column: 2/3;
+      grid-row: 1/2;
+      height: 12px;
+      width: 12px;
+      border: 2px solid white;
+      border-radius: 50%;
+      background: $sliderColor;
+      &.start {
+        justify-self: start;
+      }
+      &.end {
+        justify-self: end;
+      }
+    }
+    .rangeLine {
+      grid-column: 2/3;
+      grid-row: 1/2;
+      background: $sliderColor;
+      width: 100%;
+      height: 8px;
+      border-radius: 3px;
+    }
+  }
+}
+
+@mixin button {
+  .button {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    .dark {
+      height: 44px;
+      width: 99px;
+      border-radius: 22px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: $buttonColorDark;
+      color: white;
+      text-transform: uppercase;
+      font-family: $formFont;
+      font-size: $formContSize;
+    }
+    .light {
+
+    }
+    .borderDark {
+
+    }
+    .borderLight {
+
     }
   }
 }

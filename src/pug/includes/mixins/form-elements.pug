@@ -1,0 +1,93 @@
+mixin formHead(title, desc)
+  .headCont
+    .title= title
+    .desc= desc
+
+mixin commonForm(title, desc, cont)
+  .textForm
+    .formHead
+      +formHead
+    .formContent
+      .content
+        p= cont
+
+mixin formMenu(title, desc, cont, menu)
+  .formMenu
+    .formHead
+      .headCont
+        .title= title
+        .desc= desc
+    .contMenu
+      .content
+        .cont= cont
+        .menu= menu
+      if block
+        block
+
+mixin drop(text, but)
+  .drop
+    .text= text 
+    .butMinus
+      p -
+    .but= but
+    .butPlus
+      p +
+mixin decision(clr, apply)
+  .decision
+    .clr= clr
+    .apply= apply
+    
+mixin checkItem(text)
+  .checkItem 
+    .checkBox
+    .checkText
+      p= text
+      
+mixin checkedItem(text)
+  .checkItem.checked
+    .checkBox
+      p check
+    .checkText 
+      p= text
+
+mixin addition(icon, title, desc)
+  .addition
+    .addCont
+      .icon
+        p= icon
+      .text 
+        p.title= title 
+        p.desc=desc
+    hr
+      
+mixin radioItem(btn, desc)
+  .radioItem
+    .btn= btn
+    .desc= desc
+    
+mixin toggleItem(desc)
+  .toggleItem
+    .btn
+      .round
+    .desc= desc
+    
+mixin likeItem(icon, num)
+  .likeItem
+    .icon= icon
+    .num= num
+    
+
+    
+mixin rateItem(full, empty)
+  .rateItem
+    - for (var x = 0; x < full; x++)
+      .item star
+    - for (var x = 0; x < empty; x++)
+      .item star_border
+      
+mixin slider
+  .slider
+    .line 
+    .rangeLine
+    .round.start
+    .round.end

@@ -1,67 +1,9 @@
 extends ../layout/main
+include ../includes/mixins/form-elements
 
 block variables
   - var currentURL = 'form-elements.html';
   - var title = 'Form Elements';
-
-mixin commonForm(title, desc, cont)
-  .textForm
-    .formHead
-      .headCont
-        .title= title
-        .desc= desc
-    .formContent
-      .content
-        p= cont
-
-mixin formMenu(title, desc, cont, menu)
-  .formMenu
-    .formHead
-      .headCont
-        .title= title
-        .desc= desc
-    .contMenu
-      .content
-        .cont= cont
-        .menu= menu
-      if block
-        block
-
-mixin drop(text, but)
-  .drop
-    .text= text 
-    .butMinus
-      p -
-    .but= but
-    .butPlus
-      p +
-mixin decision(clr, apply)
-  .decision
-    .clr= clr
-    .apply= apply
-    
-mixin checkItem(text)
-  .checkItem 
-    .checkBox
-    .checkText
-      p= text
-      
-mixin checkedItem(text)
-  .checkItem.checked
-    .checkBox
-      p check
-    .checkText 
-      p= text
-
-mixin addition(icon, title, desc)
-  .addition
-    .addCont
-      .icon
-        p= icon
-      .text 
-        p.title= title 
-        p.desc=desc
-
 
 block content
   .formElements
@@ -81,7 +23,7 @@ block content
           +formMenu('SUBSCIPTION TEXT DROPDOWN', '', 'Email', 'arrow_forward')
         +formMenu('DROPDOWN', 'DEFAULT', '2 спальни, 2 кровати...', 'expand_more')
         .dropCont
-          +formMenu('DROPDOWN', 'EXPANDED', '2 спальни, 2 кровати...', 'expand_more')
+          +formMenu('dropdown', 'EXPANDED', '2 спальни, 2 кровати...', 'expand_more')
             hr
             +drop('спальни', '2')
             +drop('кровати', '2')
@@ -100,13 +42,53 @@ block content
               +checkItem('Телевизор')
               +checkItem('Шампунь')
         +addition('mood', 'Комфорт', 'Шумопоглощающие стены')
-              
-              
-
+        +addition('location_city', 'Удобство', 'Окно в каждой из спален')
+        
           
-          
-    .buttons here is buttons
+    .buttons
+      .checkList
+        +formMenu('', '', 'CHECKBOX BUTTONS', '')
+          .checkContent
+            +checkItem('Можно курить')
+            +checkedItem('Можно с питомцами')
+            +checkedItem('Можно пригласить гостей (до 10 человек)')
+      .radioButtons
+        +formHead('RADIO BUTTONS')
+        .radioItems
+          .checked
+            +radioItem('radio_button_checked', 'Мужчина')
+          +radioItem('radio_button_unchecked', 'Женщина')
+      .toggleButtons
+        +formHead('TOGGLE')
+        .toggleItems
+          .checked
+            +toggleItem('Получать спецпредложения')
+          +toggleItem('Получать спецпредложения')
+      .likeButtons
+        +formHead('LIKE BUTTON')
+        .likeItems
+          +likeItem('favorite_border', '2')
+          .liked
+            +likeItem('favorite', '12')
+      .rateButtons
+        +formHead('RATE BUTTON')
+        .rateContent
+          +rateItem(4, 1)
+          +rateItem(5)
+        
 
-    .sliders here is sliders
-      
+    .sliders
+      .rangeSliders
+        +formHead('range slider', '5 000Р - 10 000Р')
+        .sliderContent
+          +slider 
+      .buttons 
+        +formHead('buttons')
+        .buttonsContent
+          .button
+            .dark click me
+            .light click me
+            .borderDark click me
+            .borderLight click me
+          
     

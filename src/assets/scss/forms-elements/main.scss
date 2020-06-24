@@ -7,7 +7,7 @@
   display: grid;
   grid-template-areas:
     ". forms buttons sliders .";
-  grid-template-columns: 0.1fr 2fr 2fr 2fr 0.1fr;
+  grid-template-columns: 0.1fr 2fr 1.4fr 2fr 0.1fr;
   grid-column-gap: 10%;
 //  grid-template-rows: 6em;
 //  background-color: gray;
@@ -26,7 +26,7 @@
       @include form_style;
       @include form_content($formColorGrey75);
     }
-    margin-bottom: 4%;
+    margin-bottom: 10%;
   }
 
   .light {
@@ -45,13 +45,14 @@
       @include form_style;
       @include form_menu($formColorGrey75, $formColorGrey5);
     }
-    margin-bottom: 4%;
+    margin-bottom: 10%;
   }
 
   .mini {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-column-gap: 5%;
+    margin-bottom: 10%;
   }
 
   .form75 {
@@ -84,20 +85,20 @@
           margin-bottom: 2%;
         }
       }
-      margin-bottom: 4%;
+      margin-bottom: 10%;
     }
   }
 
   hr {
-    color: $formColorGrey5;
+    border-top: 1px solid $formColorGrey5;
     margin: 0 0 2% 0;
   }
 
   @include checkList;
 
   .checkContent {
-    margin: 0% 0% 0% 0%;
-    padding-left: 2%;
+    margin: 0% 0% 10% 0%;
+    padding-left: 0%;
     @include checkItem;
   }
 
@@ -106,15 +107,77 @@
 
   .buttons {
     grid-area: buttons;
-    background-color: orange;
-    > p {
-      font-family: 'Material Icons', serif;
+//    background-color: orange;
+  }
+
+  .radioButtons {
+    margin: 10% 0 10% 0;
+    background-color: #ffffff;
+    @include form_head;
+    .radioItems {
+      background-color: #ffffff;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-column-gap: 4%;
+      margin: 2% 2% 2% 0%;
+      @include radioItem;
     }
+  }
+
+  .toggleButtons {
+    background-color: white;
+    @include form_head;
+    .toggleItems {
+      @include toggleItem;
+    }
+  }
+
+  .likeButtons {
+//    background-color: blue;
+    margin: 10% 0% 10% 0;
+    width: 6em;
+    @include form_head;
+    .likeItems {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      @include likeItem;
+    }
+  }
+
+  .rateButtons {
+    @include form_head;
+    > .rateContent {
+      margin: 4% 0 4% 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+//      background-color: blue;
+      @include rateItem;
+    }
+
   }
 
   .sliders {
     grid-area: sliders;
-    background-color: pink;
+//    background-color: pink;
+
 
   }
+
+  .rangeSliders {
+    margin: 4% 0 4% 0;
+    @include form_head;
+    .sliderContent {
+      margin: 4% 0 4% 0;
+      @include slider;
+    }
+  }
+
+  .buttons {
+    @include form_head;
+    .buttonsContent {
+      @include button;
+    }
+  }
+
+
 }

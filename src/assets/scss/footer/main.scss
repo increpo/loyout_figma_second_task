@@ -1,6 +1,10 @@
 //here is footer
 
 footer {
-  background-color: cyan;
+  height: 5em;
+//  background-color: cyan;
   grid-area: footer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
