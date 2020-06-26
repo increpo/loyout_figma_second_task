@@ -3,11 +3,12 @@
 @import "mixins";
 
 .formElements {
+  margin-top: 3em;
   width: 100%;
   display: grid;
   grid-template-areas:
     ". forms buttons sliders .";
-  grid-template-columns: 0.1fr 2fr 1.4fr 2fr 0.1fr;
+  grid-template-columns: 0.1fr 2fr 2fr 2fr 0.1fr;
   grid-column-gap: 10%;
 //  grid-template-rows: 6em;
 //  background-color: gray;
@@ -19,80 +20,49 @@
   }
 
   .textForm {
-    .formHead {
-      @include form_head;
-    };
+    width: $formWidth;
+    @include formHead;
     .formContent {
-      @include form_style;
-      @include form_content($formColorGrey75);
+      display: grid;
+      align-items: center;
+      height: $formHeight;
+      padding: 0 0 0 15px;
+      @include formStyle;
+      @include formContent($formColorGrey75);
     }
-    margin-bottom: 10%;
+    margin-bottom: 20px;
   }
 
   .light {
     .textForm {
       .formContent {
-        @include form_content($formColorGrey25);
+        @include formContent($formColorGrey25);
       }
     }
   }
 
-  .formMenu {
-    .formHead{
-      @include form_head;
-    }
-    .contMenu {
-      @include form_style;
-      @include form_menu($formColorGrey75, $formColorGrey5);
-    }
-    margin-bottom: 10%;
-  }
+  @include formMenu;
 
   .mini {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-column-gap: 5%;
-    margin-bottom: 10%;
+    margin-bottom: 10px;
+    .formMenu {
+      width: $formWidthMini;
+    }
   }
 
   .form75 {
-    width: 75%;
+    @include formMenu($_formWidth: $formWidth75);
   }
 
-  .sub{.formMenu{.contMenu{.content{
-    > .cont {
-      color: $formColorGrey25;
-    }
-    > .menu {
-      color: $colorFontGrad;
-    }
-  }}}}
-
-  .dropCont {
-//    background-color: blue;
-    > .formMenu {
-      > .formHead{
-        @include form_head;
-      }
-      > .contMenu {
-        @include form_style;
-        border-color: $formColorGrey5;
-        @include form_menu($formColorGrey75, $formColorGrey5);
-        @include drop($formColorGrey5, $formColorGrey25);
-//          margin: 0;
-        > .light {
-          @include drop($formColorGrey25, $formColorGrey1);
-          margin-bottom: 2%;
-        }
-      }
-      margin-bottom: 10%;
-    }
+  .sub {
+    @include formMenu($formColorGrey25, $colorGrad, $formWidth75)
   }
 
-  hr {
-    border-top: 1px solid $formColorGrey5;
-    margin: 0 0 2% 0;
-  }
+  @include dropCont;
+
+
 
   @include checkList;
 
@@ -110,44 +80,55 @@
 //    background-color: orange;
   }
 
+  .checkBox {
+    @include checkList($_formWidth: $formWidth60)
+  }
+
   .radioButtons {
+    width: 240px;
     margin: 10% 0 10% 0;
     background-color: #ffffff;
-    @include form_head;
+    @include formHead;
     .radioItems {
       background-color: #ffffff;
       display: grid;
       grid-template-columns: 1fr 1fr;
       grid-column-gap: 4%;
-      margin: 2% 2% 2% 0%;
+      margin: 16px 2% 2% 0%;
       @include radioItem;
     }
   }
 
   .toggleButtons {
+    margin-top: 40px;
     background-color: white;
-    @include form_head;
+    @include formHead;
     .toggleItems {
+      margin-top: 16px;
+      display: grid;
+      grid-row-gap: 20%;
       @include toggleItem;
     }
   }
 
   .likeButtons {
 //    background-color: blue;
-    margin: 10% 0% 10% 0;
+    margin: 40px 0 0 0;
     width: 6em;
-    @include form_head;
+    @include formHead;
     .likeItems {
       display: grid;
       grid-template-columns: 1fr 1fr;
+      margin-top: 16px;
       @include likeItem;
     }
   }
 
   .rateButtons {
-    @include form_head;
+    margin-top: 40px;
+    @include formHead;
     > .rateContent {
-      margin: 4% 0 4% 0;
+      margin: 16px 0 4% 0;
       display: grid;
       grid-template-columns: 1fr 1fr;
 //      background-color: blue;
@@ -165,19 +146,118 @@
 
   .rangeSliders {
     margin: 4% 0 4% 0;
-    @include form_head;
+    width: 266px;
+    @include formHead;
     .sliderContent {
       margin: 4% 0 4% 0;
       @include slider;
     }
   }
 
-  .buttons {
-    @include form_head;
-    .buttonsContent {
-      @include button;
+  .btns {
+    margin-top: 40px;
+    @include formHead;
+    > .buttonItems {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      width: 80%;
+      grid-row-gap: 1em;
+      margin: 5% 0 5% 0;
+      .button {
+        @include btn;
+      }
+      .btnHov {
+        @include btn;
+        opacity: 0.5;
+      }
+      .btnBord {
+        @include btn {
+          @include btnDesc;
+        }
+      }
+      .btnBordHov {
+        @include btn {
+          opacity: 0.5;
+          @include btnDesc;
+        }
+      }
+    }
+  }
+
+  .buttonsText {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 70%;
+    margin: 31px 0 0 0;
+    text-transform: uppercase;
+    .btnText {
+      @include btnText;
+    }
+    .btnTextHov {
+      @include btnText;
+      color: $formColorGrey5;
+    }
+  }
+
+  @include btnPay;
+
+  .pagination {
+    margin: 40px 0 0 0;
+    display: grid;
+//    grid-row-gap: 16px;
+    @include formHead;
+    @include pag;
+    .comment {
+      font-family: $formFont;
+      font-size: $formContSize;
+      color: $formColorGrey75;
+      margin-top: 3%;
+    }
+  }
+
+  .drop100 {
+    @include dropCont($_formWidth: $formWidth);
+  }
+
+  .checkRich {
+    width: $formWidth75;
+    @include formHead;
+    .richItems {
+      margin-top: 16px;
+      @include richItem;
+    }
+  }
+
+  .bulletList {
+    width: $formWidth75;
+    @include formHead;
+    display: grid;
+    grid-row-gap: 20%;
+    .bulletItems {
+      display: grid;
+      grid-row-gap: 20%;
+      @include bulletItem
     }
   }
 
 
+}
+
+.blogElements {
+  margin: 0 10% 0 10%;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+
+  .forms {
+    @include addition;
+  }
+  .blog {
+    .blogItems {
+      width: 730px;
+      display: grid;
+      grid-row-gap: 10%;
+      @include blogItem;
+      @include blogLikeItem;
+    }
+  }
 }

@@ -9,11 +9,11 @@ block content
   .formElements
     .forms
       .light
-        +commonForm('TEXT FIELD', desc= 'DEFAULT', cont= 'Email')
-      +commonForm('TEST FIELD', 'HOVER/FOCUS', 'This is pretty awesome')
+        +textForm('TEXT FIELD', desc= 'DEFAULT', cont= 'Email')
+      +textForm('TEST FIELD', 'HOVER/FOCUS', 'This is pretty awesome')
       +formMenu('DROPDOWN', 'DEFAULT', 'Сколько гостей', 'keyboard_arrow_down')
       .light
-        +commonForm('MASKED TEXT FIELD', 'DEFAULT', 'ДД.ММ.ГГГГ')
+        +textForm('MASKED TEXT FIELD', 'DEFAULT', 'ДД.ММ.ГГГГ')
       .mini
         +formMenu('DATE DROPDOWN', '', 'ДД.ММ.ГГГГ', 'keyboard_arrow_down')
         +formMenu('DATE DROPDOWN', '', '19.08.2019', 'expand_more')
@@ -21,33 +21,11 @@ block content
         +formMenu('FILTER DATE DROPDOWN', '', '19 авг-23 авг', 'keyboard_arrow_down')
         .sub
           +formMenu('SUBSCIPTION TEXT DROPDOWN', '', 'Email', 'arrow_forward')
-        +formMenu('DROPDOWN', 'DEFAULT', '2 спальни, 2 кровати...', 'expand_more')
-        .dropCont
-          +formMenu('dropdown', 'EXPANDED', '2 спальни, 2 кровати...', 'expand_more')
-            hr
-            +drop('спальни', '2')
-            +drop('кровати', '2')
-            .light
-              +drop('ванные комнаты', '0')
-        .checkList
-          +formMenu('', '', 'EXPANDABLE CHECKBOX LIST', 'expand_more')
-          +formMenu('', '', 'EXPANDABLE CHECKBOX LIST', 'expand_less')
-            .checkContent
-              +checkItem('Завтрак')
-              +checkedItem('Письменный стол')
-              +checkedItem('Стул для кормления')
-              +checkedItem('Кроватка')
-              +checkItem('Телевизор')
-              +checkItem('Шампунь')
-              +checkItem('Телевизор')
-              +checkItem('Шампунь')
-        +addition('mood', 'Комфорт', 'Шумопоглощающие стены')
-        +addition('location_city', 'Удобство', 'Окно в каждой из спален')
         
           
     .buttons
-      .checkList
-        +formMenu('', '', 'CHECKBOX BUTTONS', '')
+      .checkBox
+        +checkList('CHECKBOX BUTTONS', '')
           .checkContent
             +checkItem('Можно курить')
             +checkedItem('Можно с питомцами')
@@ -74,21 +52,121 @@ block content
         +formHead('RATE BUTTON')
         .rateContent
           +rateItem(4, 1)
-          +rateItem(5)
-        
-
+          +rateItem(5)      
+          
+           
     .sliders
       .rangeSliders
         +formHead('range slider', '5 000Р - 10 000Р')
         .sliderContent
           +slider 
-      .buttons 
+      .btns 
         +formHead('buttons')
-        .buttonsContent
+        .buttonItems
           .button
-            .dark click me
-            .light click me
-            .borderDark click me
-            .borderLight click me
-          
+            +btn
+          .btnHov
+            +btn
+          .btnBord
+            +btn
+          .btnBordHov
+            +btn
+        .buttonsText
+          .btnText click me
+          .btnTextHov click me
+        +btnPay
+      .pagination
+        +formHead('pagination')
+        +pag
+        .comment 1-12 из 100+ вариантов аренды
     
+    
+  
+  .formElements
+    .forms
+      +formMenu('DROPDOWN', 'DEFAULT', '2 спальни, 2 кровати...', 'expand_more')
+      .dropCont
+        +formMenu('dropdown', 'EXPANDED', '2 спальни, 2 кровати...', 'expand_more')
+          hr
+          +drop('спальни', '2')
+          +drop('кровати', '2')
+          .light
+            +drop('ванные комнаты', '0')
+  
+    
+    .buttons
+      .drop100    
+        .dropCont
+          +formMenu('dropdown', '', 'Сколько гостей', 'expand_more')
+            hr
+            .light
+              +drop('взрослые', '0')
+            .light
+              +drop('дети', '0')
+            .light
+              +drop('младенцы', '0')
+            +decision('', 'применить')
+            
+          
+
+    .sliders
+      .drop100    
+        .dropCont
+          +formMenu('dropdown', '', '3 гостя', 'expand_more')
+            hr
+            +drop('взрослыеббб', '2')
+            +drop('дети', '1')
+            .light
+              +drop('младенцы', '0')
+            +decision('очистить', 'применить')      
+      
+
+
+          
+  .formElements
+    .forms
+      +checkList('expandable checkbox list', 'expand_more')
+      +checkList('expandable checkbox list', 'expand_lesS')
+        .listContent
+          .checkContent
+            +checkItem('Завтрак')
+            +checkedItem('Письменный стол')
+            +checkedItem('Стул для кормления')
+            +checkedItem('Кроватка')
+            +checkItem('Телевизор')
+            +checkItem('Шампунь')
+            +checkItem('Телевизор')
+            +checkItem('Шампунь')
+      
+        
+    .buttons
+      .checkRich
+        +formHead('rich CHECKBOX buttons', '')
+        .richItems
+          .richItem
+            +checkItem('Широкий коридор')
+            .desc Ширина коридоров в номере не менее 91 см.
+          .richItem
+            +checkItem('Помощник для инвалидов')
+            .desc На 1 этаже вас встретит специалист и проводит до номера.
+    
+    
+    
+    .sliders
+      .bulletList
+        +formHead('bullet list', '')
+        .bulletItems
+          +bulletItem('Нельзя с питомцами')
+          +bulletItem('Без вечеринок и мероприятий')
+          +bulletItem('Время прибытия - после 13:00, а выезд до 12:00')
+          
+  .blogElements
+    .forms
+      +addition('mood', 'Комфорт', 'Шумопоглощающие стены')
+      +addition('location_city', 'Удобство', 'Окно в каждой из спален')
+    .blog
+      .blogItems
+        +blogItem('/assets/img/userPhoto.png', 'Мурад Сафаров', '5 дней назад')
+        +blogLike('favorite', '12', 'Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплементы повару - никто не жаловался из соседей.')
+          
+      
