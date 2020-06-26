@@ -10,9 +10,11 @@ block content
     .forms
       .light
         +textForm('TEXT FIELD', desc= 'DEFAULT', cont= 'Email')
-      +textForm('TEST FIELD', 'HOVER/FOCUS', 'This is pretty awesome')
-      +formMenu('DROPDOWN', 'DEFAULT', 'Сколько гостей', 'keyboard_arrow_down')
-      .light
+      .commonTextForm
+        +textForm('TExT FIELD', 'HOVER/FOCUS', 'This is pretty awesome')
+      .commonFormMenu
+        +formMenu('DROPDOWN', 'DEFAULT', 'Сколько гостей', 'keyboard_arrow_down')
+      .masced.light
         +textForm('MASKED TEXT FIELD', 'DEFAULT', 'ДД.ММ.ГГГГ')
       .mini
         +formMenu('DATE DROPDOWN', '', 'ДД.ММ.ГГГГ', 'keyboard_arrow_down')
@@ -20,16 +22,16 @@ block content
       .form75
         +formMenu('FILTER DATE DROPDOWN', '', '19 авг-23 авг', 'keyboard_arrow_down')
         .sub
-          +formMenu('SUBSCIPTION TEXT DROPDOWN', '', 'Email', 'arrow_forward')
+          +formMenu('SUBSCIPTION TEXT field', '', 'Email', 'arrow_forward')
         
           
     .buttons
       .checkBox
-        +checkList('CHECKBOX BUTTONS', '')
-          .checkContent
-            +checkItem('Можно курить')
-            +checkedItem('Можно с питомцами')
-            +checkedItem('Можно пригласить гостей (до 10 человек)')
+        +formHead('CHECKBOX BUTTONS', '')
+        .checkContent
+          +checkItem('Можно курить')
+          +checkedItem('Можно с питомцами')
+          +checkedItem('Можно пригласить гостей (до 10 человек)')
       .radioButtons
         +formHead('RADIO BUTTONS')
         .radioItems
@@ -74,61 +76,61 @@ block content
         .buttonsText
           .btnText click me
           .btnTextHov click me
-        +btnPay
+        .pay
+          +btnPay
       .pagination
         +formHead('pagination')
-        +pag
-        .comment 1-12 из 100+ вариантов аренды
+        .pagCont
+          +pag
+          .comment 1 - 12 из 100+ вариантов аренды
     
     
   
-  .formElements
-    .forms
-      +formMenu('DROPDOWN', 'DEFAULT', '2 спальни, 2 кровати...', 'expand_more')
-      .dropCont
-        +formMenu('dropdown', 'EXPANDED', '2 спальни, 2 кровати...', 'expand_more')
-          hr
+  .dropElements
+    .forms  
+      .drop75
+        +dropDown('DROPDOWN', 'DEFAULT', '2 спальни, 2 кровати...', 'expand_more')
+      .dropOpen  
+        +dropDown('DROPDOWN', 'expanded', '2 спальни, 2 кровати...', ' expand_more')
           +drop('спальни', '2')
           +drop('кровати', '2')
           .light
             +drop('ванные комнаты', '0')
-  
+
     
     .buttons
-      .drop100    
-        .dropCont
-          +formMenu('dropdown', '', 'Сколько гостей', 'expand_more')
-            hr
-            .light
-              +drop('взрослые', '0')
-            .light
-              +drop('дети', '0')
-            .light
-              +drop('младенцы', '0')
-            +decision('', 'применить')
+      .dropOpen100
+        +dropDown('dropdown', '', 'Сколько гостей', 'expand_more')    
+          .light
+            +drop('взрослые', '0')
+          .light
+            +drop('дети', '0')
+          .light
+            +drop('младенцы', '0')
+          +decision('', 'применить')
             
           
 
     .sliders
-      .drop100    
-        .dropCont
-          +formMenu('dropdown', '', '3 гостя', 'expand_more')
-            hr
-            +drop('взрослыеббб', '2')
-            +drop('дети', '1')
-            .light
-              +drop('младенцы', '0')
-            +decision('очистить', 'применить')      
-      
+      .dropOpen100
+        +dropDown('dropdown', '', '3 гостя', 'expand_more')
+          +drop('взрослыеббб', '2')
+          +drop('дети', '1')
+          .light
+            +drop('младенцы', '0')
+          +decision('очистить', 'применить')      
+        
 
 
           
-  .formElements
+  .listElements
     .forms
-      +checkList('expandable checkbox list', 'expand_more')
-      +checkList('expandable checkbox list', 'expand_lesS')
-        .listContent
-          .checkContent
+      .checkClose
+        +checkList('expandable checkbox list', 'expand_more')
+      .checkOpen
+        +checkList('expandable checkbox list', 'expand_lesS')
+          .listContent
+            //- .checkContent
             +checkItem('Завтрак')
             +checkedItem('Письменный стол')
             +checkedItem('Стул для кормления')
@@ -137,7 +139,7 @@ block content
             +checkItem('Шампунь')
             +checkItem('Телевизор')
             +checkItem('Шампунь')
-      
+        
         
     .buttons
       .checkRich
@@ -161,12 +163,13 @@ block content
           +bulletItem('Время прибытия - после 13:00, а выезд до 12:00')
           
   .blogElements
-    .forms
+    .additions
       +addition('mood', 'Комфорт', 'Шумопоглощающие стены')
       +addition('location_city', 'Удобство', 'Окно в каждой из спален')
     .blog
       .blogItems
-        +blogItem('/assets/img/userPhoto.png', 'Мурад Сафаров', '5 дней назад')
+        +blogItem('/assets/img/userPhoto.png', 'Мурад Сарафанов', '5 дней назад')
+      .likeItems
         +blogLike('favorite', '12', 'Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплементы повару - никто не жаловался из соседей.')
           
       

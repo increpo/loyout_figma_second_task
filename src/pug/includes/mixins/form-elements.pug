@@ -19,6 +19,20 @@ mixin formMenu(title, desc, cont, menu)
       if block
         block
 
+mixin dropDown(title, desc, cont, menu)
+  if block
+    - var style = 'open'
+  .dropDown
+    +formHead(title, desc)
+    .dropMain(class!= style)
+      .content
+        .cont= cont
+        .menu= menu
+    if block
+      .dropContent
+        block
+
+
 mixin drop(text, but)
   .drop
     .text= text 
@@ -36,7 +50,8 @@ mixin checkList(title, icon)
     .listTitle
       .title= title
       .icon= icon
-    block
+    .listContent
+      block
     
 mixin checkItem(text)
   .checkItem 
