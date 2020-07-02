@@ -12,7 +12,7 @@
   grid-template-columns: 25% 21% 25%;
   grid-column-gap: 9.6%;
   margin-left: 17.3%;
-  margin-top: 62px;
+  margin-top: 4.8%;
 //  grid-template-rows: 6em;
 //  background-color: gray;
 }
@@ -24,19 +24,19 @@
 
 .commonTextForm {
   @include textForm;
-  margin-top: 19px;
+  margin-top: 5.8%;
 }
 
 .light {
   @include textForm($formColorGrey25);
 }
 .masced {
-  margin-top: 19px;
+  margin-top: 6.4%;
 }
 
 .commonFormMenu {
   @include formMenu;
-  margin-top: 18px;
+  margin-top: 5.4%;
 }
 //  @include formMenu;
 
@@ -44,7 +44,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-column-gap: 5.5%;
-  margin-top: 40px;
+  margin-top: 11.4%;
   @include formMenu;
   .formMenu {
     width: $formWidthMini;
@@ -52,22 +52,18 @@
 }
 
 .form75 {
-  margin-top: 39px;
+  margin-top: 11.2%;
   @include formMenu($_formWidth: $formWidth75);
 }
 
 .sub {
   @include formMenu($formColorGrey25, $colorGrad, $formWidth75);
-  margin-top: 38px;
+  margin-top: 11.5%;
 }
 
 //@include dropCont;
 
 //  @include dropDown;
-
-.drop75 {
-  @include dropDown($formWidth75);
-}
 
 //  @include checkList;
 
@@ -82,7 +78,7 @@
   @include formHead;
   .checkContent {
     width: $formWidth60;
-    margin-top: 11px;
+    margin-top: 4.3%;
     @include checkItem;
   }
 }
@@ -96,8 +92,8 @@
 
 
 .radioButtons {
-  width: 238px;
-  margin-top: 46px;
+  width: 87%;
+  margin-top: 17%;
   background-color: #ffffff;
   @include formHead;
   .radioItems {
@@ -105,17 +101,17 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
 //    grid-column-gap: 2%;
-    margin: 11px 0% 0% 0%;
+    margin: 4% 0% 0% 0%;
     @include radioItem;
   }
 }
 
 .toggleButtons {
-  margin-top: 35px;
+  margin-top: 14%;
   background-color: white;
   @include formHead;
   .toggleItems {
-    margin-top: 10px;
+    margin-top: 3.6%;
     display: grid;
     grid-row-gap: 28%;
     @include toggleItem;
@@ -124,22 +120,22 @@
 
 .likeButtons {
 //    background-color: blue;
-  margin: 52px 0 0 0;
-  width: 5.6em;
+  margin: 19.5% 0 0 0;
+  width: 37%;
   @include formHead;
   .likeItems {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    margin-top: 11px;
+    margin-top: 11%;
     @include likeItem;
   }
 }
 
 .rateButtons {
-  margin-top: 36px;
+  margin-top: 13%;
   @include formHead;
   > .rateContent {
-    margin: 14px 0 4% 0;
+    margin: 4.5% 0 4% 0;
     display: grid;
     grid-template-columns: 1.1fr 1fr;
 //      background-color: blue;
@@ -155,10 +151,10 @@
 
 .rangeSliders {
   margin: 0 0 0 0;
-  width: 266px;
+  width: 82%;
   @include formHead;
   .sliderContent {
-    margin: 14px 0 0 0;
+    margin: 5.5% 0 0 0;
     @include slider;
   }
 }
@@ -232,10 +228,9 @@
 }
 
 
-.dropDef {
-
-  @include dropDown($formWidth75);
-}
+// .dropDef {
+//   @include dropDown($formWidth75);
+// }
 
 .checkRich {
   margin-top: 12px;
@@ -275,11 +270,17 @@
   grid-template-columns: 25% 21% 25%;
   grid-column-gap: 9.6%;
   margin-left: 17.3%;
-  margin-top: 98px;
+  margin-top: 7.5%;
 }
 
+
+.drop75 {
+  @include dropDown($formWidth75);
+}
+
+
 .dropOpen {
-  margin-top: 17px;
+  margin-top: 5%;
   @include dropDown($formWidth75);
 }
 

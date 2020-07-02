@@ -7,6 +7,7 @@ import './assets/scss/header/main.scss'
 import './assets/scss/colors&types/main.scss'
 import './assets/scss/forms-elements/main.scss'
 import './assets/scss/footer/main.scss'
+import './assets/scss/cards/main.scss'
 
 //window.Vue = require('vue')
 //import store from './store'

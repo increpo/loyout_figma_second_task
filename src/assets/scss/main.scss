@@ -7,16 +7,16 @@ html {
 //	line-height: $mainLineHeight;
 	font-size: $mainFontSize;
 //	color: $mainFontColor;
-	height: 100%;
-	@media screen and (max-width: $desktopWidth) {
-		font-size: 16px;
-	}
-	@media screen and (max-width: $tableWidth) {
-		font-size:15px;
-	}
-	@media screen and (max-width: $phoneWidth) {
-		font-size: 14px;
-	}
+	//height: 100%;
+	// @media screen and (max-width: $desktopWidth) {
+	// 	font-size: 16px;
+	// }
+	// @media screen and (max-width: $tableWidth) {
+	// 	font-size:15px;
+	// }
+	// @media screen and (max-width: $phoneWidth) {
+	// 	font-size: 14px;
+	// }
 }
 
 body {
@@ -33,9 +33,11 @@ body {
 .wrapper {
   width: 100%;
 	display: grid;
-//	grid-template-areas:
-//		". content .";
-	grid-template-columns: 1fr 70% 1fr;
+	grid-template-areas:
+		"header header header"
+		". content ."
+		"footer footer footer";
+	grid-template-columns: 15% 70% 15%;
 //	margin-top: 2%;
 //	grid-template-rows: 10fr;
 	align-items: center;

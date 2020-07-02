@@ -1,0 +1,104 @@
+// $_param: $_val1 $_val2 $_val3 $_val4;
+
+@mixin media($_param, $_val1, $_val2: 0, $_val3: 0, $_val4: 0) {
+  @media (min-width : 1524px) {
+  /* стили */
+    @if $_val2 != 0 {
+      #{$_param}: $_val1 $_val2;
+      @if $_val3 != 0 {
+        #{$_param}: $_val1 $_val2 $_val3;
+        @if $_val4 != 0{
+          #{$_param}: $_val1 $_val2 $_val3 $_val4;
+        }
+      }
+    }
+    @else {
+      #{$_param}: $_val1;
+    }
+  }
+  @media only (min-width : 1224px) and (max-width: 1524px) {
+  /* стили */
+    @if $_val2 != 0 {
+      #{$_param}: $_val1*0.9 $_val2*0.9;
+      @if $_val3 != 0 {
+        #{$_param}: $_val1*0.9 $_val2*0.9 $_val3*0.9;
+        @if $_val4 != 0 {
+          #{$_param}: $_val1*0.9 $_val2*0.9 $_val3*0.9 $_val4*0.9;
+        }
+      }
+    }
+    @else {
+      #{$_param}: $_val1*0.9;
+    }
+  }
+  @media only (min-width : 768px) and (max-width: 1224px) {
+  /* стили */
+    @if $_val2 != 0 {
+      #{$_param}: $_val1*0.8 $_val2*0.8;
+      @if $_val3 != 0 {
+        #{$_param}: $_val1*0.8 $_val2*0.8 $_val3*0.8;
+        @if $_val4 != 0 {
+          #{$_param}: $_val1*0.8 $_val2*0.8 $_val3*0.8 $_val4*0.8;
+        }
+      }
+    }
+    @else {
+      #{$_param}: $_val1*0.8;
+    }
+  }
+  @media only (min-width : 480px) and (max-width: 768px) {
+  /* стили */
+    @if $_val2 != 0 {
+      #{$_param}: $_val1*0.7 $_val2*0.7;
+      @if $_val3 != 0 {
+        #{$_param}: $_val1*0.7 $_val2*0.7 $_val3*0.7;
+        @if $_val4 != 0 {
+          #{$_param}: $_val1*0.7 $_val2*0.7 $_val3*0.7 $_val4*0.7;
+        }
+      }
+    }
+    @else {
+      #{$_param}: $_val1*0.7;
+    }
+  }
+  @media only (max-width : 480px) {
+  /* стили */
+    @if $_val2 != 0 {
+      #{$_param}: $_val1*0.6 $_val2*0.6;
+      @if $_val3 != 0 {
+        #{$_param}: $_val1*0.6 $_val2*0.6 $_val3*0.6;
+        @if $_val4 != 0 {
+          #{$_param}: $_val1*0.6 $_val2*0.6 $_val3*0.6 $_val4*0.6;
+        }
+      }
+    }
+    @else {
+      #{$_param}: $_val1*0.6;
+    }
+  }
+}
+
+
+
+// @mixin media1($_param, $_val) {
+//   @media (min-width : 1524px) {
+//   /* стили */
+//     #{$_param}: $_val;
+//   }
+//   @media only (min-width : 1224px) and (max-width: 1524px) {
+//   /* стили */
+//     #{$_param}: $_val*0.9;
+//   }
+//   @media only (min-width : 768px) and (max-width: 1224px) {
+//   /* стили */
+//     #{$_param}: $_val*0.8;
+//   }
+//   @media only (min-width : 480px) and (max-width: 768px) {
+//   /* стили */
+//     #{$_param}: $_val*0.7;
+//   }
+//   @media only (max-width : 480px) {
+//   /* стили */
+//     #{$_param}: $_val*0.6;
+//   }
+// }

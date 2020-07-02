@@ -1,0 +1,107 @@
+extends ../layout/main
+include ../includes/mixins/cards
+include ../includes/mixins/form-elements
+include ../includes/forms/form_drop
+//- include ../includes/forms/dropForm3
+
+
+block variables
+  - var currentURL = 'cards.html';
+  - var title = 'Cards';
+  - var dropArrival = [{title: 'прибытие', desc: '', form: 'ДД.ММ.ГГГГ', menu: 'keyboard_arrow_down'}];
+  - var dropDeparture = [{title: 'выезд', desc: '', form: 'ДД.ММ.ГГГГ', menu: 'keyboard_arrow_down'}];
+  - var dropGuests = [{title: 'гости', desc: '', form: 'Сколько гостей', menu: 'keyboard_arrow_down'}];
+  - var dropArrivalBooking = [{title: 'прибытие', desc: '', form: '19.08.2019', menu: 'keyboard_arrow_down'}];
+  - var dropDepartureBooking = [{title: 'выезд', desc: '', form: '23.08.2019', menu: 'keyboard_arrow_down'}];
+  - var dropGuestsBooking = [{title: 'гости', desc: '', form: '3 гостя', menu: 'keyboard_arrow_down'}];
+  - var dropRegName = [{form: 'Имя'}];
+  - var dropRegSurname = [{form: 'Фамилия'}];
+
+
+    
+block content
+  .cards__main
+    .find
+      .find__content
+        .find__head Найдём номера под ваши пожелания
+        .find__dates
+          .date__arrival
+            +form-drop(dropArrival)
+          .date__departure
+            +form-drop(dropDeparture)
+        .find__guests
+          +form-drop(dropGuests)
+        .find__button
+          .button__item 
+            .item__text подобрать номер
+            .item__icon arrow_forward
+    .booking
+      .booking__head
+        .head__number № 
+          span.height  888
+          span.color  люкс 
+        .head__price 9 900₽ <span> в сутки
+      .booking__dates
+        .booking__arrival
+          +form-drop(dropArrivalBooking)
+        .booking__departure
+          +form-drop(dropDepartureBooking)
+      .booking__guests
+        +form-drop(dropGuestsBooking)
+      .booking__invoice
+        .invoice__item 9 990Р х 4 суток
+        .invoice__item
+        .invoice__item.right 39 960₽
+        .invoice__item Сбор за услуги скидка 2 179₽
+        .invoice__item
+          .border i
+        .invoice__item.right 0₽
+        .invoice__item Сбор за дополнительные услуги
+        .invoice__item
+          .border i
+        .invoice__item.right 300₽
+      .booking__total
+        .total__text Итого
+        .total__value 38 081₽
+      .booking__button
+        .button__item
+          .item__text забронировать
+          .item__icon arrow_forward
+      
+    .calendar    
+      .calendar__head
+        .head__item arrow_back
+        .head__item-text Август 2019
+        .head__item arrow_forward
+      .calendar__content
+        .calendar__content-weeks
+            each i in ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс']
+              p= i
+        .calendar__content-days
+          p.light 29
+          p.light 30
+          p.light 31
+          - for (var x = 1; x < 32; x++)
+            p= x
+          p.light 1
+        .calendar__slider
+        .calendar__decision
+          .decision-clear очистить
+          .decision-apply применить
+      
+    .registration
+      .registration__head Регистрация аккаунта
+      .registration__form-name
+        +form-drop(dropRegName)
+      .registration__form-surname
+        +form-drop(dropRegSurname)
+      .registration__check
+        .registration__check-icon
+          .check__icon-checked
+        .registration__check-text мужчина
+        .registration__check-icon
+        .registration__check-text женщина
+          
+          
+          
+    

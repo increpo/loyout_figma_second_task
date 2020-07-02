@@ -1,8 +1,15 @@
+$findHeadFont: 'Quicksand-Bold', serif;
+$backGroundColor: rgba(31, 32, 65, 0.1);
+
+
 $formColorGrey75: rgba(31, 32, 65, 0.75);
 $formColorGrey5: rgba(31, 32, 65, 0.5);
 $formColorGrey25: rgba(31, 32, 65, 0.25);
 $formColorGrey1: rgba(31, 32, 65, 0.1);
+$formColorGrey: #1f2041;
 $formTitleColor: #1f2041;
+$formContSize: 14px;
+$formTitleSize: 12px;
 $formFont: "Montserrat-Light", serif;
 $formTitleFont: "Montserrat-Bold", serif;
 $formIconFont: "Material Icons";
@@ -11,18 +18,15 @@ $colorFontGrad: #bc9cff;
 $sliderColor: linear-gradient(180deg, #6FCF97 0%, #66D2EA 100%);
 $btnColor: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%);
 $btnTextColor: #BC9CFF;
-$formContSize: 14px;
-$formTitleSize: 12px;
 $formWidth: 320px;
 $formWidth75: 266px;
 $formWidth60: 230px;
 $formWidthMini: 150px;
 $formHeight: 44px;
-$formMenuFont: 24px;
-$formBordRad: 4px;
-$formMenuSize: 44px;
-$formContMarg: 15px;
-$formDropBtnSize: 30px;
-$formDropNumSize: 18px;
-$formCheckSize: 20px;
-$formAddSize: 48px;
+$mainBGColor: #e5e5e5;
+
+
+$dropTitleFotnSize: 12px;
+$dropDescFontSize: 12px;
+$dropFormFontSize: 14px;
+$dropMenuFontSize: 24px;

@@ -1,0 +1,44 @@
+//-block dropVars
+  //- - var dropTitle = '';
+  //- - var dropDesc = '';
+  //- //- - var dropStyle = 'open';
+  //- - var dropForm = '';
+  //- - var dropMenu = '';
+  //- - var dropCont = '';//-[{item : 'item', number: 'number'}, {item : 'item2', number: 'number2'}];
+  //- - var dropClear = '';
+  //- - var dropApply = '';
+//-  mixin form-drop(dropContent=[{title: 'title', desc: 'description', form: 'form', menu: 'menu', items: '', clear: '', apply: ''}])  
+
+mixin form-drop3(title='', desc, form, menu, items='', clear, apply)
+  if items
+    - var dropStyle = 'open'
+  
+  //- else
+  //-   - var dropStyle = ''
+  //-mixin formHead(title, desc)
+  .drop__head
+    .drop__title= title 
+    .drop__desc= desc
+
+  .drop__main(class!= dropStyle)
+    .drop__form= form
+    .drop__menu= menu
+
+  each item in items
+    if item.number == 0
+      .drop__item(class= 'light')
+        .item-text= item.item 
+        .item-minus -
+        .item-number= item.number
+        .item-plus +
+    else
+      .drop__item
+        .item-text= item.item 
+        .item-minus -
+        .item-number= item.number
+        .item-plus +
+        
+  if clear || apply
+    .drop__decision
+      .decision-clr= clear
+      .decision-apply= apply
