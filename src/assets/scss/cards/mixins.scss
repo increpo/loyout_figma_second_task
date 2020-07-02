@@ -1,3 +1,430 @@
 @import "../mixins/media";
 @import "../mixins/form_drop";
 @import "../mixins/buttons";
+
+@mixin card__booking(
+  $_headNumberFont: ("Montserrat-Bold", serif),
+  $_headNumberColor: #1f2041,
+  $_headNumberFontColor: #bc9cff,
+  $_headPriceFont: ("Montserrat-Light", serif),
+  $_headPriceFontColor: rgba(31, 32, 65, 0.5),
+  $_invoiceFont: ("Montserrat-Light", serif),
+  $_invoiceBorderColor: rgba(31, 32, 65, 0.25),
+  $_totalFontColor: #1f2041,
+  $_totalFont: ("Montserrat-Bold", serif),
+) {
+  .booking {
+    @include media(width, 380px);
+    @include media(height, 511px);
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 4px;
+    box-sizing: border-box;
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
+    @include media(padding, 40px, 29px, 40px, 29px)
+  }
+
+  .booking__head {
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+  }
+
+  .head__number {
+    font-family: $_headNumberFont;
+    font-weight: bold;
+    @include media(font-size, 14px);
+    @include media(line-height, 30px);
+    color: $_headNumberColor;
+    span.height {
+      @include media(font-size, 22px);
+    }
+    span.color {
+      color: $_headNumberFontColor;
+      text-transform: uppercase;
+      @include media(font-size, 12px);
+    }
+  }
+
+  .head__price {
+    justify-self: end;
+    align-self: center;
+    font-family: $_headPriceFont;
+    @include media(font-size, 13px);
+    font-weight: bold;
+    @include media(line-height, 22px);
+    color: $_headPriceFontColor;
+    span {
+      font-weight: lighter;
+    }
+  }
+
+  .booking__dates {
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+    margin-top: 4.2%;
+  }
+
+  .booking__arrival {
+    @include form-drop;
+    @include media(width, 150px);
+  }
+
+  .booking__departure {
+    @include form-drop;
+    justify-self: end;
+    @include media(width, 150px);
+  }
+
+  .booking__guests {
+    @include media(margin-top, 19px);
+    @include form-drop;
+  }
+
+  .booking__invoice {
+    @include media(margin-top, 18px);
+    font-family: $_invoiceFont;
+    display: grid;
+    grid-template-columns: 2fr 8% 22%;
+    grid-row-gap: 22%;
+    @include media(font-size, 14px);
+    @include media(line-height, 18px);
+    box-sizing: border-box;
+    .border {
+      border: 1px solid $_invoiceBorderColor;
+      border-radius: 50%;
+      @include media(width, 17px);
+      @include media(height, 17px);
+      display: grid;
+      justify-items: center;
+      align-items: center;
+      color: $_invoiceBorderColor;
+    }
+    .right {
+      justify-self: end;
+    }
+  }
+
+  .booking__total {
+    @include media(margin-top, 65px);
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+    color: $_totalFontColor;
+    font-family: $_totalFont;
+    .total__text {
+      @include media(font-size, 18px);
+    }
+    .total__value {
+      font-family: "Montserrat-SemiBold", serif;
+      justify-self: end;
+    }
+  }
+
+  .booking__button {
+    @include media(margin-top, 20px);
+    @include button;
+  }
+}
+
+
+@mixin card__calendar(
+  $_headFont: ("Montserrat-Bold", serif),
+  $_weeksFont: ("Montserrat-Bold", serif),
+  $_todayColor: linear-gradient(180deg, #6FCF97 0%, #66D2EA 100%),
+  $_selectedDaysColor: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%),
+  $_lightDaysColor: rgba(31, 32, 65, 0.25),
+  $_selectedDaysRangeColor: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%),
+  $_clearFont: ("Montserrat-Bold", serif),
+  $_clearFontColor: rgba(31, 32, 65, 0.5),
+  $_applyFont: ("Montserrat-Bold", serif),
+  $_applyFontColor: #bc9cff,
+) {
+  .calendar {
+    @include media(width, 320px);
+    @include media(height, 369px);
+    background: #ffffff;
+    border: 1px solid rgba(31, 32, 65, 0.05);
+    border-radius: 4px;
+    box-sizing: border-box;
+    @include media(padding, 20px, 20px, 20px, 20px);
+  }
+
+  .calendar__head {
+    display: grid;
+    @include media(grid-template-columns, 24px, 2fr, 24px);
+    width: 100%;
+    justify-items: center;
+    .head__item {
+      font-family: "Material Icons";
+      @include media(font-size, 24px);
+      color: #BC9CFF;
+    }
+    .head__item-text {
+      font-family: $_headFont;
+      @include media(font-size, 18px);
+    }
+  }
+
+  .calendar__content-weeks {
+    @include media(margin-top, 30px);
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    @include media(font-size, 12px);
+    font-family: $_weeksFont;
+    justify-items: center;
+  }
+
+  .calendar__content-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    @include media(font-size, 12px);
+    @include media(line-height, 16px);
+    justify-items: center;
+    align-items: center;
+    p:nth-child(11) {
+      background: $_todayColor;
+      border-radius: 50%;
+      @include media(width, 40px);
+      @include media(height, 40px);
+      margin: 0;
+      display: grid;
+      align-items: center;
+      justify-items: center;
+      color: white;
+    }
+    p:nth-child(22), p:nth-child(26) {
+      background: $_selectedDaysColor;
+      @include media(width, 40px);
+      @include media(height, 40px);
+      border-radius: 50%;
+      display: grid;
+      align-items: center;
+      justify-items: center;
+      margin: 0;
+      color: white;
+    }
+    .light {
+      color: $_lightDaysColor;
+    }
+  }
+
+  .calendar__slider {
+    background: $_selectedDaysRangeColor;
+    @include media(height, 40px);
+    @include media(width, 160px);
+    opacity: 0.25;
+    margin: -80px 0 0 20px;
+  }
+
+  .calendar__decision {
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+    @include media(margin-top, 56px);
+    .decision-clear {
+      color: $_clearFontColor;
+      font-family: $_clearFont;
+      @include media(font-size, 14px);
+    }
+    .decision-apply {
+      color: $_applyFontColor;
+      font-family: $_applyFont;
+      @include media(font-size, 14px);
+      justify-self: end;
+    }
+  }
+}
+
+
+
+@mixin card__find(
+  $_cardHeadFont: ("Montserrat-Bold", serif),
+  $_cardHeadColor:#1f2041,
+  $_dropTitleFotnSize: 12px,
+  $_dropDescFontSize: 12px,
+  $_dropFormFontSize: 14px,
+  $_dropMenuFontSize: 24px,
+  $_formFontColor: rgba(31, 32, 65, 7.5),
+  $_menuColor: rgba(31, 32, 65, 0.5),
+) {
+  .find {
+    @include media(width, 380px);
+    @include media(height, 374px);
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    box-sizing: border-box;
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    //padding: 1%;
+  }
+
+  .find__content {
+    //@include media(width, 320px);
+    //@include media(width, 340px);
+    padding: 7.6%;
+  }
+
+  .find__head {
+    @include media(margin-top, 12px);
+    font-family: $_cardHeadFont;
+    @include media(font-size, 23px);
+    @include media(line-height, 30px);
+    color: $_cardHeadColor;
+  }
+
+  .find__dates {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    @include media(margin-top, 17px);
+  }
+
+  .date__arrival {
+    @include media(width, 150px);
+    @include form-drop(
+    $_titleFotnSize: $_dropTitleFotnSize,
+    $_descFontSize: $_dropDescFontSize,
+    $_formFontSize: $_dropFormFontSize,
+    $_menuFontSize: $_dropMenuFontSize,
+    $_formFontColor: $_formFontColor,
+    $_menuColor: $_menuColor,
+    );
+  }
+
+  .date__departure {
+    justify-self: end;
+    @include media(width, 150px);
+    @include form-drop(
+    $_titleFotnSize: $_dropTitleFotnSize,
+    $_descFontSize: $_dropDescFontSize,
+    $_formFontSize: $_dropFormFontSize,
+    $_menuFontSize: $_dropMenuFontSize,
+    $_formFontColor: $_formFontColor,
+    $_menuColor: $_menuColor,
+    );
+  }
+
+
+  .find__guests {
+    @include media(margin-top, 18px);
+    @include form-drop(
+    $_titleFotnSize: $_dropTitleFotnSize,
+    $_descFontSize: $_dropDescFontSize,
+    $_formFontSize: $_dropFormFontSize,
+    $_menuFontSize: $_dropMenuFontSize,
+    $_formFontColor: $_formFontColor,
+    $_menuColor: $_menuColor,
+    );
+  }
+
+  .find__button {
+    @include media(margin-top, 31px);
+    @include button;
+  }
+}
+
+
+@mixin card__registration(
+  $_headFont: ("Montserrat-Bold", serif),
+  $_headFontColor: #1f2041,
+  $_formFontColor: rgba(31, 32, 65, 0.25),
+  $_regCheckIconColor: rgba(31, 32, 65, 0.25),
+  $_regCheckedBordColor: #bc9cff,
+  $_regCheckedDGColor: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%),
+  $_regCheckTextFont: ("Montserrat-Light", serif),
+  $_regCheckTextFontColor: rgba(31, 32, 65, 0.5),
+  $_regCheckedTextFontColor: rgba(31, 32, 65, 0.75),
+  $_formFontColor: rgba(31, 32, 65, 0.25),
+  $_toggleColor: rgba(31, 32, 65, 0.25),
+){
+  .registration {
+    @include media(width, 380px);
+    @include media(height, 646px);
+    background: #ffffff;
+    border: 1px solid rgba(31, 32, 65, 0.12);
+    border-radius: 4px;
+    box-sizing: border-box;
+    border-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
+    @include media(padding, 40px, 30px, 40px, 30px);
+  }
+
+  .registration__head {
+    font-family: $_headFont;
+    @include media(font-size, 23px);
+    color: $_headFontColor;
+  }
+
+  .registration__form-name {
+    @include form-drop(
+    $_formFontColor: $_formFontColor,
+    );
+    @include media(margin-top, 22px);
+  }
+
+  .registration__form-surname {
+    @include form-drop(
+    $_formFontColor: $_formFontColor,
+    );
+    @include media(margin-top, 11px);
+  }
+
+  .registration__check {
+    display: grid;
+    grid-template-columns: 1.5fr 4fr 1.5fr 8fr;
+    margin-top: 3%;
+  }
+
+  .registration__check-icon {
+    border: 1px solid $_regCheckIconColor;
+    border-radius: 50%;
+    box-sizing: border-box;
+    @include media(width, 20px);
+    @include media(height, 20px);
+    padding: 9.5%;
+    &.checked {
+      border-color: $_regCheckedBordColor;
+      background: $_regCheckedDGColor;
+      -webkit-background-clip: content-box;
+    }
+  }
+
+
+  .registration__check-text {
+    font-family: $_regCheckTextFont;
+    text-transform: capitalize;
+    @include media(font-size, 14px);
+    color: $_regCheckTextFontColor;
+    &.checked {
+      color: $_regCheckedTextFontColor;
+    }
+  }
+  .registration__birthday {
+    @include media(margin-top, 20px);
+    @include form-drop(
+      $_formFontColor: $_formFontColor,
+    );
+  }
+  .registration__enter {
+    @include media(margin-top, 20px);
+    @include form-drop(
+      $_formFontColor: $_formFontColor,
+    );
+  }
+  .registration__pass {
+    @include media(margin-top, 10px);
+    @include form-drop(
+      $_formFontColor: $_formFontColor,
+    );
+  }
+  .registration__offers {
+    @include media(margin-top, 10px);
+    display: grid;
+    grid-template-columns: 2fr 8fr;
+    .offers__toggle {
+      border: 1px solid $_toggleColor;
+      border-radius: 10px;
+      @include media(width, 38px);
+      @include media(height, 16px);
+      //padding: 2px 4px 2px 2px;
+      //background: $_toggleColor;
+      //-webkit-background-clip: content-box;
+    }
+  }
+}

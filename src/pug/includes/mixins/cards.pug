@@ -1,2 +1,114 @@
-mixin find
-  p
+
+mixin card_find(content= [{head: 'Найдём номера под ваши пожелания', btn_text: 'подобрать номер', btn_icon: 'arrow_forward', dropArrival: [{title: 'прибытие', desc: '', form: 'ДД.ММ.ГГГГ', menu: 'keyboard_arrow_down'}], dropDeparture: [{title: 'выезд', desc: '', form: 'ДД.ММ.ГГГГ', menu: 'keyboard_arrow_down'}], dropGuests: [{title: 'гости', desc: '', form: 'Сколько гостей', menu: 'keyboard_arrow_down'}]}]) 
+  //-[{head: 'Найдём номера под ваши пожелания', btn_text: 'подобрать номер', btn_icon: 'arrow_forward', dropArrival: [{title: 'прибытие', desc: '', form: 'ДД.ММ.ГГГГ', menu: 'keyboard_arrow_down'}], dropDeparture: [{title: 'выезд', desc: '', form: 'ДД.ММ.ГГГГ', menu: 'keyboard_arrow_down'}], dropGuests: [{title: 'гости', desc: '', form: 'Сколько гостей', menu: 'keyboard_arrow_down'}]}])
+  //- - var cardFindContent2 = [{head: 'Найдём номера под ваши пожелания', btn_text: 'подобрать номер', btn_icon: 'arrow_forward', dropArrival: dropArrival2, dropDeparture: dropDeparture2, dropGuests: dropGuests2}];
+  //- - var dropArrival2 = [{title: 'прибытие', desc: '', form: 'ДД.ММ.ГГГГ', menu: 'keyboard_arrow_down'}];
+  //- - var dropDeparture2 = [{title: 'выезд', desc: '', form: 'ДД.ММ.ГГГГ', menu: 'keyboard_arrow_down'}];
+  //- - var dropGuests2 = [{title: 'гости', desc: '', form: 'Сколько гостей', menu: 'keyboard_arrow_down'}];
+  each cont in content
+    .find
+      .find__content
+        .find__head= cont.head
+        .find__dates
+          .date__arrival
+            +form-drop(cont.dropArrival)
+          .date__departure
+            +form-drop(cont.dropDeparture)
+        .find__guests
+          +form-drop(cont.dropGuests)
+        .find__button
+          .button__item 
+            .item__text= cont.btn_text 
+            .item__icon= cont.btn_icon 
+            
+            
+mixin card_booking(content= [{room_number: '888', room_class: 'люкс', room_price: '9 900₽', dropArrivalBooking: [{title: 'прибытие', desc: '', form: '19.08.2019', menu: 'keyboard_arrow_down'}], dropDepartureBooking: [{title: 'выезд', desc: '', form: '23.08.2019', menu: 'keyboard_arrow_down'}], dropGuestsBooking: [{title: 'гости', desc: '', form: '3 гостя', menu: 'keyboard_arrow_down'}]}])
+  //-content = [{room_number: '888', room_class: 'люкс', room_price: '9 900₽', dropArrivalBooking: dropArrivalBooking, dropDepartureBooking: dropDepartureBooking, dropGuestsBooking: dropGuestsBooking}]
+  //- var dropArrivalBooking = [{title: 'прибытие', desc: '', form: '19.08.2019', menu: 'keyboard_arrow_down'}];
+  //- var dropDepartureBooking = [{title: 'выезд', desc: '', form: '23.08.2019', menu: 'keyboard_arrow_down'}];
+  //- var dropGuestsBooking = [{title: 'гости', desc: '', form: '3 гостя', menu: 'keyboard_arrow_down'}];
+  each cont in content
+    .booking
+      .booking__head
+        .head__number № 
+          span.height= cont.room_number + " "
+          span.color= cont.room_class 
+        .head__price= cont.room_price
+          <span> в сутки
+      .booking__dates
+        .booking__arrival
+          +form-drop(cont.dropArrivalBooking)
+        .booking__departure
+          +form-drop(cont.dropDepartureBooking)
+      .booking__guests
+        +form-drop(cont.dropGuestsBooking)
+      .booking__invoice
+        .invoice__item 9 990Р х 4 суток
+        .invoice__item
+        .invoice__item.right 39 960₽
+        .invoice__item Сбор за услуги скидка 2 179₽
+        .invoice__item
+          .border i
+        .invoice__item.right 0₽
+        .invoice__item Сбор за дополнительные услуги
+        .invoice__item
+          .border i
+        .invoice__item.right 300₽
+      .booking__total
+        .total__text Итого
+        .total__value 38 081₽
+      .booking__button
+        .button__item
+          .item__text забронировать
+          .item__icon arrow_forward
+
+
+mixin card_calendar
+  .calendar    
+    .calendar__head
+      .head__item arrow_back
+      .head__item-text Август 2019
+      .head__item arrow_forward
+    .calendar__content
+      .calendar__content-weeks
+          each i in ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс']
+            p= i
+      .calendar__content-days
+        p.light 29
+        p.light 30
+        p.light 31
+        - for (var x = 1; x < 32; x++)
+          p= x
+        p.light 1
+      .calendar__slider
+      .calendar__decision
+        .decision-clear очистить
+        .decision-apply применить
+
+mixin card_registration(content= [{dropRegName: [{form: 'Имя'}], dropRegSurname: [{form: 'Фамилия'}], dropRegBirthday: [{title: 'дата рождения', form: 'ДД.ММ.ГГГГ'}], dropRegEmail: [{title: 'данные для входа в сервис', form: 'Email'}], dropRegPass: [{form: 'Пароль'}]}])
+  //- var dropRegName = [{form: 'Имя'}];
+  //- var dropRegSurname = [{form: 'Фамилия'}];
+  //- var dropRegBirthday = [{title: 'дата рождения', form: 'ДД.ММ.ГГГГ'}];
+  //- var dropRegEmail = [{title: 'данные для входа в сервис', form: 'Email'}];
+  //- var dropRegPass = [{form: 'Пароль'}];
+  each cont in content
+    .registration
+      .registration__head Регистрация аккаунта
+      .registration__form-name
+        +form-drop(cont.dropRegName)
+      .registration__form-surname
+        +form-drop(cont.dropRegSurname)
+      .registration__check
+        .registration__check-icon.checked
+        .registration__check-text.checked мужчина
+        .registration__check-icon
+        .registration__check-text женщина
+      .registration__birthday
+        +form-drop(cont.dropRegBirthday)
+      .registration__enter
+        +form-drop(cont.dropRegEmail)
+      .registration__pass
+        +form-drop(cont.dropRegPass)
+      .registration__offers
+        .offers__toggle
+        .offers__text Получать спецпредложения
