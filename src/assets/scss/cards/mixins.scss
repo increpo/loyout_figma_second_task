@@ -2,6 +2,92 @@
 @import "../mixins/form_drop";
 @import "../mixins/buttons";
 
+@mixin card__style-shadow(
+  $_shadow: (0 0 25px rgba(0, 0, 0, 0.2)),
+) {
+  background: #ffffff;
+  border: 1px solid rgba(31, 32, 65, 0.12);
+  border-radius: 4px;
+  box-sizing: border-box;
+  box-shadow: $_shadow;
+  @include media(padding, 40px, 30px, 40px, 30px);
+}
+
+@mixin card__find(
+  $_cardHeadFont: ("Montserrat-Bold", serif),
+  $_cardHeadColor:#1f2041,
+  $_dropTitleFotnSize: 12px,
+  $_dropDescFontSize: 12px,
+  $_dropFormFontSize: 14px,
+  $_dropMenuFontSize: 24px,
+  $_formFontColor: rgba(31, 32, 65, 7.5),
+  $_menuColor: rgba(31, 32, 65, 0.5),
+) {
+  .find {
+    @include media(width, 380px);
+    @include media(height, 374px);
+    @include card__style-shadow;
+    //padding: 1%;
+  }
+
+  .find__head {
+    font-family: $_cardHeadFont;
+    @include media(font-size, 23px);
+    @include media(line-height, 30px);
+    color: $_cardHeadColor;
+  }
+
+  .find__dates {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    @include media(margin-top, 17px);
+  }
+
+  .date__arrival {
+    @include media(width, 150px);
+    @include form-drop(
+    $_titleFotnSize: $_dropTitleFotnSize,
+    $_descFontSize: $_dropDescFontSize,
+    $_formFontSize: $_dropFormFontSize,
+    $_menuFontSize: $_dropMenuFontSize,
+    $_formFontColor: $_formFontColor,
+    $_menuColor: $_menuColor,
+    );
+  }
+
+  .date__departure {
+    justify-self: end;
+    @include media(width, 150px);
+    @include form-drop(
+    $_titleFotnSize: $_dropTitleFotnSize,
+    $_descFontSize: $_dropDescFontSize,
+    $_formFontSize: $_dropFormFontSize,
+    $_menuFontSize: $_dropMenuFontSize,
+    $_formFontColor: $_formFontColor,
+    $_menuColor: $_menuColor,
+    );
+  }
+
+
+  .find__guests {
+    @include media(margin-top, 18px);
+    @include form-drop(
+    $_titleFotnSize: $_dropTitleFotnSize,
+    $_descFontSize: $_dropDescFontSize,
+    $_formFontSize: $_dropFormFontSize,
+    $_menuFontSize: $_dropMenuFontSize,
+    $_formFontColor: $_formFontColor,
+    $_menuColor: $_menuColor,
+    );
+  }
+
+  .find__button {
+    @include media(margin-top, 31px);
+    @include button;
+  }
+}
+
+
 @mixin card__booking(
   $_headNumberFont: ("Montserrat-Bold", serif),
   $_headNumberColor: #1f2041,
@@ -16,12 +102,7 @@
   .booking {
     @include media(width, 380px);
     @include media(height, 511px);
-    background: #ffffff;
-    border: 1px solid rgba(0, 0, 0, 0.12);
-    border-radius: 4px;
-    box-sizing: border-box;
-    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
-    @include media(padding, 40px, 29px, 40px, 29px)
+    @include card__style-shadow;
   }
 
   .booking__head {
@@ -141,10 +222,7 @@
   .calendar {
     @include media(width, 320px);
     @include media(height, 369px);
-    background: #ffffff;
-    border: 1px solid rgba(31, 32, 65, 0.05);
-    border-radius: 4px;
-    box-sizing: border-box;
+    @include card__style-shadow($_shadow: 0);
     @include media(padding, 20px, 20px, 20px, 20px);
   }
 
@@ -234,93 +312,6 @@
 }
 
 
-
-@mixin card__find(
-  $_cardHeadFont: ("Montserrat-Bold", serif),
-  $_cardHeadColor:#1f2041,
-  $_dropTitleFotnSize: 12px,
-  $_dropDescFontSize: 12px,
-  $_dropFormFontSize: 14px,
-  $_dropMenuFontSize: 24px,
-  $_formFontColor: rgba(31, 32, 65, 7.5),
-  $_menuColor: rgba(31, 32, 65, 0.5),
-) {
-  .find {
-    @include media(width, 380px);
-    @include media(height, 374px);
-    background-color: white;
-    border: 1px solid rgba(0, 0, 0, 0.12);
-    box-sizing: border-box;
-    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
-    border-radius: 4px;
-    //padding: 1%;
-  }
-
-  .find__content {
-    //@include media(width, 320px);
-    //@include media(width, 340px);
-    padding: 7.6%;
-  }
-
-  .find__head {
-    @include media(margin-top, 12px);
-    font-family: $_cardHeadFont;
-    @include media(font-size, 23px);
-    @include media(line-height, 30px);
-    color: $_cardHeadColor;
-  }
-
-  .find__dates {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    @include media(margin-top, 17px);
-  }
-
-  .date__arrival {
-    @include media(width, 150px);
-    @include form-drop(
-    $_titleFotnSize: $_dropTitleFotnSize,
-    $_descFontSize: $_dropDescFontSize,
-    $_formFontSize: $_dropFormFontSize,
-    $_menuFontSize: $_dropMenuFontSize,
-    $_formFontColor: $_formFontColor,
-    $_menuColor: $_menuColor,
-    );
-  }
-
-  .date__departure {
-    justify-self: end;
-    @include media(width, 150px);
-    @include form-drop(
-    $_titleFotnSize: $_dropTitleFotnSize,
-    $_descFontSize: $_dropDescFontSize,
-    $_formFontSize: $_dropFormFontSize,
-    $_menuFontSize: $_dropMenuFontSize,
-    $_formFontColor: $_formFontColor,
-    $_menuColor: $_menuColor,
-    );
-  }
-
-
-  .find__guests {
-    @include media(margin-top, 18px);
-    @include form-drop(
-    $_titleFotnSize: $_dropTitleFotnSize,
-    $_descFontSize: $_dropDescFontSize,
-    $_formFontSize: $_dropFormFontSize,
-    $_menuFontSize: $_dropMenuFontSize,
-    $_formFontColor: $_formFontColor,
-    $_menuColor: $_menuColor,
-    );
-  }
-
-  .find__button {
-    @include media(margin-top, 31px);
-    @include button;
-  }
-}
-
-
 @mixin card__registration(
   $_headFont: ("Montserrat-Bold", serif),
   $_headFontColor: #1f2041,
@@ -333,16 +324,15 @@
   $_regCheckedTextFontColor: rgba(31, 32, 65, 0.75),
   $_formFontColor: rgba(31, 32, 65, 0.25),
   $_toggleColor: rgba(31, 32, 65, 0.25),
+  $_toggleFont: ("Montserrat-Light", serif),
+  $_toggleFontColor: rgba(31, 32, 65, 0.75),
+  $_enterInfoFont: ("Montserrat-Light", serif),
+  $_enterInfoFontColor: rgba(31, 32, 65, 0.75),
 ){
   .registration {
     @include media(width, 380px);
     @include media(height, 646px);
-    background: #ffffff;
-    border: 1px solid rgba(31, 32, 65, 0.12);
-    border-radius: 4px;
-    box-sizing: border-box;
-    border-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
-    @include media(padding, 40px, 30px, 40px, 30px);
+    @include card__style-shadow;
   }
 
   .registration__head {
@@ -401,7 +391,7 @@
       $_formFontColor: $_formFontColor,
     );
   }
-  .registration__enter {
+  .registration__enter__data {
     @include media(margin-top, 20px);
     @include form-drop(
       $_formFontColor: $_formFontColor,
@@ -414,17 +404,220 @@
     );
   }
   .registration__offers {
-    @include media(margin-top, 10px);
+    @include media(margin-top, 8px);
     display: grid;
-    grid-template-columns: 2fr 8fr;
+    grid-template-columns: 2fr 11fr;
+    align-items: center;
     .offers__toggle {
       border: 1px solid $_toggleColor;
       border-radius: 10px;
       @include media(width, 38px);
-      @include media(height, 16px);
-      //padding: 2px 4px 2px 2px;
-      //background: $_toggleColor;
-      //-webkit-background-clip: content-box;
+      @include media(height, 18px);
+      display: grid;
+      align-items: center;
+      .offers__toggle-item {
+        @include media(width, 12px);
+        @include media(height, 12px);
+        border-radius: 50%;
+        background: $_toggleColor;
+        margin-left: 10%;
+      }
+    }
+    .offers__text {
+      font-family: $_toggleFont;
+      @include media(font-size, 14px);
+      color: $_toggleFontColor;
+    }
+  }
+  .registration__button__pay {
+    @include media(margin-top, 25px);
+    @include button;
+  }
+  .registration__enter{
+    display: grid;
+    grid-template-columns: 4fr 1.8fr;
+    margin-top: 9.7%;
+    align-items: center;
+    .registration__enter__info {
+      font-family: $_enterInfoFont;
+      @include media(font-size, 14.2px);
+      color: $_enterInfoFontColor;
+    }
+    .registration__enter__btn {
+      @include button;
+    }
+  }
+}
+
+
+@mixin card__enter(
+  $_headFont: ("Montserrat-Bold", serif),
+  $_headFontColor: rgba(31, 32, 65, 1),
+  $_formFontColor: rgba(31, 32, 65, 0.25),
+  $_infoFont: ("Montserrat-Light", serif),
+  $_infoFontColor: black,
+) {
+  .enter {
+    @include media(width, 380px);
+    @include media(height, 358px);
+    @include card__style-shadow;
+  }
+  .enter__head {
+    font-family: $_headFont;
+    @include media(font-size, 23px);
+    color: $_headFontColor;
+  }
+  .enter__form-email {
+    @include media(margin-top, 20px);
+    @include form-drop(
+      $_formFontColor: $_formFontColor,
+    );
+  }
+  .enter__form-pass {
+    @include media(margin-top, 12px);
+    @include form-drop(
+    $_formFontColor: $_formFontColor,
+    );
+  }
+  .enter__btn-enter {
+    @include media(margin-top, 20px);
+    @include button;
+  }
+  .enter__accaunt {
+    margin-top: 9%;
+    display: grid;
+    grid-template-columns: 5fr 2.2fr;
+    align-items: center;
+    .accaunt__info {
+      font-family: $_infoFont;
+      @include media(font-size, 14px);
+      color: $_infoFontColor;
+    }
+    .accaunt__btn-create {
+      @include button;
+    }
+  }
+}
+
+
+@mixin card__show__room(
+  $_sliderIMG: "/assets/img/888.png",
+){
+  .show__room {
+    @include card__style-shadow($_shadow: 0);
+    @include media(width, 270px);
+    @include media(height, 260px);
+    @include media(padding, 0.01px);
+
+  }
+  .room__slider {
+    background: url($_sliderIMG) no-repeat;
+    width: 100%;
+    height: 60%;
+    border-radius: 4px;
+    display: grid;
+    grid-template-areas: "left . right";
+    @include media(grid-template-columns, 44px, 2fr, 44px)
+    align-items: stretch;
+    justify-items: stretch;
+  }
+  .slider__btn {
+    font-family: "Material Icons";
+    @include media(font-size, 24px);
+    height: 98%;
+    color: white;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    //transform: matrix(-1, 0, 0, 1, 0, 0);
+    &.left {
+      grid-area: left;
+      background: linear-gradient(90deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 99.99%, rgba(255, 255, 255, 0) 100%);
+    }
+    &.right {
+      grid-area: right;
+      background: linear-gradient(270deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 99.99%, rgba(255, 255, 255, 0) 100%);
+    }
+  }
+  .slider__status {
+    width: 25%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin-top: 72%;
+    margin-left: 94%;
+    .round {
+      @include media(width, 7.5px);
+      @include media(height, 7.5px);
+      border: 1px solid white;
+      box-sizing: border-box;
+      box-shadow: 0px 5px 5px rgba(31, 32, 65, 0.3);
+      border-radius: 50%;
+      &.filled {
+        background-color: white;
+      }
+    }
+  }
+
+  .room__info {
+    margin: 7% 6% 3% 7%;
+  }
+  .room__info__main {
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+    align-items: center;
+
+  }
+  .room__info-number {
+    font-family: "Montserrat-SemiBold", serif;
+    @include media(font-size, 14px);
+    color: #1F2041;
+    span:nth-child(1) {
+      @include media(font-size, 17px);
+    }
+    span:nth-child(2) {
+      color: #bc9cff;
+      @include media(font-size, 16px);
+    }
+  }
+  .room__info-price {
+    justify-self: end;
+    font-family: "Montserrat-Bold", serif;
+    @include media(font-size, 14px);
+    color: rgba(31, 32, 65, 0.5);
+    span {
+      font-family: "Montserrat-Light", serif;
+      @include media(font-size, 12px);
+    }
+  }
+  .room__info-line {
+    background: rgba(31, 32, 65, 0.1);
+    height: 1px;
+    margin-top: 5%;
+  }
+  .room__grade {
+    display: grid;
+    grid-template-columns: 2.2fr 2fr;
+    align-items: center;
+    margin-top: 4%;
+  }
+  .room__grade__rating {
+    font-family: "Material Icons";
+    background: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%);
+    -webkit-background-clip: text;
+    color: transparent;
+    @include media(font-size, 24px);
+    .item {
+      float: left;
+    }
+  }
+  .room__grade__review {
+    @include media(font-size, 14px);
+    justify-self: end;
+    font-family: "Montserrat-Bold", serif;
+    @include media(font-size, 15px);
+    color: rgba(31, 32, 65, 0.5);
+    span {
+      font-family: "Montserrat-Light", serif;
     }
   }
 }

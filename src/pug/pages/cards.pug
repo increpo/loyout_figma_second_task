@@ -35,7 +35,12 @@ block content
       +card_calendar()
     .card__registration
       +card_registration()
-          
-          
+    .card__enter
+      +card__enter()
+    .card__show__room.lux
+      +card__show__room([{room__number: '888', room__class: 'люкс', room__price: '9 990', rating__star_full: 5, rating__star_empty: 0, room__review: 145}])
+    .card__show__room.econom
+      +card__show__room([{room__number: '840', room__class: '', room__price: '9 990', rating__star_full: 4, rating__star_empty: 1, room__review: 65}])    
+      
           
     

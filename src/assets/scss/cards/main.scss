@@ -40,3 +40,22 @@
   @include media(margin-top, 412px);
   @include card__registration;
 }
+
+.card__enter {
+  grid-area: middle;
+  @include media(margin-top, 550px);
+  @include card__enter;
+}
+
+.card__show__room {
+  grid-area: right;
+  @include card__show__room;
+  &.lux {
+    @include card__show__room($_sliderIMG: "/assets/img/888.png");
+    margin-top: 107.2%;
+  }
+  &.econom {
+    @include card__show__room($_sliderIMG: "/assets/img/840.png");
+    margin-top: 185.5%;
+  }
+}
