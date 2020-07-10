@@ -19,6 +19,44 @@ mixin formMenu(title, desc, cont, menu)
       if block
         block
 
+
+mixin form-drop(content)
+  //-content = [{title: 'title666', desc: 'description666', form: 'form666', menu: 'menu', items: [{item : 'item666', number: 0}, {item : 'item6662', number: 666}], clear: 'clear666', apply: 'apply666'}];
+  each cont in content  
+    if cont.items
+      - var dropStyle = 'open'
+    
+    .drop__head
+      .drop__title= cont.title 
+      .drop__desc= cont.desc
+      
+    if cont.form
+      .drop__main(class!= dropStyle)
+        .drop__form= cont.form
+        .drop__menu= cont.menu
+
+    if cont.items
+      .drop__items
+        each item in cont.items
+          if item.number == 0
+            .drop__item(class= 'light')
+              .item-text= item.item 
+              .item-minus -
+              .item-number= item.number
+              .item-plus +
+          else
+            .drop__item
+              .item-text= item.item 
+              .item-minus -
+              .item-number= item.number
+              .item-plus +
+            
+        if cont.clear || cont.apply
+          .drop__decision
+            .decision-clr= cont.clear
+            .decision-apply= cont.apply
+
+
 mixin dropDown(title, desc, cont, menu)
   if block
     - var style = 'open'

@@ -1,0 +1,20 @@
+extends ../layout/main
+include ../includes/mixins/headers&footers
+include ../includes/forms/form_drop
+
+block variables
+  - var currentURL = 'headers&footers.html';
+  - var title = 'Headers & Footers'; 
+  
+block content
+  .main
+    .header__unregistred
+      +header
+    .header__registred
+      +header([{accaunt: 'Юлий Цезарь', nav: [{text: 'О нас', icon: ''}, {text: 'Услуги', icon: 'keyboard_arrow_down'}, {text: 'Вакансии', icon: ''}, {text: 'Новости', icon: ''}, {text: 'Соглашения', icon: 'keyboard_arrow_down'}]}])
+    .main__footer
+      +footer
+    .footer__copyright-bar
+      +footer__copyright-bar
+    .footer__copyright-bar-creative.creative
+      +footer__copyright-bar(1)

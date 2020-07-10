@@ -1,3 +1,289 @@
+// use with form_drop.pug
+//@import "media";
+
+@mixin form-drop(
+$_titleFont: ("Montserrat-Bold", serif),
+$_titleFotnSize: 12px,
+$_titleFontColor: #1f2041,
+$_descFont: ("Montserrat-Light", serif),
+$_descFontColor: rgba(31, 32, 65, 0.5),
+$_descFontSize: 12px,
+$_formFont: ("Montserrat-Light", serif),
+$_formFontSize: 14px,
+$_formFontColor: #1f2041,
+$_formMainBordColor: rgba(31, 32, 65, 0.25),
+$_formMainOpenBordColor: rgba(31, 32, 65, 0.5),
+$_menuColor: rgba(31, 32, 65, 0.5),
+$_menuFontSize: 24px,
+$_itemFont: ("Montserrat-Bold", serif),
+$_itemFontSize: $_formFontSize,
+$_itemFontColor: pink,
+$_itemWidth: 35px,
+$_minusBorderColor: green,
+$_minusColor: red,
+$_minusBorder-light: red,
+$_minusColor-light: cyan,
+$_decisionFont: ("Montserrat-Bold", serif),
+$_decisionFontSize: 14px,
+$_clrFontColor: rgba(31, 32, 65, 0.5),
+$_applyFontColor: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%),
+) {
+
+  .drop__head {
+    display: grid;
+    grid-template-areas:
+      "title desc";
+    > .drop__title {
+      grid-area: title;
+      font-family: $_titleFont;
+      @include media(font-size, $_titleFotnSize);
+      // font-size: $_titleFotnSize;
+      text-transform: uppercase;
+      color: $_titleFontColor;
+      align-self: center;
+      line-height: 190%;
+//      background-color: green;
+    }
+    > .drop__desc {
+      grid-area: desc;
+      text-align: right;
+      font-family: $_descFont;
+      @include media(font-size, $_descFontSize);
+      //font-size: $_descFontSize;
+      text-transform: uppercase;
+      color: $_descFontColor;
+    }
+  }
+  .drop__main {
+    border: 1px solid $_formMainBordColor;
+    &.open {
+      border-color: $_formMainOpenBordColor;
+      border-radius: 4px 4px 0px 0px;
+    }
+    border-radius: 4px;
+    display: grid;
+    grid-template-areas:
+      "cont menu";
+    @include media(grid-template-columns, 2fr, $_menuFontSize*1.76);
+    //grid-template-columns: 1fr $_menuFontSize*1.84;
+    @include media(grid-template-rows, $_menuFontSize*1.76);
+    //grid-template-rows: $_menuFontSize*1.84;
+    align-items: center;
+    > .drop__form {
+      grid-area: cont;
+//      background-color: blue;
+      color: $_formFontColor;
+      font-family: $_formFont;
+      @include media(font-size, $_formFontSize);
+      //font-size: $_formFontSize;
+  //    line-height: 300%;
+      @include media(margin-left, 15px);
+    }
+    > .drop__menu {
+//      background-color: blue;
+      grid-area: menu;
+      font-family: "Material Icons";
+      @include media(font-size, $_menuFontSize);
+      //font-size: $_menuFontSize;
+      background: $_menuColor;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      justify-self: center;
+      text-transform: lowercase;
+    }
+  }
+  .drop__items {
+    border: 1px solid $_formMainOpenBordColor;
+    border-radius: 0px 0px 4px 4px;
+
+    .drop__item {
+  //    border-top: 1px solid blue;
+      display: grid;
+      grid-template-areas:
+        "text minus num plus";
+      @include media(grid-template-columns, 2fr, $_itemWidth, $_itemWidth, $_itemWidth);
+      //grid-template-columns: 1fr $_itemWidth $_itemWidth $_itemWidth;
+      @include media(grid-template-rows, $_itemWidth*1.23);
+      //grid-template-rows: $_itemWidth*1.23;
+  //    background-color: blue;
+      align-items: center;
+      @include media(margin, 0.01px, $_itemWidth*0.2, 0.01px, $_itemWidth*0.2);
+      //margin: 0 $_itemWidth*0.2 0 $_itemWidth*0.2;
+      > .item-text {
+        //@include media(margin-left, )
+        grid-area: text;
+        font-family: $_itemFont;
+        @include media(font-size, $_itemFontSize);
+        //font-size: $_itemFontSize;
+        color: $_itemFontColor;
+        text-transform:uppercase;
+    //    line-height: $formTitleSize*3.1;
+      }
+      > .item-minus {
+        @include media(width, $_itemWidth);
+        @include media(height, $_itemWidth);
+        //width: $_itemWidth;
+        //height: $_itemWidth;
+        grid-area: minus;
+        justify-self: center;
+        display: grid;
+        align-items: center;
+        //text-align: center;
+        justify-items: center;
+        border: 1px solid $_minusBorderColor;
+        border-radius: 50%;
+        color: $_minusColor;
+        font-family: $_itemFont;
+        @include media(font-size, $_itemWidth*0.6);
+        //font-size: $_itemWidth*0.6;
+      }
+      > .item-number {
+        grid-area: num;
+        justify-self: center;
+        color: $_itemFontColor;
+        font-family: $_itemFont;
+        @include media(font-size, $_itemWidth*0.3);
+        //font-size: $_itemWidth*0.3;
+      }
+      > .item-plus {
+        @include media(width, $_itemWidth);
+        @include media(height, $_itemWidth);
+        //width: $_itemWidth;
+        //height: $_itemWidth;
+        grid-area: plus;
+        justify-self: center;
+        border: 1px solid $_minusBorderColor;
+        border-radius: 50%;
+        color: $_minusColor;
+        font-family: $_itemFont;
+        @include media(font-size, $_itemWidth*0.6);
+        //font-size: $_itemWidth*0.6;
+        display: grid;
+        justify-items: center;
+        align-items: center;
+      }
+      &.light {
+        > .item-minus {
+          border: 1px solid $_minusBorder-light;
+          color: $_minusColor-light;
+        }
+      }
+    }
+    .drop__decision {
+  //    background-color: green;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      @include media(margin, $_itemWidth*0.2, 0.01px, $_itemWidth*0.2, 0.01px);
+      //margin: $_itemWidth*0.2 0 $_itemWidth*0.2 0;
+      text-transform: uppercase;
+      @include media(font-size, $_decisionFontSize);
+      //font-size: $_decisionFontSize;
+      font-weight: bold;
+      .decision-clr {
+        @include media(margin-left, $_itemWidth*0.2);
+        //margin-left: $_itemWidth*0.2;
+        font-family: $_decisionFont;
+        font-weight: bold;
+        color: $_clrFontColor;
+      }
+      .decision-apply {
+        @include media(margin-right, $_itemWidth*0.2);
+        //margin-right: $_itemWidth*0.2;
+        justify-self: end;
+        font-family: $_decisionFont;
+        background: $_applyFontColor;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    }
+  }
+}
+
+
+//@import "media";
+//  .some_button.bord.hover
+//   .button__item
+//     .item__text button text
+//     .item__icon button icon
+
+
+@mixin button(
+$_btnHeight: 44px,
+$_BGColorGradient: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%),
+$_textFont: ("Montserrat-Bold", serif),
+$_textFontSize: 12px,
+$_itemFontColor: white,
+$_bordTextColor: #bc9cff,
+) {
+  .button__item {
+//    margin-top: 30px;
+    display: grid;
+    @include media(grid-template-columns, 2fr, $_btnHeight);
+    @include media(grid-template-rows, $_btnHeight);
+    background: $_BGColorGradient;
+    //color: white;
+    // width: 320px;
+    // height: 44px;
+    border-radius: 22px;
+    align-items: center;
+    .item__text {
+      grid-row: 1/2;
+      grid-column: 1/3;
+      justify-self: center;
+      font-family: $_textFont;
+      @include media(font-size, $_textFontSize)
+      text-transform: uppercase;
+      background: $_itemFontColor;
+      -webkit-background-clip: text;
+      color: $_itemFontColor;
+      //-webkit-text-fill-color: transparent;
+    }
+    .item__icon {
+      grid-row: 1/2;
+      grid-column:2/3;
+      justify-self: center;
+      font-family: "Material Icons";
+      font-size: 24px;
+      margin-right: 2%;
+      color: $_itemFontColor;
+    }
+  }
+
+  @if & {
+    &.bord {
+      .item__text {
+        display: flex;
+        align-self: stretch;
+        justify-self: stretch;
+        align-items: center;
+        justify-content: center;
+        background-color: white;
+        -webkit-background-clip: padding-box;
+        border: 2px solid rgba(255, 255, 255, 0);
+        border-radius: 22px;
+        color: $_bordTextColor;
+      }
+      .item__icon {
+        color: $_bordTextColor;
+        visibility: 1;
+      }
+      &.hover {
+        .item__text {
+          border: 2px solid rgba(255, 255, 255, 0.5);
+        }
+      }
+    }
+  } @else {
+    &.hover {
+      .item__text {
+        border: 2px solid rgba(255, 255, 255, 0.5);
+      }
+    }
+  }
+}
+
+
 @mixin icon_style {
   font-family: 'Material Icons';
   font-weight: normal;

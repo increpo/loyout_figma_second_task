@@ -1,0 +1,37 @@
+@import "mixins";
+@import "vars";
+@import "../mixins/media";
+
+.main {
+  grid-area: content;
+  width: 100%;
+}
+
+.header__unregistred {
+  margin-top: 4.2%;
+  @include header;
+}
+
+.header__registred {
+  margin-top: 2.75%;
+  @include header;
+}
+
+.main__footer {
+  margin-top: 2.7%;
+  @include footer;
+}
+
+.footer__copyright-bar {
+  @include footer__copyright-bar;
+}
+
+.footer__copyright-bar-creative {
+  @include footer__copyright-bar;
+  margin-top: 2.7%;
+  width: 52.2%;
+  @include media(height, 368px);
+  margin-left: 20.8%;
+  display: grid;
+  padding: 7.5% 0 7.4% 0;
+}

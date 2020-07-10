@@ -8,6 +8,11 @@ import './assets/scss/colors&types/main.scss'
 import './assets/scss/forms-elements/main.scss'
 import './assets/scss/footer/main.scss'
 import './assets/scss/cards/main.scss'
+import './assets/scss/headers&footers/main.scss'
+import '../node_modules/@fortawesome/fontawesome-free/js/all.js'
+import '../node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss'
+import '../node_modules/@fortawesome/fontawesome-free/css/all.css'
+
 
 //window.Vue = require('vue')
 //import store from './store'
