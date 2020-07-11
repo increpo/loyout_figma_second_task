@@ -1,12 +1,37 @@
 //here is footer
+@import "../headers&footers/mixins";
 
 footer {
-  //width: 100%;
+  grid-area: footer;
+}
+
+.footer {
+  width: 100%;
   //grid-column: 1/4;
   height: 5em;
-//  background-color: cyan;
-  grid-area: footer;
+  //  background-color: cyan;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.footer__pages {
+  width: 100%;
+  box-sizing: border-box;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+}
+
+.footer__content {
+  @include footer;
+  width: 63.1%;
+  margin-top: 0.1%;
+}
+.footer__content__copyright {
+  width: 78%;
+
+  @include footer__copyright-bar;
+  margin-top: -0.1%;
+  padding: 0 7.4% 0 7.4%;
 }

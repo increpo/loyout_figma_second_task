@@ -1,0 +1,46 @@
+@import "mixins";
+@import "../headers&footers/mixins";
+@import "../cards/mixins";
+
+.wrapper__pages {
+  height: 100%;
+  width: 100%;
+}
+
+
+.landing {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 100%;
+  justify-items: center;
+  box-sizing: border-box;
+}
+
+.landing__content {
+  grid-column: 1/2;
+  width: 78.2%;
+  @include media(height, 830px);
+  display: grid;
+  justify-self: center;
+  background: 0 -70px no-repeat url("/assets/img/landing__background.png");
+}
+
+.landing__form-find {
+  margin-top: 4.9%;
+  margin-left: 9.65%;
+  @include card__find;
+}
+
+.landing__text {
+  align-self: end;
+  justify-self: end;
+  margin-right: 9%;
+  margin-bottom: 1.3%;
+  width: 20%;
+  text-align: right;
+  line-height: 180%;
+  font-family: "Montserrat-light";
+  @include media(font-size, 14px);
+  color: rgba(31, 32, 65, 0.75);
+  letter-spacing: 0.2px;
+}

@@ -12,10 +12,9 @@ html(lang='ru')
     block head
   body(class=pageClass)
     .wrapper
-      #app
-        include ../includes/modules/header2
-        .content-wrapper
-          block content
-        include ../includes/modules/footer2
-
+      include ../includes/modules/header2
+      .content-wrapper
+        block content
+      include ../includes/modules/footer2
+        //-#app
     block script

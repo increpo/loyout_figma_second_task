@@ -6,11 +6,7 @@
 @mixin header {
   .header {
     display: grid;
-    //grid-template-rows: 1fr;
-    //grid-template-columns: 14.6% 50.3% 35%;
-    //grid-auto-flow: column;
-    //grid-auto-columns: max-content;
-    padding: 0% 7.5% 0% 7.5%;
+    width: 100%;
     align-items: center;
     //justify-items: end;
     background: white;
@@ -19,6 +15,7 @@
   }
 
   .header__logo {
+    box-sizing: border-box;
     grid-column: 1/2;
     grid-row: 1/2;
     justify-self: start;
@@ -87,7 +84,7 @@
     grid-auto-columns: max-content min-content;
     align-items: center;
     color: rgba(31, 32, 65, 0.5);
-    @include media(margin-right, 90px);
+    //@include media(margin-right, 90px);
   }
   .accaunt__user {
     border-left: 1px solid rgba(31, 32, 65, 0.1);
@@ -109,21 +106,23 @@
 
 
 @mixin footer {
+  background: white;
+  box-sizing: border-box;
+
+  @include media(height, 372px);
   .footer {
-    background: white;
-    box-shadow: 0px 1px 0px rgba(31, 32, 65, 0.1);
-    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    align-items: center;
+    justify-items: center;
   }
   .footer__content-info {
-    @include media(height, 372px);
+    //@include media(height, 372px);
     display: grid;
     box-sizing: border-box;
-    grid-template-columns: 21% 13% 13% 13% 20.8%;
-    //grid-auto-flow: column dense;
-    //grid-auto-columns: max-content;// max-content;
-    grid-column-gap: 3%;
-    //margin: 6.8% 7.5% 6.8% 7.5%;
-    padding: 6.8% 7.5% 0% 7.5%;
+    grid-template-columns: 22% 13.3% 13.2% 13.4% 22.6%;
+    grid-column-gap: 3.9%;
   }
   .footer__publicity {
     //grid-area: publicity;
@@ -179,13 +178,14 @@
   background: white;
   box-shadow: 0px 1px 0px rgba(31, 32, 65, 0.1);
   box-sizing: border-box;
+  border-top: 1px solid rgba(31, 32, 65, 0.1);
   .footer__content-copyright {
     box-sizing: border-box;
-    border-top: 1px solid rgba(31, 32, 65, 0.1);
     display: grid;
     grid-template-columns: 2fr 2fr;
     align-items: center;
-    padding: 1.5% 13.7% 1.5% 7.5%;
+    @include media(height, 70px);
+    //padding: 1.5% 13.7% 1.5% 7.5%;
     width: 100%;
   }
   .copyright__content {
@@ -216,11 +216,13 @@
     }
   }
   &.creative {
+    border: 0;
     .footer__content-copyright {
     grid-template-columns: 2fr;
     padding: 0;
     justify-items: center;
-    border: 0;
+    align-items: center;
+    height: auto;
     }
     .footer__logo {
       display: grid;
@@ -228,6 +230,9 @@
       @include media(width, 130px);
       align-items: center;
       justify-items: end;
+    }
+    .copyright__content {
+      line-height: 450%;
     }
     .copyright__icons {
       justify-self: center;

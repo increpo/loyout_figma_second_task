@@ -4,21 +4,24 @@
 
 .main {
   grid-area: content;
-  width: 100%;
+  width: 90.2%;
+  background-color: #f4f4f6;
+  display: grid;
 }
 
 .header__unregistred {
-  margin-top: 4.2%;
+  margin-top: 5.3%;
   @include header;
 }
 
 .header__registred {
-  margin-top: 2.75%;
+  margin-top: 3.5%;
   @include header;
 }
 
 .main__footer {
-  margin-top: 2.7%;
+  margin-top: 3.5%;
+  box-shadow: 0px 1px 0px rgba(31, 32, 65, 0.1);
   @include footer;
 }
 
@@ -28,10 +31,12 @@
 
 .footer__copyright-bar-creative {
   @include footer__copyright-bar;
-  margin-top: 2.7%;
-  width: 52.2%;
+  margin-top: 3.5%;
+  width: 66%;
   @include media(height, 368px);
-  margin-left: 20.8%;
+  justify-self: center;
   display: grid;
-  padding: 7.5% 0 7.4% 0;
+  fustify-items: center;
+  align-items: center;
+  //padding: 7.5% 0 7.4% 0;
 }

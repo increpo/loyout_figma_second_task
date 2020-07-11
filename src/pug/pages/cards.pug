@@ -1,7 +1,5 @@
 extends ../layout/main
 include ../includes/mixins/cards
-include ../includes/mixins/form-elements
-include ../includes/forms/form_drop
 //- include ../includes/forms/dropForm3
 
 
@@ -13,7 +11,7 @@ block variables
 block content
   .cards__main
     .card__find
-      +card_find()
+      +card__find()
     .card__booking
       +card_booking()
     .card__calendar

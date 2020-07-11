@@ -1,10 +1,12 @@
 //header
+@import "../mixins/media";
+@import "../headers&footers/main";
 
 header {
 //  background-color: blue;
   width: 100%;
-  grid-column: 2/3;
-  //grid-area: header;
+  //grid-column: 2/3;
+  grid-area: header;
   // .header{
   //   float: right;
   //   > nav {
@@ -16,7 +18,18 @@ header {
 
 .header__label {
 //  background-color: blue;
-  margin: 5.9% 0% 0% 0%;
+  @include media(margin, 30px, 0.01px, 0.01px, 229px);
+  //margin: 5.5% 0% 0% 0%;
   width: 48px;
   height: 48px;
+}
+
+.header__page {
+  width: 100%;
+  display: grid;
+  justify-items: center;
+  @include header;
+  .header {
+    width: 63.1%;
+  }
 }
