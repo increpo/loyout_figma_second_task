@@ -52,10 +52,10 @@
   @include card__show__room;
   &.lux {
     @include card__show__room($_sliderIMG: "/assets/img/888.png");
-    margin-top: 107.2%;
+    margin-top: 127.3%;
   }
   &.econom {
     @include card__show__room($_sliderIMG: "/assets/img/840.png");
-    margin-top: 185.5%;
+    margin-top: 219.4%;
   }
 }

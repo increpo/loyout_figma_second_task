@@ -218,6 +218,7 @@
   $_selectedDaysRangeColor: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%),
   $_clearFont: ("Montserrat-Bold", serif),
   $_clearFontColor: rgba(31, 32, 65, 0.5),
+  $_clearHoverColor: linear-gradient(180deg, rgba(188, 156, 255, 0.15) 0%, rgba(139, 164, 249, 0.15) 100%),
   $_applyFont: ("Montserrat-Bold", serif),
   $_applyFontColor: #bc9cff,
 ) {
@@ -250,7 +251,7 @@
   }
 
   .calendar__content-weeks {
-    @include media(margin-top, 30px);
+    @include media(margin-top, 28px);
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     @include media(font-size, 12px);
@@ -330,23 +331,30 @@
     @include media(height, 40px);
     @include media(width, 160px);
     opacity: 0.25;
-    margin: -72px 0 0 20px;
+    margin: -106px 0 0 20px;
   }
 
   .calendar__decision {
     display: grid;
     grid-template-columns: 2fr 2fr;
-    @include media(margin-top, 56px);
+    @include media(margin-top, 21px);
+    cursor: default;
     .decision-clear {
       color: $_clearFontColor;
       font-family: $_clearFont;
       @include media(font-size, 14px);
+      &:hover {
+        background: $_clearHoverColor;
+      }
     }
     .decision-apply {
       color: $_applyFontColor;
       font-family: $_applyFont;
       @include media(font-size, 14px);
       justify-self: end;
+      &:hover {
+        background: $_clearHoverColor;
+      }
     }
   }
 }

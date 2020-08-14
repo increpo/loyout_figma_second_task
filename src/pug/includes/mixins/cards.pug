@@ -75,16 +75,28 @@ mixin card_calendar
           each i in ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс']
             p= i
       .calendar__content-days
-        p.light 29
-        p.light 30
-        p.light 31
+        div.dayCont.light
+          p 29
+        div.dayCont.light
+          p 30
+        div.dayCont.light
+          p 31
         - for (var x = 1; x < 32; x++)
-          p= x
-        p.light 1
-      .calendar__slider
+          if x==19 || x==23
+            div.dayCont
+              p.checked= x
+          else if x==8
+            div.dayCont
+              p.today= x
+          else
+            div.dayCont
+              p= x
+        div.dayCont.light
+          p 1
       .calendar__decision
         .decision-clear очистить
         .decision-apply применить
+      .calendar__slider
 
 mixin card_registration(content= [{dropRegName: [{form: 'Имя'}], dropRegSurname: [{form: 'Фамилия'}], dropRegBirthday: [{title: 'дата рождения', form: 'ДД.ММ.ГГГГ'}], dropRegEmail: [{title: 'данные для входа в сервис', form: 'Email'}], dropRegPass: [{form: 'Пароль'}]}])
   //- var dropRegName = [{form: 'Имя'}];

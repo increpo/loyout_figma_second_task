@@ -1,18 +1,18 @@
 
 //'use strict';
+let status=0;
+if (document.querySelector('.landing__form-find')) {
+  let buttomArrival = document.querySelector('.landing__form-find').querySelector('.date__arrival');
+  let buttomDeparture = document.querySelector('.landing__form-find').querySelector('.date__departure');
 
-
-let buttomArrival = document.querySelector('.landing__form-find').querySelector('.date__arrival');
-let buttomDeparture = document.querySelector('.landing__form-find').querySelector('.date__departure');
-
-buttomArrival.onclick = openCalendar;
-buttomDeparture.onclick = openCalendar;
+  buttomArrival.onclick = openCalendar;
+  buttomDeparture.onclick = openCalendar;
+};
 
 function openCalendar(){
   if (!document.querySelector('.landing__calendar')) {
     let message = createMessageUnder(buttom = this, divClass = 'landing__calendar');
     document.body.append(message);
-    //let today = new Date();
     makeCalendar();
     } else {
     document.querySelector('.landing__calendar').remove();
@@ -41,7 +41,7 @@ function getCoords(buttom) {
   return {
     top: box.top + pageYOffset,
     left: box.left + pageXOffset,
-    bottom: box.bottom + pageYOffset,
+    bottom: box.bottom + pageYOffset+8,
   };
 };
 
@@ -54,11 +54,15 @@ function makeCalendar(date = new Date()) {
   document.body.querySelector('.calendar__content-weeks').calweeks();
   document.body.querySelector('.calendar__content-days').caldays(date);
   getCalendarCheckedDays(firstClickValue, secondClickValue);
-  //document.querySelector('.landing__calendar').querySelector('.head__item').addEventListener("click", checkCalendarLeaf);
-  document.querySelector('.calendar__head').addEventListener('click', checkCalendarLeaf);
-  document.querySelector('.calendar__content-days').addEventListener('click', checkDay);
+  listenEvents();
 };
 
+function listenEvents(){
+  document.querySelector('.calendar__head').addEventListener('click', checkCalendarLeaf);
+  document.querySelector('.calendar__content-days').addEventListener('click', checkDay);
+  document.querySelector('.decision-clear').addEventListener('click', clearCheckedDays);
+  document.querySelector('.decision-apply').addEventListener('click', applyCheckedDays);
+};
 
 Element.prototype.calendar = function(date=new Date()){
   this.insertAdjacentHTML("afterbegin", `<div class="card__calendar">
@@ -161,13 +165,21 @@ function fullFormFromCalendar(departureDate, arrivalDate) {
   if (!+departureDate){
     document.querySelector('.date__departure').querySelector('.drop__form').innerHTML = "ДД:ММ:ГГГГ";
   } else {
-    document.querySelector('.date__departure').querySelector('.drop__form').innerHTML = `${departureDate.getDate()+":"+(departureDate.getMonth()+1)+":"+departureDate.getFullYear()}`;
+    document.querySelector('.date__departure').querySelector('.drop__form').innerHTML = `${getDoubleString(departureDate.getDate())+":"+(getDoubleString(departureDate.getMonth()+1))+":"+departureDate.getFullYear()}`;
+
   };
   if (!+arrivalDate){
     document.querySelector('.date__arrival').querySelector('.drop__form').innerHTML = "ДД:ММ:ГГГГ";
   } else {
-    document.querySelector('.date__arrival').querySelector('.drop__form').innerHTML = `${arrivalDate.getDate()+":"+(arrivalDate.getMonth()+1)+":"+arrivalDate.getFullYear()}`;
+    document.querySelector('.date__arrival').querySelector('.drop__form').innerHTML = `${getDoubleString(arrivalDate.getDate())+":"+(getDoubleString(arrivalDate.getMonth()+1))+":"+arrivalDate.getFullYear()}`;
   };
+};
+
+function getDoubleString(number){
+  if (number<10){
+    number = "0"+number;
+  };
+  return number;
 };
 
 let firstClickValue=0;
@@ -195,6 +207,19 @@ function checkDay(event){
   };
   checkDayCounter++;
   makeCalendar(calendarLeafDate);
+};
+
+function clearCheckedDays(){
+  firstClickValue=0;
+  secondClickValue=0;
+  checkDayCounter = 1;
+  arrivalDate = 0;
+  departureDate = 0;
+  makeCalendar(calendarLeafDate);
+};
+
+function applyCheckedDays(){
+  document.querySelector('.landing__calendar').remove();
 };
 
 function getCalendarCheckedDays(firstClickValue=0, secondClickValue=0){
