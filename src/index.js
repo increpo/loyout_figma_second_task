@@ -13,7 +13,7 @@ import '../node_modules/@fortawesome/fontawesome-free/js/all.js'
 import '../node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss'
 import '../node_modules/@fortawesome/fontawesome-free/css/all.css'
 import './assets/scss/landing/main.scss'
-import './js/pages/landing.js'
+import './js/pages/calendar.js'
 
 //window.Vue = require('vue')
 //import store from './store'
