@@ -14,6 +14,8 @@ import '../node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss'
 import '../node_modules/@fortawesome/fontawesome-free/css/all.css'
 import './assets/scss/landing/main.scss'
 import './js/pages/calendar.js'
+import './js/pages/guests.js'
+
 
 //window.Vue = require('vue')
 //import store from './store'

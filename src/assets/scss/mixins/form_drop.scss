@@ -17,12 +17,12 @@ $_menuColor: rgba(31, 32, 65, 0.5),
 $_menuFontSize: 24px,
 $_itemFont: ("Montserrat-Bold", serif),
 $_itemFontSize: $_formFontSize,
-$_itemFontColor: pink,
+$_itemFontColor: rgba(31, 32, 65, 1),
 $_itemWidth: 35px,
-$_minusBorderColor: green,
-$_minusColor: red,
-$_minusBorder-light: red,
-$_minusColor-light: cyan,
+$_minusBorderColor: rgba(31, 32, 65, 0.25),
+$_minusColor: rgba(31, 32, 65, 0.25),
+$_minusBorder-light: rgba(31, 32, 65, 0.1),
+$_minusColor-light: rgba(31, 32, 65, 0.1),
 $_decisionFont: ("Montserrat-Bold", serif),
 $_decisionFontSize: 14px,
 $_clrFontColor: rgba(31, 32, 65, 0.5),
@@ -129,11 +129,12 @@ $_applyFontColor: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%),
         display: grid;
         align-items: center;
         //text-align: center;
+        //line-height: 150%;
         justify-items: center;
         border: 1px solid $_minusBorderColor;
         border-radius: 50%;
         color: $_minusColor;
-        font-family: $_itemFont;
+        font-family: "Montserrat", serif;
         @include media(font-size, $_itemWidth*0.6);
         //font-size: $_itemWidth*0.6;
       }
@@ -142,7 +143,7 @@ $_applyFontColor: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%),
         justify-self: center;
         color: $_itemFontColor;
         font-family: $_itemFont;
-        @include media(font-size, $_itemWidth*0.3);
+        @include media(font-size, $_itemFontSize);
         //font-size: $_itemWidth*0.3;
       }
       > .item-plus {
@@ -155,12 +156,13 @@ $_applyFontColor: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%),
         border: 1px solid $_minusBorderColor;
         border-radius: 50%;
         color: $_minusColor;
-        font-family: $_itemFont;
+        font-family: "Montserrat", serif;
         @include media(font-size, $_itemWidth*0.6);
         //font-size: $_itemWidth*0.6;
         display: grid;
         justify-items: center;
         align-items: center;
+        //line-height: 150%;
       }
       &.light {
         > .item-minus {

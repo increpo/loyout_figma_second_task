@@ -28,8 +28,9 @@
 .landing__form-find {
   margin-top: 4.9%;
   margin-left: 9.65%;
-  @include card__find;
 }
+
+@include card__find;
 
 .landing__text {
   align-self: end;
