@@ -188,6 +188,11 @@ $_applyFontColor: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%),
         font-family: $_decisionFont;
         font-weight: bold;
         color: $_clrFontColor;
+        &.filled {
+          background: $_applyFontColor;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
       }
       .decision-apply {
         @include media(margin-right, $_itemWidth*0.2);

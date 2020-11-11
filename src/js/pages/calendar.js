@@ -1,3 +1,13 @@
+document.querySelector('.landing__content').addEventListener('click', calendarToggle);
+
+function calendarToggle(){
+  if ((!event.target.closest(".drop__main"))
+    && (document.querySelector('.landing__calendar'))) {
+      document.querySelector('.landing__calendar').remove();
+  };
+};
+
+
 
 //'use strict';
 let status=0;
