@@ -176,7 +176,7 @@ $_applyFontColor: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%),
       width: 100%;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      @include media(margin, $_itemWidth*0.2, 0.01px, $_itemWidth*0.2, 0.01px);
+      @include media(margin, $_itemWidth*0.2, 0.01px, 0.01px, 0.01px);
       //margin: $_itemWidth*0.2 0 $_itemWidth*0.2 0;
       text-transform: uppercase;
       @include media(font-size, $_decisionFontSize);
@@ -188,6 +188,7 @@ $_applyFontColor: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%),
         font-family: $_decisionFont;
         font-weight: bold;
         color: $_clrFontColor;
+        line-height: 200%;
         &.filled {
           background: $_applyFontColor;
           -webkit-background-clip: text;
@@ -202,6 +203,7 @@ $_applyFontColor: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%),
         background: $_applyFontColor;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
+        line-height: 200%;
       }
     }
   }

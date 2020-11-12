@@ -59,7 +59,7 @@ let babies = 0;
 let guests_message = function() {
   switch (adults + childrens + babies) {
     case 0:
-      return `Сколько гостей`;
+      return "Сколько гостей";
       break;
     case 1:
       return `${adults + childrens + babies} гость`;
@@ -80,7 +80,7 @@ Element.prototype.guests = function(){
   this.insertAdjacentHTML("afterbegin", `
     <div class="find__guests" style="width: 286px; margin-top: 0;">
       <div class="drop__main open" style="background: white;">
-        <div class="drop__form">'Сколько гостей'</div>
+        <div class="drop__form">Сколько гостей</div>
         <div class="drop__menu">keyboard_arrow_down</div>
       </div>
       <div class="drop__items" style="background: white;">
@@ -105,12 +105,19 @@ Element.prototype.guests = function(){
         <div class="drop__decision"><div class="decision-clr">очистить</div><div class="decision-apply">применить</div></div></div>
       </div>
   `);
+  render();
 };
 
 function guests_events(){
-  document.querySelector('.guests__choice').addEventListener('click', guests_select);
-  document.querySelector('.guests__choice').querySelector('.drop__decision').addEventListener('click', decisions);
-  render();
+  for (let i=0; i<3; i++){
+    document.querySelector('.guests__choice').querySelectorAll('.drop__item')[i].addEventListener('click', guests_select);
+  };
+  //document.querySelector('.guests__choice').querySelectorAll('.drop__item')[0].addEventListener('click', guests_select);
+  //document.querySelector('.guests__choice').querySelector('.drop__item')[1].addEventListener('click', guests_select);
+  //document.querySelector('.guests__choice').querySelector('.drop__item')[2].addEventListener('click', guests_select);
+  document.querySelector('.guests__choice').querySelector('.decision-clr').addEventListener('click', decisions);
+//  render();
+  document.querySelector('.guests__choice').querySelector('.decision-apply').addEventListener('click', guestsToggle);
 };
 
 function guests_select() {
@@ -126,7 +133,8 @@ function guests_select() {
       babies=guests_calc(babies);
       break;
   };
-  guests_events();
+  render();
+  //guests_events();
 };
 
 function guests_calc(guest){
@@ -155,7 +163,6 @@ function borders_control() {
 function render(){
   //alert(document.querySelector('.guests__choice').querySelector('.drop__main').querySelector('.drop__form').innerHTML);
   document.querySelector('.guests__choice').querySelector('.drop__main').querySelector('.drop__form').innerHTML = guests_message();
-  borders_control();
   document.querySelector('.find__guests').querySelector('.drop__form').innerHTML = guests_message();
   numbers_control();
   if (adults+childrens+babies > 0) {
@@ -163,6 +170,7 @@ function render(){
   } else {
     document.querySelector('.guests__choice').querySelector('.decision-clr').classList.remove('filled');
   };
+  borders_control();
 };
 
 function numbers_control(){
@@ -187,12 +195,8 @@ function decisions(){
   switch (event.target.className){
     case 'decision-clr filled':
       adults=childrens=babies=0;
-      break;
-    case 'decision-apply':
-      guestsToggle();
-      break;
+      render();
   };
-  render();
 };
 
 function guests_number(){
