@@ -10,7 +10,7 @@
     align-items: center;
     //justify-items: end;
     background: white;
-    box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.05);
+    //box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.05);
     @include media(height, 70px);
   }
 
@@ -81,8 +81,9 @@
   .header__accaunt {
     display: grid;
     grid-auto-flow: column;
-    grid-auto-columns: max-content min-content;
+    grid-auto-columns: max-content 15px min-content;
     align-items: center;
+    //justify-self: end;
     color: rgba(31, 32, 65, 0.5);
     //@include media(margin-right, 90px);
   }
@@ -94,11 +95,12 @@
     @include media(line-height, 30px);
   }
   .accaunt__btn-enter{
-    margin-right: 19%;
+    //margin-right: 19%;
     @include media(width, 87px);
     @include button($_btnHeight: 34px);
   }
   .accaunt__btn-registration {
+    grid-column: 3/3;
     @include media(width, 196px);
     @include button($_btnHeight: 34px);
   }

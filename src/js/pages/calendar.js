@@ -1,13 +1,19 @@
-document.querySelector('.landing__content').addEventListener('click', calendarToggle);
+import {createMessageUnder} from '../mixins/createMessage.js';
 
-function calendarToggle(){
-  if ((!event.target.closest(".drop__main"))
-    && (document.querySelector('.landing__calendar'))) {
-      document.querySelector('.landing__calendar').remove();
+
+if (document.querySelector('.landing__content')) {
+  document.querySelector('.landing__content').addEventListener('click', calendarToggle);
+
+  function calendarToggle(){
+    if ((!event.target.closest(".drop__main"))
+      && (document.querySelector('.landing__calendar'))) {
+        document.querySelector('.landing__calendar').remove();
+    };
   };
 };
 
-
+let boxShadowLeft;// = 'inset 20px 0px #fff';
+let boxShadowRight;// = 'inset -20px 0px #fff';
 
 //'use strict';
 let status=0;
@@ -21,7 +27,7 @@ if (document.querySelector('.landing__form-find')) {
 
 function openCalendar(){
   if (!document.querySelector('.landing__calendar')) {
-    let message = createMessageUnder(buttom = this, divClass = 'landing__calendar');
+    let message = createMessageUnder(event.currentTarget, 'landing__calendar','',8);
     document.body.append(message);
     makeCalendar();
     } else {
@@ -29,31 +35,6 @@ function openCalendar(){
   };
 };
 
-function createMessageUnder(buttom, divClass) {
-  // создаём элемент, который будет содержать сообщение
-  let message = document.createElement('div');
-  message.classList.add(divClass);
-  // для стилей лучше было бы использовать css-класс здесь
-  message.style.cssText = "position:absolute";
-  // устанавливаем координаты элементу, не забываем про "px"!
-  let coords = getCoords(buttom);
-  //let coords = buttom.getBoundingClientRect();
-  message.style.left = coords.left + "px";
-  message.style.top = coords.bottom + "px";
-
-  return message;
-};
-
-// получаем координаты элемента в контексте документа
-function getCoords(buttom) {
-  let box = buttom.getBoundingClientRect();
-
-  return {
-    top: box.top + pageYOffset,
-    left: box.left + pageXOffset,
-    bottom: box.bottom + pageYOffset+8,
-  };
-};
 
 function makeCalendar(date = new Date()) {
   if (document.querySelector('.card__calendar')) {
@@ -297,6 +278,8 @@ function getSliderValues(arrivalDate, departureDate){
   let days = document.querySelector('.calendar__content-days');
   let sliderStartValue = +arrivalDate;
   let sliderStopValue = +departureDate;
+  //let boxShadowLeft = 'inset 20px 0px #fff';
+  //let boxShadowRight = 'inset -20px 0px #fff';
   if (+arrivalDate && +arrivalDate < days.querySelectorAll('p')[0].getAttribute('value')){
     sliderStartValue = days.querySelectorAll('p')[0].getAttribute('value');
     boxShadowLeft = "none";
@@ -312,3 +295,32 @@ function getSliderValues(arrivalDate, departureDate){
   return {sliderStartValue: sliderStartValue,
           sliderStopValue: sliderStopValue,};
 };
+
+
+// function createMessageUnder(buttom, divClass, style, space) {
+//   // создаём элемент, который будет содержать сообщение
+//   let message = document.createElement('div');
+//   message.classList.add(divClass);
+//   //message.innerHTML = "goodmorning";
+//   // для стилей лучше было бы использовать css-класс здесь
+//   message.style.cssText = "position:absolute";
+//   // устанавливаем координаты элементу, не забываем про "px"!
+//   let coords = getCoords(buttom, space);
+//   //let coords = buttom.getBoundingClientRect();
+//   message.style.left = coords.left + "px";
+//   style == 'top' ? message.style.top = coords.top + "px" : message.style.top = coords.bottom + "px";
+//   //message.style.top = coords.top + "px";
+
+//   return message;
+// }
+
+// // получаем координаты элемента в контексте документа
+// function getCoords(buttom, space) {
+//   let box = buttom.getBoundingClientRect();
+
+//   return {
+//     top: box.top + pageYOffset,
+//     left: box.left + pageXOffset,
+//     bottom: box.bottom + pageYOffset+space,
+//   };
+// }

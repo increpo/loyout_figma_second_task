@@ -1,0 +1,75 @@
+extends ../layout/mainPages
+
+include ../includes/forms/form_drop
+include ../includes/forms/check_list
+include ../includes/mixins/cards
+
+block variables
+  - var title = 'Search room / Filter';
+  - var currentURL = 'search_room.html';
+  - var arrivalDates = [{title: 'Даты пребывания в отеле', desc: '', form: '19 авг - 23 авг', menu: 'keyboard_arrow_down'}];
+  - var guests = [{title: 'гости', desc: '', form: '3 гостя, 1 младенец', menu: 'keyboard_arrow_down'}];
+  - var coastSlider = [{title: 'диапазон цены', desc: '5 000р - 10 000р', slider: 1, comment: 'стоимость за сутки пребывания в номере'}];
+  - var rools = [{title: 'правила дома', items: [{text: 'можно курить'}, {check: 'check', text: 'можно с питомцами'}, {check: 'check', text: 'можно пригласить гостей (до 10 человек)'}]}];
+  - var availability = [{title: 'доступность', items: [{text: 'широкий коридор', comment: 'ширина коридоров в номере не менее 91 см.'}, {text: 'помощник для инвалидов', comment: 'на 1 этаже вас встретит специалист и проводит до номера'}]}];
+  - var facilities = [{title: 'удобства номера', form: '2 спальни, 2 кровати...', menu: 'keyboard_arrow_down'}];
+  - var additional = [{title: 'дополнительные удобства', menu: 'keyboard_arrow_down'}];
+  - var room_888 = [{room__photo: '/assets/img/888.png', room__number: '888', room__class: 'люкс', room__price: '9 990', rating__star_full: 5, rating__star_empty: 0, room__review: 145}];
+  - var room_840 = [{room__photo: '/assets/img/840.png', room__number: '888', room__class: '', room__price: '9 990', rating__star_full: 4, rating__star_empty: 1, room__review: 65}];
+  - var room_980 = [{room__photo: '/assets/img/980.png', room__number: '980', room__class: 'люкс', room__price: '8 500', rating__star_full: 3, rating__star_empty: 2, room__review: 35}];
+  - var room_856 = [{room__photo: '/assets/img/856.png', room__number: '856', room__class: '', room__price: '7 300', rating__star_full: 5, rating__star_empty: 0, room__review: 19}];
+  - var room_740 = [{room__photo: '/assets/img/740.png', room__number: '740', room__class: '', room__price: '6 000', rating__star_full: 4, rating__star_empty: 1, room__review: 44}];
+  - var room_982 = [{room__photo: '/assets/img/982.png', room__number: '982', room__class: '', room__price: '5 800', rating__star_full: 3, rating__star_empty: 2, room__review: 56}];
+  - var room_666 = [{room__photo: '/assets/img/666.png', room__number: '666', room__class: '', room__price: '5 000', rating__star_full: 5, rating__star_empty: 0, room__review: 25}];
+  - var room_444 = [{room__photo: '/assets/img/444.png', room__number: '444', room__class: '', room__price: '5 000', rating__star_full: 3, rating__star_empty: 2, room__review: 15}];
+  - var room_352 = [{room__photo: '/assets/img/352.png', room__number: '352', room__class: '', room__price: '5 000', rating__star_full: 3, rating__star_empty: 2, room__review: 55}];
+  - var pagination = [{paginationLastNum: 15, comment: '1-12 из 100+ вариантов аренды'}];
+
+   
+block content
+  .searchRoom
+    .searchRoom__content
+      .searchRoom__menu
+        .menu__content
+          .menu__arrival
+            +form-drop(arrivalDates)
+          .menu__guests
+            +form-drop(guests)
+          .menu__coast-slider
+            +form-drop(coastSlider)
+          .menu__rools
+            +check_list(rools)
+          .menu__availability
+            +check_list(availability)
+          .menu__facilities
+            +form-drop(facilities)
+          .menu__additional
+            +check_list(additional)
+
+      .searchRoom__main
+        .main__content
+          .main__title номера, которые мы для вас подобрали
+          .main__items
+            .main__item
+              +card__show__room(room_888)
+            .main__item
+              +card__show__room(room_840)
+            .main__item
+              +card__show__room(room_980)
+            .main__item
+              +card__show__room(room_856)
+            .main__item
+              +card__show__room(room_740)
+            .main__item
+              +card__show__room(room_982)
+            .main__item
+              +card__show__room(room_666)
+            .main__item
+              +card__show__room(room_444)
+            .main__item
+              +card__show__room(room_352)
+          .main__pagination
+            .pagination__content
+              +form-drop(pagination)
+
+

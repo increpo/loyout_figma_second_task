@@ -157,10 +157,11 @@ mixin card__enter(content= [{dropEnterEmail: [{form: 'Email'}], dropEnterPass: [
           .button__item
             .item__text создать
             
-mixin card__show__room(content= [{room__number: '', room__class: '', room__price: '', rating__star_full: 4, rating__star_empty: 1, room__review: 0}])
+mixin card__show__room(content= [{room__photo: '/assets/img/888.png', room__number: '', room__class: '', room__price: '', rating__star_full: 4, rating__star_empty: 1, room__review: 0}])
   each cont in content
     .show__room
       .room__slider
+        img(src= cont.room__photo)
         .slider__btn.left keyboard_arrow_left
         .slider__btn.right keyboard_arrow_right
         .slider__status

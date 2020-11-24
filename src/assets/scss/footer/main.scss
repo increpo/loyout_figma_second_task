@@ -25,13 +25,13 @@ footer {
 
 .footer__content {
   @include footer;
-  width: 63.1%;
+  width: 70%;
   margin-top: 0.1%;
 }
 .footer__content__copyright {
-  width: 78%;
+  width: 100%;//78%;
 
   @include footer__copyright-bar;
   margin-top: -0.1%;
-  padding: 0 7.4% 0 7.4%;
+  padding: 0 15% 0 15%;
 }

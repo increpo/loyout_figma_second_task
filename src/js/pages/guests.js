@@ -1,54 +1,31 @@
-document.querySelector('.landing__content').addEventListener('click', guestsToggle);
+import {createMessageUnder} from '../mixins/createMessage.js';
+
+if (document.querySelector('.landing__content')){
+  document.querySelector('.landing__content').addEventListener('click', guestsToggle);
+};
 
 function guestsToggle(){
-  if ((!event.target.closest(".drop__main"))
+  if ((!event.target.closest('.drop__main'))
     && (document.querySelector('.guests__choice'))) {
       document.querySelector('.guests__choice').remove();
   };
 };
 
+if (document.querySelector('.find__guests')){
+  let buttom = document.querySelector('.find__guests').querySelector('.drop__main');
 
+  buttom.addEventListener('click', openGuestsChoice);
+};
 
-
-let buttom = document.querySelector('.find__guests').querySelector('.drop__main');
-
-buttom.addEventListener('click', openGuestsChoice);
 
 function openGuestsChoice(){
   if (!document.querySelector('.guests__choice')) {
-    let message = createMessageUnder(buttom = this, divClass = 'guests__choice');
+    let message = createMessageUnder(event.currentTarget, 'guests__choice', 'top');
     document.body.append(message);
     createGuestsChoice();
     guests_events();
     } else {
     document.querySelector('.guests__choice').remove();
-  };
-};
-
-function createMessageUnder(buttom, divClass) {
-  // создаём элемент, который будет содержать сообщение
-  let message = document.createElement('div');
-  message.classList.add(divClass);
-  //message.innerHTML = "goodmorning";
-  // для стилей лучше было бы использовать css-класс здесь
-  message.style.cssText = "position:absolute";
-  // устанавливаем координаты элементу, не забываем про "px"!
-  let coords = getCoords(buttom);
-  //let coords = buttom.getBoundingClientRect();
-  message.style.left = coords.left + "px";
-  message.style.top = coords.top + "px";
-
-  return message;
-};
-
-// получаем координаты элемента в контексте документа
-function getCoords(buttom) {
-  let box = buttom.getBoundingClientRect();
-
-  return {
-    top: box.top + pageYOffset,
-    left: box.left + pageXOffset,
-    bottom: box.bottom + pageYOffset,
   };
 };
 
@@ -118,6 +95,13 @@ function guests_events(){
   document.querySelector('.guests__choice').querySelector('.decision-clr').addEventListener('click', decisions);
 //  render();
   document.querySelector('.guests__choice').querySelector('.decision-apply').addEventListener('click', guestsToggle);
+  document.querySelector('.guests__choice').querySelector('.drop__main').addEventListener('click', menuToggle);
+};
+
+function menuToggle() {
+  if (document.querySelector('.guests__choice')) {
+      document.querySelector('.guests__choice').remove();
+  };
 };
 
 function guests_select() {
@@ -197,19 +181,4 @@ function decisions(){
       adults=childrens=babies=0;
       render();
   };
-};
-
-function guests_number(){
-  //alert(event.target.previousElementSibling.innerHTML);
-  alert(`${event.currentTarget.firstElementChild.innerHTML}`);
-
-   // if (event.target.previousElementSibling.innerHTML == 'младенцы'){
-   //   babies = (babies == 0) ? 0 : --babies;
-   //   alert(`${babies}`);
-   //   //document.querySelector('.guests__choice').querySelector('.item-text').
-   // };
-   // if (event.target.previousElementSibling.previousElementSibling.innerHTML == 'младенцы'){
-   //   alert(`${babies}`);
-   // };
-   //guests_events();
 };

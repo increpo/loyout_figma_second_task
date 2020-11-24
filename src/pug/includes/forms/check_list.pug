@@ -1,0 +1,24 @@
+//-block dropVars
+
+  content = [{title: 'title666', desc: 'description666', form: 'form666', menu: 'menu', items: [{item : 'item666', number: 0}, {item : 'item6662', number: 666}], clear: 'clear666', apply: 'apply666', slider: 0, slidersComment: 'it can be your sliders comment'}];
+
+
+mixin check_list(content)
+  each cont in content  
+    
+    .check__head
+      .check__title= cont.title 
+      .check__menu= cont.menu
+      
+    if cont.items 
+      .check__items
+        each item in cont.items
+          .check__item(class= item.check)
+            .item-checkbox
+              .checkbox-icon
+                p= item.check
+            if item.comment
+              .item-text.bold= item.text
+              .item-comment= item.comment
+            else
+              .item-text= item.text

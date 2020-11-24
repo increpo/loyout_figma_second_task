@@ -27,6 +27,20 @@ $_decisionFont: ("Montserrat-Bold", serif),
 $_decisionFontSize: 14px,
 $_clrFontColor: rgba(31, 32, 65, 0.5),
 $_applyFontColor: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%),
+$_sliderBorderColor: rgba(31, 32, 65, 0.25),
+$_sliderBGColor: linear-gradient(180deg, #6FCF97 0%, #66D2EA 100%),
+$_sliderCommentFontColor: rgba(31, 32, 65, 0.5),
+$_sliderCommentFontFamily: ("Montserrat-Light", serif),
+$_sliderCommentFontSize: 14px,
+$_paginationFontSize: 12px,
+$_paginationStartFontFamily: ("Montserrat-Bold", serif),
+$_paginationFontFamily: ("Montserrat-Medium", serif),
+$_paginationStartBGColor: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%),
+$_paginationEndBGColor:linear-gradient(180deg, #6FCF97 0%, #66D2EA 100%),
+$_paginationFontColor: rgba(31, 32, 65, 0.25),
+$_paginationCommentColor: rgba(31, 32, 65, 0.5),
+$_paginationCommentFontFamily: ("Montserrat-Medium", serif),
+$_paginationCommentFontSize: 14px,
 ) {
 
   .drop__head {
@@ -207,4 +221,105 @@ $_applyFontColor: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%),
       }
     }
   }
+  .slider {
+    //width: $formWidth75;
+    margin-top: 5%;
+    display: grid;
+    grid-template-columns: 0.8fr 1.1fr 1fr;
+    grid-template-rows: 1fr;
+    align-items: center;
+    .line {
+      grid-column: 1/4;
+      grid-row: 1/2;
+      @include media(height, 6px);
+//        width: 266px;
+      border: 1px solid $_sliderBorderColor;
+      border-radius: 3px;
+    }
+    .round {
+      grid-column: 2/3;
+      grid-row: 1/2;
+      height: 12px;
+      width: 12px;
+      border: 2px solid white;
+      border-radius: 50%;
+      background: $_sliderBGColor;
+      &.start {
+        justify-self: start;
+      }
+      &.end {
+        justify-self: end;
+      }
+    }
+    .rangeLine {
+      grid-column: 2/3;
+      grid-row: 1/2;
+      background: $_sliderBGColor;
+      width: 100%;
+      height: 8px;
+      border-radius: 3px;
+    }
+  }
+  .comment {
+    @include media(margin-top, 10px);
+    @include media(font-size, $_sliderCommentFontSize);
+    font-family: $_sliderCommentFontFamily;
+    color: $_sliderCommentFontColor;
+    &::first-letter {
+      text-transform: uppercase;
+    }
+  }
+  .pagination {
+    display: grid;
+    margin: 0;
+    width: 100%;
+    justify-items: center;
+    //align-items: center;
+    .pagItems {
+      height: 40px;
+      //width: 300px;
+//    margin-top: 16px;
+      .pagItem {
+        display: grid;
+        align-items: center;
+        justify-items: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 20px;
+        //grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+        float: left;
+        font-size: $_paginationFontSize;
+        &.pagStart {
+          color: white;
+          background: $_paginationStartBGColor;
+          font-family: $_paginationStartFontFamily;
+        }
+        &.pagMiddle {
+          font-family: $_paginationFontFamily;
+          color: $_paginationFontColor;
+        }
+        &.pagEnd {
+          font-family: "Material Icons";
+          color: white;
+          font-size: 24px;
+          background: $_paginationEndBGColor;
+        }
+      }
+    }
+    >.comment {
+      color: $_paginationCommentColor;
+      font-family: $_paginationCommentFontFamily;
+      font-size: $_paginationCommentFontSize;
+      text-align: center;
+    }
+  }
+  // .comment {
+  //   @include media(margin-top, 10px);
+  //   @include media(font-size, $_sliderCommentFontSize);
+  //   font-family: $_sliderCommentFontFamily;
+  //   color: $_sliderCommentFontColor;
+  //   &::first-letter {
+  //     text-transform: uppercase;
+  //   }
+  // }
 }

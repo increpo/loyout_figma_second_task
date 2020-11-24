@@ -9,13 +9,17 @@ import './assets/scss/forms-elements/main.scss'
 import './assets/scss/footer/main.scss'
 import './assets/scss/cards/main.scss'
 import './assets/scss/headers&footers/main.scss'
-import '../node_modules/@fortawesome/fontawesome-free/js/all.js'
 import '../node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss'
 import '../node_modules/@fortawesome/fontawesome-free/css/all.css'
 import './assets/scss/landing/main.scss'
+import './assets/scss/searchRoom/main.scss'
+
+
+
+import '../node_modules/@fortawesome/fontawesome-free/js/all.js'
 import './js/pages/calendar.js'
 import './js/pages/guests.js'
-
+import './js/pages/searchRoomFilter.js'
 
 //window.Vue = require('vue')
 //import store from './store'

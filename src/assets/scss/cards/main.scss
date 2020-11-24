@@ -49,6 +49,8 @@
 
 .card__show__room {
   grid-area: right;
+  @include media(width, 270px);
+  @include media(height, 260px);
   @include card__show__room;
   &.lux {
     @include card__show__room($_sliderIMG: "/assets/img/888.png");
