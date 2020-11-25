@@ -6,7 +6,7 @@ let content = {
 		title: 'title666',
 		desc: 'description666',
 		form: 'form',
-		menu: 'menu',
+		menu: 'keyboard_arrow_down',
 		items: [
 			{item: 'item666', number: 8},
 			{item: 'item777', number: 0},
@@ -61,8 +61,6 @@ class FormDrop {
 	}
 
 	createDropConteiner(content) {
-		let fragment = new DocumentFragment();
-
 		let dropConteiner = document.createElement('div');
 		dropConteiner.className = this.class_name;
 		let eventStyle = getComputedStyle(event.currentTarget);
@@ -71,24 +69,13 @@ class FormDrop {
 		dropConteiner.style.background = 'white';
 		dropConteiner.style.margin = 0;
 		dropConteiner.append(this.createFormDrop(content));
-		fragment.append(dropConteiner);
 
-		return fragment;
+		return dropConteiner;
 	}
 
 	createFormDrop(content) {
 		this.content = content;
 		let fragment = new DocumentFragment();
-
-		// let dropConteiner = document.createElement('div');
-		// 	dropConteiner.className = this.class_name;
-		// 	let eventStyle = getComputedStyle(event.currentTarget);
-		// 	//alert(eventStyle.borderWidth);
-		// 	dropConteiner.style.width = ((parseFloat(eventStyle.width) + parseFloat(eventStyle.borderWidth)*2)+"px");
-		// 	dropConteiner.style.background = 'white';
-		// 	dropConteiner.style.margin = 0;
-			
-		// 	fragment.append(dropConteiner);
 
 		if (this.content.title || this.content.desc){
 			let head = document.createElement('div');

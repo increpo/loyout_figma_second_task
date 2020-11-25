@@ -101,3 +101,9 @@
   //@include media(width, 300px);
   @include form-drop;
 }
+
+.menu__additional {
+  @include media(margin-top, 20px);
+  //@include media(width, 300px);
+  @include check_list;
+}

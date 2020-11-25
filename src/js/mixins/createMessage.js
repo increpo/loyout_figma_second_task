@@ -1,7 +1,7 @@
 export {createMessageUnder};
 
-
-function createMessageUnder(buttom, divClass, style, space) {
+function createMessageUnder(buttom = event.caurretTarget, divClass, style, space) {
+  //let buttom = event.caurretTarget;
   // создаём элемент, который будет содержать сообщение
   let message = document.createElement('div');
   message.classList.add(divClass);

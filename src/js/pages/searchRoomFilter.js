@@ -1,12 +1,14 @@
 import {FormDrop} from '../mixins/formDrop';
+import {CheckList} from '../mixins/checkList';
 import {createMessageUnder} from '../mixins/createMessage.js';
 
 
 if (document.querySelector('.searchRoom')) {
-	document.querySelector('.menu__facilities').querySelector('.drop__main').addEventListener('click', menuFacilities);
+	document.querySelector('.menu__facilities').querySelector('.drop__main').addEventListener('click', menuFacilitiesHandler);
+	document.querySelector('.menu__additional').querySelector('.check__menu').addEventListener('click', menuAdditionalHandler);
 	document.body.firstElementChild.addEventListener('click', eventHendler);
 
-	let content = {
+	let menuFacilitiesContent = {
 		items: [
 			{item: 'спальни', number: 2},
 			{item: 'кровати', number: 2},
@@ -16,16 +18,36 @@ if (document.querySelector('.searchRoom')) {
 		//apply: 'apply',
 	};
 
-	let menu = new FormDrop('menu__facilities', content);
+	let menuFacilities = new FormDrop('menu__facilities', menuFacilitiesContent);
 
-	function menuFacilities() {
+	function menuFacilitiesHandler() {
 		//alert(event.currentTarget.className);
-		menu.openMenu();
+		menuFacilities.openMenu();
 		//event.stopPropagation()
 	};
 
+	let menuAdditionalContent = {
+		//title: 'дополнительные удобства',
+		//menu: 'keyboard_arrow_down',
+		items: [{text : 'Завтрак'},
+				{text : 'Письменный стол', check: 'check'},
+				{text : 'стул для кормления', check: 'check'},
+				{text : 'кроватка'},
+				{text : 'телевизор', check: 'check'},
+				{text : 'шампунь'},
+				{text : 'телевизор'},
+				{text : 'шампунь', check: 'check'}]
+	};
+
+	let menuAdditional = new CheckList('menu__additional', menuAdditionalContent);
+
+	function menuAdditionalHandler() {
+		menuAdditional.openMenu();
+	}
+
 	function eventHendler() {
-		menu.removeMenuConteiner();
+		menuFacilities.removeMenuConteiner();
+		menuAdditional.removeMenuConteiner();
 	};
 
 }
