@@ -13,6 +13,7 @@ import '../node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss'
 import '../node_modules/@fortawesome/fontawesome-free/css/all.css'
 import './assets/scss/landing/main.scss'
 import './assets/scss/searchRoom/main.scss'
+import './assets/scss/roomDetails/main.scss'
 
 
 

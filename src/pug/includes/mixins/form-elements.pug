@@ -178,8 +178,16 @@ mixin blogItem(photo, user, time)
       .time= time
 
 mixin blogLike(icon, num, text)
+  if(num<10)
+    - var light = 'light'
+    if !icon
+      - var icon = 'favorite_border'
+  else
+    - var light = ''
+    if !icon
+      - var icon = 'favorite'
   .blogLikeItem
-    .likeItem
+    .likeItem(class=light)
       .like= icon
       .num= num
     .text= text

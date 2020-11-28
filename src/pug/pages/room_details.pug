@@ -1,0 +1,71 @@
+extends ../layout/mainPages
+
+include ../includes/mixins/form-elements
+include ../includes/mixins/cards
+
+block variables
+	- var title = 'Room Details'
+	- var curentURL = 'room_details.html'
+	- var images = ['/assets/img/roomDetail1.png', '/assets/img/roomDetail2.png', '/assets/img/roomDetail3.png']
+
+block content
+	.roomDetails
+		.roomDetails-content
+			.roomDetails__photo
+				.photo__conteiner
+					img(src=images[0])
+				.photo__conteiner
+					img(src=images[1])
+				.photo__conteiner
+					img(src=images[2])
+			.roomDetails__descriptions
+				.descriptions__main
+					.descriptions__main-content
+						.description__information
+							.description__head сведения о номере
+							.description__additions
+								+addition('mood', 'Комфорт', 'Шумопоглощающие стены')
+								+addition('location_city', 'Удобство', 'Окно в каждой из спален')
+								+addition('whatshot', 'уют', 'номер оснащен камином')
+					.description__impression
+						.impression__head впечатления от номера
+						.pie
+							.pie__piece1
+							.pie__piece2
+							.pie__piece3
+							.pie__middle
+								.pie__circule
+								.pie__text 260
+									p голосов
+							.pie__legend
+								.pie__legend-content
+									.legend-content великолепно
+									.legend-content хорошо
+									.legend-content удовлетворительно
+									.legend-content разочарован
+					.description__reviews
+						.reviews-head отзывы посетителей номера
+							span 2 отзыва
+						.reviews__blog
+							.reviews__blog-items
+								+blogItem('/assets/img/userPhoto.png', 'Мурад Сарафанов', '5 дней назад')
+							.reviews__blog-likes
+								+blogLike('', '12', 'Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплементы повару - никто не жаловался из соседей.')
+						.reviews__blog
+							.reviews__blog-items
+								+blogItem('/assets/img/userPatrice.png', 'Патрисия Стёклышкова', 'неделю назад')
+							.reviews__blog-likes
+								+blogLike('', '2', 'Обслуживание на высоте! Всё аккуратно, чисто. Завтраки в номер советую заказать, каждый день новое блюдо и десерт как комплимент')
+
+					.description__rules
+						.rules__head правила
+						.rules__content
+							ul
+								li нельзя с питомцами
+								li без вечеринок и мероприятий
+								li время прибытия - после 13:00, а выезд до 12:00
+					.description__canceling
+						.canceling__head отмена
+						.canceling__content Бесплатная отмена в течение 48ч. После этого при отмене не позднее чем за 5 дн. до прибытия вы получите полный возврат за вычетом сбора за услуги.
+				.descriptions__card
+					+card_booking

@@ -2,22 +2,39 @@ import {createMessageUnder} from '../mixins/createMessage.js';
 
 export {FormDrop};
 
-let content = {
-		title: 'title666',
-		desc: 'description666',
-		form: 'form',
-		menu: 'keyboard_arrow_down',
-		items: [
-			{item: 'item666', number: 8},
-			{item: 'item777', number: 0},
-		],
-		clear: 'clear',
-		apply: 'apply',
-		slider: 1,
-		comment: 'it is sliders comment',
-		paginationLastNum: 15,
-		comment: 'it is paginations comment',
-};
+//необходимо импортировать данный модуль;
+// создать переменную с new FormDrop,
+// в качестве аргументов необходимо передать:
+//		первый аргумент: класс элемента,
+//			который будет вызывать появление содержимого выпадающего меню (кнопки),
+//			так же этот класс будет использоваться в качестве основного класса 
+//			самого выпадающего меню, так что в css файле в этом классе должен быть миксин form_drop
+//		второй аргумент: объект content, из переменных которых и будет состоять меню.
+//дальше необходимо создать обработчик событий и вызвать метод openMenu();
+//для удаления меню (сворачивания) необходимо использовать метод removeMenuConteiner();
+//например :
+// let content = {
+// 		title: 'title666',
+// 		desc: 'description666',
+// 		form: 'form',
+// 		menu: 'keyboard_arrow_down',
+// 		items: [
+// 			{item: 'item666', number: 8},
+// 			{item: 'item777', number: 0},
+// 		],
+// 		clear: 'clear',
+// 		apply: 'apply',
+// 		slider: 1,
+// 		comment: 'it is sliders comment',
+// 		paginationLastNum: 15,
+// 		comment: 'it is paginations comment',
+// };
+// let menuFacilities = new FormDrop('menu__facilities', menuFacilitiesContent);
+// function menuFacilitiesHandler() {
+// 	menuFacilities.openMenu();
+// };
+
+
 
 let secondContent = 0;
 

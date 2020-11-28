@@ -634,7 +634,36 @@ $_bordTextColor: #bc9cff,
   }
 }
 
-@mixin addition {
+@mixin addition(
+    $formColorGrey75: rgba(31, 32, 65, 0.75),
+    $formColorGrey5: rgba(31, 32, 65, 0.5),
+    $formColorGrey25: rgba(31, 32, 65, 0.25),
+    $formColorGrey1: rgba(31, 32, 65, 0.1),
+    $formTitleColor: #1f2041,
+    $formFont: ("Montserrat-Light", serif),
+    $formTitleFont: ("Montserrat-Bold", serif),
+    $formIconFont: "Material Icons",
+    $colorGrad: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%),
+    $colorFontGrad: #bc9cff,
+    $sliderColor: linear-gradient(180deg, #6FCF97 0%, #66D2EA 100%),
+    $btnColor: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%),
+    $btnTextColor: #BC9CFF,
+    $formContSize: 14px,
+    $formTitleSize: 12px,
+    $formWidth: 320px,
+    $formWidth75: 266px,
+    $formWidth60: 230px,
+    $formWidthMini: 150px,
+    $formHeight: 44px,
+    $formMenuFont: 24px,
+    $formBordRad: 4px,
+    $formMenuSize: 44px,
+    $formContMarg: 15px,
+    $formDropBtnSize: 30px,
+    $formDropNumSize: 18px,
+    $formCheckSize: 20px,
+    $formAddSize: 48px,
+  ) {
   .addition {
     width: $formWidth75;
     > .addCont {
@@ -660,10 +689,16 @@ $_bordTextColor: #bc9cff,
         align-items: center;
         .title {
           color: $formTitleColor;
+          &::first-letter {
+            text-transform: uppercase;
+          }
         }
         .desc {
           color: $formColorGrey75;
           font-family: $formFont;
+          &::first-letter {
+            text-transform: uppercase;
+          }
         }
       }
     }
@@ -985,7 +1020,36 @@ $_bordTextColor: #bc9cff,
 }
 
 
-@mixin blogItem {
+@mixin blogItem (
+    $formColorGrey75: rgba(31, 32, 65, 0.75),
+    $formColorGrey5: rgba(31, 32, 65, 0.5),
+    $formColorGrey25: rgba(31, 32, 65, 0.25),
+    $formColorGrey1: rgba(31, 32, 65, 0.1),
+    $formTitleColor: #1f2041,
+    $formFont: ("Montserrat-Light", serif),
+    $formTitleFont: ("Montserrat-Bold", serif),
+    $formIconFont: "Material Icons",
+    $colorGrad: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%),
+    $colorFontGrad: #bc9cff,
+    $sliderColor: linear-gradient(180deg, #6FCF97 0%, #66D2EA 100%),
+    $btnColor: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%),
+    $btnTextColor: #BC9CFF,
+    $formContSize: 14px,
+    $formTitleSize: 12px,
+    $formWidth: 320px,
+    $formWidth75: 266px,
+    $formWidth60: 230px,
+    $formWidthMini: 150px,
+    $formHeight: 44px,
+    $formMenuFont: 24px,
+    $formBordRad: 4px,
+    $formMenuSize: 44px,
+    $formContMarg: 15px,
+    $formDropBtnSize: 30px,
+    $formDropNumSize: 18px,
+    $formCheckSize: 20px,
+    $formAddSize: 48px,
+  ) {
   .blogItem {
     display: grid;
     grid-template-columns: 68px 1fr;
@@ -1016,7 +1080,36 @@ $_bordTextColor: #bc9cff,
 }
 
 
-@mixin blogLikeItem {
+@mixin blogLikeItem (
+    $formColorGrey75: rgba(31, 32, 65, 0.75),
+    $formColorGrey5: rgba(31, 32, 65, 0.5),
+    $formColorGrey25: rgba(31, 32, 65, 0.25),
+    $formColorGrey1: rgba(31, 32, 65, 0.1),
+    $formTitleColor: #1f2041,
+    $formFont: ("Montserrat-Light", serif),
+    $formTitleFont: ("Montserrat-Bold", serif),
+    $formIconFont: "Material Icons",
+    $colorGrad: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%),
+    $colorFontGrad: #bc9cff,
+    $sliderColor: linear-gradient(180deg, #6FCF97 0%, #66D2EA 100%),
+    $btnColor: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%),
+    $btnTextColor: #BC9CFF,
+    $formContSize: 14px,
+    $formTitleSize: 12px,
+    $formWidth: 320px,
+    $formWidth75: 266px,
+    $formWidth60: 230px,
+    $formWidthMini: 150px,
+    $formHeight: 44px,
+    $formMenuFont: 24px,
+    $formBordRad: 4px,
+    $formMenuSize: 44px,
+    $formContMarg: 15px,
+    $formDropBtnSize: 30px,
+    $formDropNumSize: 18px,
+    $formCheckSize: 20px,
+    $formAddSize: 48px,
+  ) {
   .blogLikeItem {
     display: grid;
     grid-template-columns: 68px 1fr;
@@ -1032,7 +1125,12 @@ $_bordTextColor: #bc9cff,
       justify-items: center;
       font-size: 10px;
       @include gradColor($colorGrad);
-      .like {
+      &.light {
+        border-color: rgba(31, 32, 65, 0.25);
+        background: rgba(31, 32, 65, 0.25);
+        -webkit-background-clip: text;
+      }
+      >.like {
         font-family: $formIconFont;
         float: left;
       }
