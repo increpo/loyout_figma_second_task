@@ -14,6 +14,7 @@ import '../node_modules/@fortawesome/fontawesome-free/css/all.css'
 import './assets/scss/landing/main.scss'
 import './assets/scss/searchRoom/main.scss'
 import './assets/scss/roomDetails/main.scss'
+import './assets/scss/registration/main.scss'
 
 
 
@@ -21,6 +22,7 @@ import '../node_modules/@fortawesome/fontawesome-free/js/all.js'
 import './js/pages/calendar.js'
 import './js/pages/guests.js'
 import './js/pages/searchRoomFilter.js'
+import './js/pages/registration.js'
 
 //window.Vue = require('vue')
 //import store from './store'

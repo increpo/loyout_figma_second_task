@@ -1,0 +1,40 @@
+@import '../mixins/media';
+@import '../cards/mixins';
+
+.registration {
+	display: grid;
+
+	.registration__main {
+		width: 90%;
+		justify-self: center;
+		overflow: hidden;
+		margin-bottom: 0;
+		grid-column: 1/1;
+		grid-row: 1/1;
+	}
+
+	img {
+		width: 100%;
+		height: auto;
+	}
+
+	.registration__card {
+		grid-column: 1/1;
+		grid-row: 1/1;
+		align-self: center;
+		justify-self: center;
+		@include card__registration;
+	}
+}
+
+.registration__card {
+	grid-column: 1/1;
+	grid-row: 1/1;
+	align-self: center;
+	justify-self: center;
+	@include card__registration;
+}
+
+.enter__card {
+	@include card__enter;
+}
