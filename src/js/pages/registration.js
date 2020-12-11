@@ -30,3 +30,5 @@ function bodyHandler() {
 	enterCard.removeCardConteiner();
 	registration.removeCardConteiner();
 }
+
+

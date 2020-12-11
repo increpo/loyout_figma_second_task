@@ -577,21 +577,28 @@
     align-items: center;
     //overflow:hidden;
   }
-  img {
+  .img__conteiner {
     align-self: center;
     justify-self: center;
     grid-column: 1/4;
     grid-row: 1/1;
     height: 100%;
+    overflow: hidden;
     //width: 100%;
+    img{
+      height: 100%;
+    }
   }
   .slider__btn {
     font-family: "Material Icons";
     @include media(font-size, 24px);
     height: 100%;
+    width: 100%;
     color: white;
     display: grid;
     align-items: center;
+    border: none;
+    position: relative;
     //justify-items: center;
     //transform: matrix(-1, 0, 0, 1, 0, 0);
     &.left {

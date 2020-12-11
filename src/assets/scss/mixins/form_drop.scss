@@ -225,11 +225,13 @@ $_paginationCommentFontSize: 14px,
     //width: $formWidth75;
     margin-top: 5%;
     display: grid;
-    grid-template-columns: 0.8fr 1.1fr 1fr;
+    grid-template-columns: 1fr;// 1.1fr 1fr;
     grid-template-rows: 1fr;
     align-items: center;
     .line {
-      grid-column: 1/4;
+      grid-column: 1/2;
+      justify-self: center;
+      width: 98%;
       grid-row: 1/2;
       @include media(height, 6px);
 //        width: 266px;
@@ -237,7 +239,7 @@ $_paginationCommentFontSize: 14px,
       border-radius: 3px;
     }
     .round {
-      grid-column: 2/3;
+      grid-column: 1/2;
       grid-row: 1/2;
       height: 12px;
       width: 12px;
@@ -245,19 +247,25 @@ $_paginationCommentFontSize: 14px,
       border-radius: 50%;
       background: $_sliderBGColor;
       &.start {
-        justify-self: start;
+        //justify-self: start;
+        position: relative;
+        left: 30%;
       }
       &.end {
-        justify-self: end;
+        //justify-self: start;
+        position: relative;
+        left: 62%;
       }
     }
     .rangeLine {
-      grid-column: 2/3;
+      grid-column: 1/2;
       grid-row: 1/2;
       background: $_sliderBGColor;
-      width: 100%;
+      width: 32%;
       height: 8px;
       border-radius: 3px;
+      position: relative;
+      left: 32%;
     }
   }
   .comment {

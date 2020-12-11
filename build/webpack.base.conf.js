@@ -53,6 +53,15 @@ module.exports = {
 		}),
 		new VueLoaderPlugin(),
 		new CleanWebpackPlugin(),
+		// new webpack.ProvidePlugin({
+		// 	$: 'jquery',
+		// 	jQuery: 'jquery'
+		// }),
+		// new webpack.ProvidePlugin({
+		// 	$: "jquery/dist/jquery.min.js",
+		// 	jQuery: "jquery/dist/jquery.min.js",
+		// 	"window.jQuery": "jquery/dist/jquery.min.js"
+		// }),
 		...PAGES.map(page => new HTMLWebpackPlugin({
 			template: `${PAGES_DIR}/${page}`, //.pug
 			filename: `./${page.replace(/\.pug/,'.html')}`, //.html

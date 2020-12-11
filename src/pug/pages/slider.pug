@@ -1,0 +1,36 @@
+extends ../layout/mainPages
+include ../includes/mixins/cards
+
+block variables
+	- var currentURL = 'slider.html';
+	- var title = 'Slider';
+	- var room_888 = [{room__photo: '/assets/img/888.png', room__number: '888', room__class: 'люкс', room__price: '9 990', rating__star_full: 5, rating__star_empty: 0, room__review: 145}];
+	- var coastSlider = [{title: 'диапазон цены', desc: '5 000р - 10 000р', slider: 1, comment: 'стоимость за сутки пребывания в номере'}];
+
+block content
+	#some нажми
+	h1#par1 нажми еще разок
+	h3.responsiveBlock это меняющийся блок
+
+	.photoSlider
+		+card__show__room(room_888)
+
+	.menu__coast-slider
+		+form-drop(coastSlider)
+
+	.slider-wrap
+		.slider
+			ul
+				li
+					span.black
+				li
+					span.red
+				li
+					span.yellow
+				li
+					span.blue
+				li
+					span.green
+
+		a(href="#" class="slider-arrow sa-left") lt
+		a(href="#" class="slider-arrow sa-right") gt

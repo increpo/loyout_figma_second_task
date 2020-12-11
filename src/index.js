@@ -15,6 +15,7 @@ import './assets/scss/landing/main.scss'
 import './assets/scss/searchRoom/main.scss'
 import './assets/scss/roomDetails/main.scss'
 import './assets/scss/registration/main.scss'
+import './assets/scss/slider/main.scss'
 
 
 
@@ -23,6 +24,7 @@ import './js/pages/calendar.js'
 import './js/pages/guests.js'
 import './js/pages/searchRoomFilter.js'
 import './js/pages/registration.js'
+import './js/mixins/slider.js'
 
 //window.Vue = require('vue')
 //import store from './store'
