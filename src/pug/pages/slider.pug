@@ -5,7 +5,7 @@ block variables
 	- var currentURL = 'slider.html';
 	- var title = 'Slider';
 	- var room_888 = [{room__photo: '/assets/img/888.png', room__number: '888', room__class: 'люкс', room__price: '9 990', rating__star_full: 5, rating__star_empty: 0, room__review: 145}];
-	- var coastSlider = [{title: 'диапазон цены', desc: '5 000р - 10 000р', slider: 1, comment: 'стоимость за сутки пребывания в номере'}];
+	- var coastSlider = [{title: 'диапазон цены', desc: '5 000₽ - 10 000₽', slider: 1, comment: 'стоимость за сутки пребывания в номере'}];
 
 block content
 	#some нажми
@@ -16,6 +16,9 @@ block content
 		+card__show__room(room_888)
 
 	.menu__coast-slider
+		+form-drop(coastSlider)
+
+	.menu__next-slider
 		+form-drop(coastSlider)
 
 	.slider-wrap

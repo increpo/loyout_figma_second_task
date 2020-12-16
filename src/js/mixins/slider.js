@@ -46,8 +46,9 @@ $(document).ready(function(){
 		'/assets/img/980.png',
 		'/assets/img/856.png']});
 
-	$('.slider').rangeSlider({
-		range: 15000
+	$('.menu__next-slider').rangeSlider({
+		rangeStart: 0,
+		rangeEnd: 15000
 	});
 
 	// (function($){

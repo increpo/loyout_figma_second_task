@@ -11,7 +11,7 @@ mixin form-drop(content)
     if (cont.title || cont.desc)
       .drop__head
         .drop__title= cont.title 
-        .drop__desc= cont.desc
+        input.drop__desc(value= cont.desc)
       
     if cont.form
       .drop__main(class!= dropStyle)

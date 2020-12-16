@@ -42,7 +42,12 @@ $_paginationCommentColor: rgba(31, 32, 65, 0.5),
 $_paginationCommentFontFamily: ("Montserrat-Medium", serif),
 $_paginationCommentFontSize: 14px,
 ) {
-
+  input{
+    border: none;
+    &:focus{
+      outline: none;
+    }
+  }
   .drop__head {
     display: grid;
     grid-template-areas:

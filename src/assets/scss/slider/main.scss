@@ -14,6 +14,14 @@
   //padding-left: 4px;
 }
 
+.menu__next-slider {
+  @include media(margin-left, 100px);
+  @include media(margin-top, 80px);
+  @include media(width, 500px);
+  @include form-drop;
+  //padding-left: 4px;
+}
+
 .slider-wrap {
   position: relative;
   margin: 50px auto;
