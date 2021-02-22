@@ -2,9 +2,17 @@ import $ from 'jquery';
 import '../jQueryPlugins/jquery.responsiveBlock.js';
 import '../jQueryPlugins/jquery.photoSlider.js';
 import '../jQueryPlugins/jquery.rangeSlider.js';
+//import React from 'react';
+//import ReactDOM from 'react-dom';
+//import '../reactPlugins/firstSteps.js';
 
 global.jQuery = $;
 global.$ = $;
+
+
+
+
+
 
 $(document).ready(function(){
 

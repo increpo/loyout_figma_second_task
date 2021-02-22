@@ -25,6 +25,9 @@ import './js/pages/guests.js'
 import './js/pages/searchRoomFilter.js'
 import './js/pages/registration.js'
 import './js/mixins/slider.js'
+import './js/pages/reactWorks.js'
+import './js/TodoApp'
+import './js/StarDBApp'
 
 //window.Vue = require('vue')
 //import store from './store'

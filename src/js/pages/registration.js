@@ -9,7 +9,8 @@ if (document.querySelector('.accaunt__btn-enter')){
 	document.querySelector('.accaunt__btn-enter').addEventListener('click', enterHandler);
 };
 
-document.querySelector('.wrapper__pages').addEventListener('click', bodyHandler);
+document.querySelector('.wrapper__pages') ?
+	document.querySelector('.wrapper__pages').addEventListener('click', bodyHandler) : '';
 
 let content = {};
 
