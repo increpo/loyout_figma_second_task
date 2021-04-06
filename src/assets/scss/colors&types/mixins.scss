@@ -1,0 +1,66 @@
+@mixin color($color) {
+  display: grid;
+  grid-template-areas:
+    "item desc";
+  grid-template-columns: 2fr 4fr;
+  grid-template-rows: 5em;
+  align-items: center;
+  grid-column-gap: 5%;
+//  background-color: yellow;
+
+  .item {
+    grid-area: item;
+    justify-self: end;
+    width: 70px;
+    height: 70px;
+    margin: 0 0 0 0;
+    border: 1px solid $color;
+    border-radius: 0.4em;
+    background-color: $color;
+  }
+
+  .desc {
+    grid-area: desc;
+//    background-color: orange;
+    margin: 0;
+    padding: 0;
+    font-size: 21px;
+  }
+
+  p.bold {
+    font-family: "Quicksand-Bold", arial, sans-serif;
+    color: black;
+    margin: 0;
+  }
+
+  p.regular {
+    font-family: "Quicksand-Regular", arial, serif;
+    margin: 0;
+    color: black;
+  }
+}
+
+@mixin type($font-item: "serif", $font-desc: "serif", $font-size: 100%) {
+  display: grid;
+  grid-template-areas:
+    "item desc .";
+  grid-template-columns: 2fr 4fr 2fr;
+  grid-column-gap: 5%;
+  grid-template-rows: 5em;
+  align-items: start;
+//  background-color: blue;
+
+  .item {
+    justify-self: end;
+    font-family: $font-item, arial, serif;
+    font-size: $font-size;
+    color: $shade-25;
+  }
+
+  .desc {
+    font-family: $font-desc, arial, serif;
+    font-size: $font-size;
+    color: black;
+//    background-color: pink;
+  }
+}

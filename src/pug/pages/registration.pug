@@ -1,0 +1,15 @@
+extends ../layout/mainPages
+
+include ../includes/mixins/cards
+
+block variables
+	- var title = 'Registration';
+	- var currentURL = 'registration.html';
+	- var content= [{dropRegName: [{form: 'Имя'}], dropRegSurname: [{form: 'Фамилия'}], dropRegBirthday: [{title: 'дата рождения', form: 'ДД.ММ.ГГГГ'}], dropRegEmail: [{title: 'данные для входа в сервис', form: 'Email'}], dropRegPass: [{form: 'Пароль'}]}];
+
+block content
+	.registration
+		.registration__main
+			img(src='assets/img/registration.png')
+		.registration__card
+			//-+card_registration(content)

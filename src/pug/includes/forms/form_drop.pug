@@ -1,0 +1,61 @@
+//-block dropVars
+
+  content = [{title: 'title666', desc: 'description666', form: 'form666', menu: 'menu', items: [{item : 'item666', number: 0}, {item : 'item6662', number: 666}], clear: 'clear666', apply: 'apply666', slider: 0, cont.paginationLastNum: 15, comment: 'it can be your oagination comment'}];
+
+
+mixin form-drop(content)
+  each cont in content  
+    if cont.items
+      - var dropStyle = 'open'
+    
+    if (cont.title || cont.desc)
+      .drop__head
+        .drop__title= cont.title 
+        input.drop__desc(value= cont.desc)
+      
+    if cont.form
+      .drop__main(class!= dropStyle)
+        .drop__form= cont.form
+        .drop__menu= cont.menu
+
+    if cont.items
+      .drop__items
+        each item in cont.items
+          if item.number == 0
+            .drop__item(class= 'light')
+              .item-text= item.item 
+              .item-minus -
+              .item-number= item.number
+              .item-plus +
+          else
+            .drop__item
+              .item-text= item.item 
+              .item-minus -
+              .item-number= item.number
+              .item-plus +
+            
+        if cont.clear || cont.apply
+          .drop__decision
+            .decision-clr= cont.clear
+            .decision-apply= cont.apply
+    
+    if cont.slider
+      .slider
+        .line 
+        .rangeLine
+        .round.start
+        .round.end
+      if cont.comment
+        .comment= cont.comment
+
+    if cont.paginationLastNum
+      .pagination
+        .pagItems
+          .pagItem.pagStart 1
+          .pagItem.pagMiddle 2
+          .pagItem.pagMiddle 3
+          .pagItem.pagMiddle ...
+          .pagItem.pagMiddle= cont.paginationLastNum
+          .pagItem.pagEnd arrow_forward
+        if cont.comment
+          .comment= cont.comment

@@ -1,0 +1,44 @@
+@import "mixins";
+@import "vars";
+@import "../mixins/media";
+
+.main {
+  grid-area: content;
+  width: 90.2%;
+  background-color: #f4f4f6;
+  display: grid;
+}
+
+.header__unregistred {
+  margin-top: 5.3%;
+  box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.05);
+  @include header;
+}
+
+.header__registred {
+  margin-top: 3.5%;
+  box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.05);
+  @include header;
+}
+
+.main__footer {
+  margin-top: 3.5%;
+  box-shadow: 0px 1px 0px rgba(31, 32, 65, 0.1);
+  @include footer;
+}
+
+.footer__copyright-bar {
+  @include footer__copyright-bar;
+}
+
+.footer__copyright-bar-creative {
+  @include footer__copyright-bar;
+  margin-top: 3.5%;
+  width: 66%;
+  @include media(height, 368px);
+  justify-self: center;
+  display: grid;
+  fustify-items: center;
+  align-items: center;
+  //padding: 7.5% 0 7.4% 0;
+}

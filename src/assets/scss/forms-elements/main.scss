@@ -1,0 +1,340 @@
+@import "fonts";
+@import "vars";
+@import "mixins";
+
+.formElements {
+  grid-column: 2/3;
+  width: 100%;
+//  margin-left: 12%;
+  display: grid;
+  grid-template-areas:
+    "forms buttons sliders";
+  grid-template-columns: 25% 21% 25%;
+  grid-column-gap: 9.6%;
+  margin-left: 17.3%;
+  margin-top: 4.8%;
+//  grid-template-rows: 6em;
+//  background-color: gray;
+}
+.forms {
+  grid-area: forms;
+//    background-color: yellow;
+//  grid-row: 4/8;
+}
+
+.commonTextForm {
+  @include textForm;
+  margin-top: 5.8%;
+}
+
+.light {
+  @include textForm($formColorGrey25);
+}
+.masced {
+  margin-top: 6.4%;
+}
+
+.commonFormMenu {
+  @include formMenu;
+  margin-top: 5.4%;
+}
+//  @include formMenu;
+
+.mini {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 5.5%;
+  margin-top: 11.4%;
+  @include formMenu;
+  .formMenu {
+    width: $formWidthMini;
+  }
+}
+
+.form75 {
+  margin-top: 11.2%;
+  @include formMenu($_formWidth: $formWidth75);
+}
+
+.sub {
+  @include formMenu($formColorGrey25, $colorGrad, $formWidth75);
+  margin-top: 11.5%;
+}
+
+//@include dropCont;
+
+//  @include dropDown;
+
+//  @include checkList;
+
+// .checkContent {
+//   margin-top: 0;
+//   @include checkItem;
+// }
+
+//  @include addition;
+
+.checkBox {
+  @include formHead;
+  .checkContent {
+    width: $formWidth60;
+    margin-top: 4.3%;
+    @include checkItem;
+  }
+}
+
+
+.buttons {
+  grid-area: buttons;
+//    background-color: orange;
+}
+
+
+
+.radioButtons {
+  width: 87%;
+  margin-top: 17%;
+  background-color: #ffffff;
+  @include formHead;
+  .radioItems {
+    background-color: #ffffff;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+//    grid-column-gap: 2%;
+    margin: 4% 0% 0% 0%;
+    @include radioItem;
+  }
+}
+
+.toggleButtons {
+  margin-top: 14%;
+  background-color: white;
+  @include formHead;
+  .toggleItems {
+    margin-top: 3.6%;
+    display: grid;
+    grid-row-gap: 28%;
+    @include toggleItem;
+  }
+}
+
+.likeButtons {
+//    background-color: blue;
+  margin: 19.5% 0 0 0;
+  width: 37%;
+  @include formHead;
+  .likeItems {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 11%;
+    @include likeItem;
+  }
+}
+
+.rateButtons {
+  margin-top: 13%;
+  @include formHead;
+  > .rateContent {
+    margin: 4.5% 0 4% 0;
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+//      background-color: blue;
+    @include rateItem;
+  }
+
+}
+
+.sliders {
+  grid-area: sliders;
+//    background-color: pink;
+}
+
+.rangeSliders {
+  margin: 0 0 0 0;
+  width: 82%;
+  @include formHead;
+  .sliderContent {
+    margin: 5.5% 0 0 0;
+    @include slider;
+  }
+}
+
+.btns {
+  margin-top: 36px;
+  @include formHead;
+  > .buttonItems {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    width: 80%;
+    grid-row-gap: 28px;
+    margin: 12px 0 0 0;
+    .button {
+      @include btn;
+    }
+    .btnHov {
+      @include btn;
+      opacity: 0.5;
+    }
+    .btnBord {
+      @include btn {
+        @include btnDesc;
+      }
+    }
+    .btnBordHov {
+      @include btn {
+        opacity: 0.5;
+        @include btnDesc;
+      }
+    }
+  }
+}
+
+.buttonsText {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 50%;
+  margin: 31px 0 0 0;
+  text-transform: uppercase;
+  .btnText {
+    @include btnText;
+  }
+  .btnTextHov {
+    @include btnText;
+    color: $formColorGrey5;
+  }
+}
+
+.pay {
+  margin-top: 30px;
+  @include btnPay;
+}
+
+.pagination {
+  margin: 40px 0 0 0;
+//    grid-row-gap: 16px;
+  @include formHead;
+  .pagCont {
+    margin-top: 10px;
+    display: grid;
+    @include pag;
+    .comment {
+      font-family: $formFont;
+      font-size: $formContSize;
+      color: $formColorGrey75;
+      margin-top: 3%;
+      margin-left: 8px;
+    }
+  }
+}
+
+
+// .dropDef {
+//   @include dropDown($formWidth75);
+// }
+
+.checkRich {
+  margin-top: 12px;
+  width: $formWidth75;
+  @include formHead;
+  .richItems {
+    margin-top: 11px;
+    display: grid;
+    grid-row-gap: 11px;
+    @include richItem;
+  }
+}
+
+.bulletList {
+  margin-top: 12px;
+  width: $formWidth75;
+  @include formHead;
+  display: grid;
+  grid-row-gap: 8px;
+  .bulletItems {
+    display: grid;
+    grid-row-gap: 10px;
+    @include bulletItem
+  }
+}
+
+
+
+
+.dropElements {
+  grid-column: 2/3;
+  width: 100%;
+//  margin-left: 12%;
+  display: grid;
+  grid-template-areas:
+    "forms buttons sliders";
+  grid-template-columns: 25% 21% 25%;
+  grid-column-gap: 9.6%;
+  margin-left: 17.3%;
+  margin-top: 7.5%;
+}
+
+
+.drop75 {
+  @include dropDown($formWidth75);
+}
+
+
+.dropOpen {
+  margin-top: 5%;
+  @include dropDown($formWidth75);
+}
+
+.dropOpen100 {
+  @include dropDown;
+}
+
+
+
+.listElements {
+  grid-column: 2/3;
+  width: 100%;
+//  margin-left: 12%;
+  display: grid;
+  grid-template-areas:
+    "forms buttons sliders";
+  grid-template-columns: 25% 21% 25%;
+  grid-column-gap: 9.7%;
+  margin-left: 220px;
+  margin-top: 40px;
+}
+
+.checkClose {
+  @include checkList;
+}
+
+.checkOpen {
+  margin-top: 23px;
+  @include checkList;
+}
+
+
+.blogElements {
+  grid-column: 2/3;
+  width: 100%;
+  margin: 30px 0 0 220px;
+  display: grid;
+  grid-template-columns: 1.55fr 3fr;
+
+  .additions {
+    display: grid;
+    grid-row-gap: 20px;
+    @include addition;
+  }
+  .blog {
+    margin-top: 10px;
+    .blogItems {
+      @include blogItem;
+      @include blogLikeItem;
+    }
+    .likeItems {
+      margin-top: 10px;
+      @include blogLikeItem;
+      width: 730px;
+    }
+  }
+}

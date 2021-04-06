@@ -1,0 +1,1149 @@
+// use with form_drop.pug
+//@import "media";
+
+@mixin form-drop(
+$_titleFont: ("Montserrat-Bold", serif),
+$_titleFotnSize: 12px,
+$_titleFontColor: #1f2041,
+$_descFont: ("Montserrat-Light", serif),
+$_descFontColor: rgba(31, 32, 65, 0.5),
+$_descFontSize: 12px,
+$_formFont: ("Montserrat-Light", serif),
+$_formFontSize: 14px,
+$_formFontColor: #1f2041,
+$_formMainBordColor: rgba(31, 32, 65, 0.25),
+$_formMainOpenBordColor: rgba(31, 32, 65, 0.5),
+$_menuColor: rgba(31, 32, 65, 0.5),
+$_menuFontSize: 24px,
+$_itemFont: ("Montserrat-Bold", serif),
+$_itemFontSize: $_formFontSize,
+$_itemFontColor: pink,
+$_itemWidth: 35px,
+$_minusBorderColor: green,
+$_minusColor: red,
+$_minusBorder-light: red,
+$_minusColor-light: cyan,
+$_decisionFont: ("Montserrat-Bold", serif),
+$_decisionFontSize: 14px,
+$_clrFontColor: rgba(31, 32, 65, 0.5),
+$_applyFontColor: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%),
+) {
+
+  .drop__head {
+    display: grid;
+    grid-template-areas:
+      "title desc";
+    > .drop__title {
+      grid-area: title;
+      font-family: $_titleFont;
+      @include media(font-size, $_titleFotnSize);
+      // font-size: $_titleFotnSize;
+      text-transform: uppercase;
+      color: $_titleFontColor;
+      align-self: center;
+      line-height: 190%;
+//      background-color: green;
+    }
+    > .drop__desc {
+      grid-area: desc;
+      text-align: right;
+      font-family: $_descFont;
+      @include media(font-size, $_descFontSize);
+      //font-size: $_descFontSize;
+      text-transform: uppercase;
+      color: $_descFontColor;
+    }
+  }
+  .drop__main {
+    border: 1px solid $_formMainBordColor;
+    &.open {
+      border-color: $_formMainOpenBordColor;
+      border-radius: 4px 4px 0px 0px;
+    }
+    border-radius: 4px;
+    display: grid;
+    grid-template-areas:
+      "cont menu";
+    @include media(grid-template-columns, 2fr, $_menuFontSize*1.76);
+    //grid-template-columns: 1fr $_menuFontSize*1.84;
+    @include media(grid-template-rows, $_menuFontSize*1.76);
+    //grid-template-rows: $_menuFontSize*1.84;
+    align-items: center;
+    > .drop__form {
+      grid-area: cont;
+//      background-color: blue;
+      color: $_formFontColor;
+      font-family: $_formFont;
+      @include media(font-size, $_formFontSize);
+      //font-size: $_formFontSize;
+  //    line-height: 300%;
+      @include media(margin-left, 15px);
+    }
+    > .drop__menu {
+//      background-color: blue;
+      grid-area: menu;
+      font-family: "Material Icons";
+      @include media(font-size, $_menuFontSize);
+      //font-size: $_menuFontSize;
+      background: $_menuColor;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      justify-self: center;
+      text-transform: lowercase;
+    }
+  }
+  .drop__items {
+    border: 1px solid $_formMainOpenBordColor;
+    border-radius: 0px 0px 4px 4px;
+
+    .drop__item {
+  //    border-top: 1px solid blue;
+      display: grid;
+      grid-template-areas:
+        "text minus num plus";
+      @include media(grid-template-columns, 2fr, $_itemWidth, $_itemWidth, $_itemWidth);
+      //grid-template-columns: 1fr $_itemWidth $_itemWidth $_itemWidth;
+      @include media(grid-template-rows, $_itemWidth*1.23);
+      //grid-template-rows: $_itemWidth*1.23;
+  //    background-color: blue;
+      align-items: center;
+      @include media(margin, 0.01px, $_itemWidth*0.2, 0.01px, $_itemWidth*0.2);
+      //margin: 0 $_itemWidth*0.2 0 $_itemWidth*0.2;
+      > .item-text {
+        //@include media(margin-left, )
+        grid-area: text;
+        font-family: $_itemFont;
+        @include media(font-size, $_itemFontSize);
+        //font-size: $_itemFontSize;
+        color: $_itemFontColor;
+        text-transform:uppercase;
+    //    line-height: $formTitleSize*3.1;
+      }
+      > .item-minus {
+        @include media(width, $_itemWidth);
+        @include media(height, $_itemWidth);
+        //width: $_itemWidth;
+        //height: $_itemWidth;
+        grid-area: minus;
+        justify-self: center;
+        display: grid;
+        align-items: center;
+        //text-align: center;
+        justify-items: center;
+        border: 1px solid $_minusBorderColor;
+        border-radius: 50%;
+        color: $_minusColor;
+        font-family: $_itemFont;
+        @include media(font-size, $_itemWidth*0.6);
+        //font-size: $_itemWidth*0.6;
+      }
+      > .item-number {
+        grid-area: num;
+        justify-self: center;
+        color: $_itemFontColor;
+        font-family: $_itemFont;
+        @include media(font-size, $_itemWidth*0.3);
+        //font-size: $_itemWidth*0.3;
+      }
+      > .item-plus {
+        @include media(width, $_itemWidth);
+        @include media(height, $_itemWidth);
+        //width: $_itemWidth;
+        //height: $_itemWidth;
+        grid-area: plus;
+        justify-self: center;
+        border: 1px solid $_minusBorderColor;
+        border-radius: 50%;
+        color: $_minusColor;
+        font-family: $_itemFont;
+        @include media(font-size, $_itemWidth*0.6);
+        //font-size: $_itemWidth*0.6;
+        display: grid;
+        justify-items: center;
+        align-items: center;
+      }
+      &.light {
+        > .item-minus {
+          border: 1px solid $_minusBorder-light;
+          color: $_minusColor-light;
+        }
+      }
+    }
+    .drop__decision {
+  //    background-color: green;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      @include media(margin, $_itemWidth*0.2, 0.01px, $_itemWidth*0.2, 0.01px);
+      //margin: $_itemWidth*0.2 0 $_itemWidth*0.2 0;
+      text-transform: uppercase;
+      @include media(font-size, $_decisionFontSize);
+      //font-size: $_decisionFontSize;
+      font-weight: bold;
+      .decision-clr {
+        @include media(margin-left, $_itemWidth*0.2);
+        //margin-left: $_itemWidth*0.2;
+        font-family: $_decisionFont;
+        font-weight: bold;
+        color: $_clrFontColor;
+      }
+      .decision-apply {
+        @include media(margin-right, $_itemWidth*0.2);
+        //margin-right: $_itemWidth*0.2;
+        justify-self: end;
+        font-family: $_decisionFont;
+        background: $_applyFontColor;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    }
+  }
+}
+
+
+//@import "media";
+//  .some_button.bord.hover
+//   .button__item
+//     .item__text button text
+//     .item__icon button icon
+
+
+@mixin button(
+$_btnHeight: 44px,
+$_BGColorGradient: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%),
+$_textFont: ("Montserrat-Bold", serif),
+$_textFontSize: 12px,
+$_itemFontColor: white,
+$_bordTextColor: #bc9cff,
+) {
+  .button__item {
+//    margin-top: 30px;
+    display: grid;
+    @include media(grid-template-columns, 2fr, $_btnHeight);
+    @include media(grid-template-rows, $_btnHeight);
+    background: $_BGColorGradient;
+    //color: white;
+    // width: 320px;
+    // height: 44px;
+    border-radius: 22px;
+    align-items: center;
+    .item__text {
+      grid-row: 1/2;
+      grid-column: 1/3;
+      justify-self: center;
+      font-family: $_textFont;
+      @include media(font-size, $_textFontSize)
+      text-transform: uppercase;
+      background: $_itemFontColor;
+      -webkit-background-clip: text;
+      color: $_itemFontColor;
+      //-webkit-text-fill-color: transparent;
+    }
+    .item__icon {
+      grid-row: 1/2;
+      grid-column:2/3;
+      justify-self: center;
+      font-family: "Material Icons";
+      font-size: 24px;
+      margin-right: 2%;
+      color: $_itemFontColor;
+    }
+  }
+
+  @if & {
+    &.bord {
+      .item__text {
+        display: flex;
+        align-self: stretch;
+        justify-self: stretch;
+        align-items: center;
+        justify-content: center;
+        background-color: white;
+        -webkit-background-clip: padding-box;
+        border: 2px solid rgba(255, 255, 255, 0);
+        border-radius: 22px;
+        color: $_bordTextColor;
+      }
+      .item__icon {
+        color: $_bordTextColor;
+        visibility: 1;
+      }
+      &.hover {
+        .item__text {
+          border: 2px solid rgba(255, 255, 255, 0.5);
+        }
+      }
+    }
+  } @else {
+    &.hover {
+      .item__text {
+        border: 2px solid rgba(255, 255, 255, 0.5);
+      }
+    }
+  }
+}
+
+
+@mixin icon_style {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+
+
+
+@mixin mediaWidth($val){
+  @media (min-width : 1524px) {
+  /* стили */
+    width: $val;
+  }
+  @media only (min-width : 1224px) and (max-width: 1524px) {
+  /* стили */
+    width: $val*0.8;
+  }
+  @media only (min-width : 768px) and (max-width: 1224px) {
+  /* стили */
+    width: $val*0.6;
+  }
+  @media only (min-width : 480px) and (max-width: 768px) {
+  /* стили */
+    width: $val*0.4;
+  }
+  @media only (max-width : 480px) {
+  /* стили */
+    width: $val*0.2;
+  }
+}
+
+@mixin gradColor($color) {
+  background: $color;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+//  color: #0B2349;
+//  display: table;
+}
+
+@mixin formHead {
+  .formHead {
+    display: grid;
+    grid-template-areas:
+      "title desc";
+    > .title {
+      grid-area: title;
+      font-family: $formTitleFont;
+      font-size: $formTitleSize;
+      text-transform: uppercase;
+      color: $formTitleColor;
+      align-self: center;
+      line-height: 190%;
+//      background-color: green;
+    }
+    > .desc {
+      grid-area: desc;
+      text-align: right;
+      font-family: $formFont;
+      font-size: $formTitleSize;
+      text-transform: uppercase;
+      color: $formColorGrey5;
+    }
+  }
+}
+
+@mixin formStyle($_bordColor: $formColorGrey25) {
+  border: 1px solid $_bordColor;
+  border-radius: $formBordRad;
+  box-sizing: border-box;
+  background-color: #ffffff;
+}
+
+@mixin formContent($_contColor) {
+  .content {
+    color: $_contColor;
+    font-family: $formFont;
+    font-size: $formContSize;
+    line-height: 300%;
+  }
+}
+
+@mixin contMenu($_contColor: $formColorGrey75, $_menuColor: $formColorGrey5) {
+  .content {
+//    height: 44px;
+    display: grid;
+    grid-template-areas:
+      "cont menu";
+    grid-template-columns: 1fr $formMenuSize;
+    grid-auto-rows: minmax($formMenuSize, auto);
+    align-items: center;
+    > .cont {
+      grid-area: cont;
+//      background-color: blue;
+      color: $_contColor;
+      font-family: $formFont;
+      font-size: $formContSize;
+      line-height: 300%;
+      margin: 0 0 0 $formContMarg;
+    }
+    > .menu {
+//      background-color: blue;
+      grid-area: menu;
+      font-family: "Material Icons";
+      font-size: $formMenuFont;
+      @include gradColor($_menuColor);
+      justify-self: center;
+    }
+  }
+}
+
+@mixin textForm($_contColor: $formColorGrey75) {
+  .textForm {
+    @include mediaWidth($formWidth);
+    //width: $formWidth;
+    @include formHead;
+    .formContent {
+      display: grid;
+      align-items: center;
+//      height: $formHeight;
+      padding: 0 0 0 $formContMarg;
+      @include formStyle;
+      @include formContent($_contColor);
+    }
+  }
+}
+
+@mixin formMenu($_contColor: $formColorGrey75, $_menuColor: $formColorGrey5, $_formWidth: $formWidth, $_bordColor: $formColorGrey25) {
+  .formMenu {
+    @include mediaWidth($_formWidth);
+    @include formHead;
+    .contMenu {
+      @include formStyle($_bordColor);
+      @include contMenu($_contColor, $_menuColor);
+      @content;
+    }
+//    margin-bottom: 20px;
+  }
+}
+
+
+@mixin drop($_minusColor, $_minusBorderColor) {
+  .drop {
+//    border-top: 1px solid blue;
+    display: grid;
+    grid-template-areas:
+      "text butMinus but butPlus";
+    grid-template-columns: 1fr $formDropBtnSize*1.04 $formTitleSize*2.5 $formDropBtnSize*1.04;
+    grid-template-rows: $formDropBtnSize*1.23;
+//    background-color: blue;
+    align-items: center;
+    margin: 0 $formDropBtnSize*0.2 0 $formContMarg;
+    > .text {
+      grid-area: text;
+      font-family: $formTitleFont;
+      font-size: $formTitleSize;
+      text-transform:uppercase;
+  //    line-height: $formTitleSize*3.1;
+    }
+    > .butMinus {
+      width: $formDropBtnSize;
+      height: $formDropBtnSize;
+      grid-area: butMinus;
+      justify-self: center;
+      display: grid;
+      align-items: center;
+      justify-items: center;
+      border: 1px solid $_minusBorderColor;
+      border-radius: 50%;
+      color: $_minusColor;
+      font-family: $formFont;
+      font-size: $formDropNumSize;
+    }
+    > .but {
+      grid-area: but;
+      justify-self: center;
+      color: $formTitleColor;
+      font-family: $formTitleFont;
+      font-size: $formTitleSize;
+    }
+    > .butPlus {
+      width: $formDropBtnSize;
+      height: $formDropBtnSize;
+      grid-area: butPlus;
+      justify-self: center;
+      border: 1px solid $formColorGrey25;
+      border-radius: 50%;
+      color: $formColorGrey5;
+      font-family: $formTitleFont;
+      font-size: $formTitleSize;
+      display: grid;
+      justify-items: center;
+      align-items: center;
+    }
+  }
+}
+//
+// @mixin dropCont($_formWidth: $formWidth75) {
+//   .dropCont {
+// //    background-color: blue;
+//     @include formMenu($_formWidth: $_formWidth, $_bordColor: $formColorGrey5) {
+//       hr {
+//         border-top: 1px solid $formColorGrey5;
+//         width: 99.5%;
+//         margin: 0 0 0 0;
+//       }
+//       @include drop($formColorGrey5, $formColorGrey25);
+//       > .light {
+//         @include drop($formColorGrey25, $formColorGrey1);
+//       }
+//       @include decision;
+//     }
+//   }
+// }
+
+@mixin decision {
+  .decision {
+//    background-color: green;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 15px 0 10px 0;
+    text-transform: uppercase;
+    font-size: $formTitleSize;
+    font-weight: bold;
+    .clr {
+      margin-left: 12px;
+      font-family: $formTitleFont;
+      font-weight: bold;
+      color: $formColorGrey5;
+    }
+    .apply {
+      margin-right: 6px;
+      justify-self: end;
+      font-family: $formTitleFont;
+      color: $colorFontGrad;
+    }
+  }
+}
+
+@mixin dropDown($_formWidth: $formWidth) {
+  .dropDown {
+  //    background-color: blue;
+    width: $_formWidth;
+    @include formHead;
+    .dropMain {
+      border: 1px solid $formColorGrey25;
+      border-radius: $formBordRad $formBordRad 0px 0px;
+      &.open {
+        border-color: $formColorGrey5;
+      }
+      @include contMenu;
+    }
+    .dropContent {
+      padding: 0.2% 0 0.8% 0;
+      border: 1px solid $formColorGrey5;
+      border-radius: 0px 0px $formBordRad $formBordRad;
+      @include drop($formColorGrey5, $formColorGrey25);
+      > .light {
+        @include drop($formColorGrey25, $formColorGrey1);
+      }
+      @include decision;
+    }
+  }
+}
+
+@mixin checkList($_formWidth: $formWidth75) {
+  .checkList {
+    width: $_formWidth;
+//    margin: 2% 0 2% 0;
+    .listTitle {
+      display: grid;
+      grid-template-columns: 1fr $formMenuSize;
+      grid-template-rows: $formMenuSize;
+      align-items: center;
+      .title {
+        text-transform: uppercase;
+        font-family: $formTitleFont;
+        font-size: $formTitleSize;
+        color: $formTitleColor;
+      }
+      .icon {
+        text-transform: lowercase;
+        font-family: $formIconFont;
+        color: $formColorGrey5;
+        justify-self: center;
+        font-size: $formMenuFont;
+      }
+    }
+    .listContent {
+      @include checkItem;
+    }
+  }
+}
+
+@mixin checkItem($_font: $formFont, $_fontColor: $formColorGrey5) {
+  .checkItem {
+  //      background-color: orange;
+    display: grid;
+    grid-template-columns: $formCheckSize 1fr;
+    grid-column-gap: 4%;
+    grid-template-rows: 30px;
+//    align-items: center;
+//    margin: 3% 0 3% 0%;
+    > .checkBox {
+      border: 1px solid $formColorGrey25;
+      border-radius: 20%;
+      width: $formCheckSize;
+      height: $formCheckSize;
+    }
+    > .checkText {
+        font-family: $_font;
+        font-size: $formContSize;
+        color: $_fontColor;
+        margin: 0;
+    }
+    &.checked {
+      .checkBox {
+  //          background-color: blue;
+        border-color: $colorFontGrad;
+        @include gradColor($colorGrad);
+        font-family: "Material Icons";
+        font-weight: 900;
+        font-size: $formTitleSize;
+        display: grid;
+        align-items: center;
+        justify-items: center;
+      }
+//      .checkText {
+//          color: $colorFontGrad;
+//      }
+    }
+  }
+}
+
+@mixin addition(
+    $formColorGrey75: rgba(31, 32, 65, 0.75),
+    $formColorGrey5: rgba(31, 32, 65, 0.5),
+    $formColorGrey25: rgba(31, 32, 65, 0.25),
+    $formColorGrey1: rgba(31, 32, 65, 0.1),
+    $formTitleColor: #1f2041,
+    $formFont: ("Montserrat-Light", serif),
+    $formTitleFont: ("Montserrat-Bold", serif),
+    $formIconFont: "Material Icons",
+    $colorGrad: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%),
+    $colorFontGrad: #bc9cff,
+    $sliderColor: linear-gradient(180deg, #6FCF97 0%, #66D2EA 100%),
+    $btnColor: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%),
+    $btnTextColor: #BC9CFF,
+    $formContSize: 14px,
+    $formTitleSize: 12px,
+    $formWidth: 320px,
+    $formWidth75: 266px,
+    $formWidth60: 230px,
+    $formWidthMini: 150px,
+    $formHeight: 44px,
+    $formMenuFont: 24px,
+    $formBordRad: 4px,
+    $formMenuSize: 44px,
+    $formContMarg: 15px,
+    $formDropBtnSize: 30px,
+    $formDropNumSize: 18px,
+    $formCheckSize: 20px,
+    $formAddSize: 48px,
+  ) {
+  .addition {
+    width: $formWidth75;
+    > .addCont {
+//      background-color: blue;
+      display: grid;
+      grid-template-columns: $formAddSize 1fr;
+      grid-column-gap: $formAddSize/3.8;
+//      margin: 2% 0 2% 0;
+      > .icon {
+        font-family: "Material Icons";
+        font-size: $formAddSize;
+        @include gradColor($colorGrad);
+        margin: 0;
+      }
+      > .text {
+        font-style: none;
+        align-self: center;
+        font-family: $formTitleFont;
+        font-size: $formContSize;
+        margin: 0;
+        display: grid;
+        height: 100%;
+        align-items: center;
+        .title {
+          color: $formTitleColor;
+          &::first-letter {
+            text-transform: uppercase;
+          }
+        }
+        .desc {
+          color: $formColorGrey75;
+          font-family: $formFont;
+          &::first-letter {
+            text-transform: uppercase;
+          }
+        }
+      }
+    }
+    > hr {
+      border-top: 1px solid $formColorGrey1;
+      margin: $formAddSize/2.5 0 0 0;
+    }
+  }
+}
+
+@mixin radioItem {
+  .radioItem {
+    display: grid;
+    grid-template-columns: $formMenuFont 1fr;
+    grid-column-gap: $formMenuFont/2.8;
+    .btn {
+      font-family: "Material Icons";
+      font-size: $formMenuFont;
+      color: $formColorGrey25;
+      align-self: center;
+    }
+    .desc {
+      font-family: $formFont;
+      font-size: $formContSize;
+      color: $formColorGrey5;
+      align-self: center;
+    }
+  }
+  .checked {
+    .btn {
+      @include gradColor($colorGrad);
+    }
+    .desc {
+      color: $formColorGrey75;
+    }
+  }
+}
+
+@mixin toggleItem {
+  .toggleItem {
+    display: grid;
+    grid-template-columns: 1fr 4.2fr;
+    > .btn {
+//      background-color: blue;
+      width: 40px;
+      height: 20px;
+      border: 1px solid $formColorGrey25;
+      border-radius: 10px;
+      color: red;
+      font-size: $formFont;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      .round {
+        width: 12px;
+        height: 12px;
+        background-color: $formColorGrey25;
+        border-radius: 50%;
+        margin: 10%;
+      }
+    }
+    > .desc {
+      font-family: $formFont;
+      font-size: $formContSize;
+      color: $formColorGrey75;
+    }
+  }
+  >.checked {
+    margin: 0 0 0 0;
+    .btn {
+      height: 20px;
+      width: 40px;
+      border: 1px solid $colorFontGrad;
+      border-radius: 10px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      .round {
+        width: 12px;
+        height: 12px;
+        background: $colorGrad;
+        margin: 10%;
+        border-radius: 50%;
+      }
+    }
+    .desc {
+      font-family: $formFont;
+      font-size: $formContSize;
+      color: $formColorGrey75;
+    }
+  }
+}
+
+@mixin likeItem {
+  .likeItem {
+//    margin: 30% 0 30% 0;
+    width: 40px;
+    height: 20px;
+    border: 1px solid $formColorGrey25;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: 3.5fr 5fr;
+    justify-items: center;
+    align-items: center;
+    > .icon {
+      font-family: "Material Icons";
+      font-size: 12px;
+      color: $formColorGrey25;
+    }
+    > .num {
+      font-family: $formFont;
+      font-size: 12px;
+      color: $formColorGrey25;
+    }
+  }
+  .liked {
+    > .likeItem {
+      border-color: $colorFontGrad;
+      > .icon {
+        @include gradColor($colorGrad);
+      }
+      > .num {
+        @include gradColor($colorGrad);
+      }
+    }
+  }
+}
+
+@mixin rateItem {
+  .rateItem {
+    .item {
+      float: left;
+      font-family: "Material Icons";
+      font-size: 24px;
+      @include gradColor($colorGrad);
+
+    }
+  }
+}
+
+@mixin slider {
+  .slider {
+    width: $formWidth75;
+    display: grid;
+    grid-template-columns: 0.8fr 1.1fr 1fr;
+    grid-template-rows: 1fr;
+    align-items: center;
+    .line {
+      grid-column: 1/4;
+      grid-row: 1/2;
+      height: 6px;
+//        width: 266px;
+      border: 1px solid $formColorGrey25;
+      border-radius: 3px;
+    }
+    .round {
+      grid-column: 2/3;
+      grid-row: 1/2;
+      height: 12px;
+      width: 12px;
+      border: 2px solid white;
+      border-radius: 50%;
+      background: $sliderColor;
+      &.start {
+        justify-self: start;
+      }
+      &.end {
+        justify-self: end;
+      }
+    }
+    .rangeLine {
+      grid-column: 2/3;
+      grid-row: 1/2;
+      background: $sliderColor;
+      width: 100%;
+      height: 8px;
+      border-radius: 3px;
+    }
+  }
+}
+
+@mixin btn {
+  .btn {
+    height: 44px;
+    width: 99px;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    border-radius: 22px;
+    background: $btnColor;
+    color: white;
+    text-transform: uppercase;
+    font-family: $formTitleFont;
+    font-size: $formTitleSize;
+    @content;
+  }
+}
+
+@mixin btnDesc {
+  .desc {
+    width: 95px;
+    height: 40px;
+    background-color: white;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    >p {
+      @include gradColor($btnColor);
+      margin: 0;
+      opacity: 1;
+    }
+  }
+}
+
+@mixin btnText {
+  text-transform: uppercase;
+  font-family: $formTitleFont;
+  font-size: $formTitleSize;
+  color: $btnTextColor;
+}
+
+@mixin btnPay {
+  .btnPay {
+//    margin-top: 30px;
+    display: grid;
+    grid-template-columns: 1fr 44px;
+    grid-template-rows: 1fr;
+    background: $colorGrad;
+    color: white;
+    width: 320px;
+    height: 44px;
+    border-radius: 22px;
+    align-items: center;
+    .text {
+      grid-row: 1/2;
+      grid-column: 1/3;
+      justify-self: center;
+      font-family: $formFont;
+    }
+    .arrow {
+      grid-row: 1/2;
+      grid-column:2/3;
+      justify-self: center;
+      font-family: $formIconFont;
+      font-size: 24px;
+      margin-right: 2%;
+    }
+  }
+}
+
+@mixin pag {
+  .pagItems {
+//    margin-top: 16px;
+    .pagItem {
+      display: grid;
+      align-items: center;
+      justify-items: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 20px;
+      float: left;
+      font-size: $formTitleSize;
+      &.pagStart {
+        color: white;
+        background: $colorGrad;
+        font-family: $formTitleFont;
+      }
+      &.pagMiddle {
+        font-family: $formFont;
+        color: $formColorGrey5;
+      }
+      &.pagEnd {
+        font-family: $formIconFont;
+        color: white;
+        font-size: 24px;
+        background: $sliderColor;
+      }
+    }
+  }
+}
+
+@mixin richItem {
+  .richItem {
+    @include checkItem($_font: $formTitleFont, $_fontColor: $formColorGrey75);
+    > .desc {
+      width: $formWidth60;
+      font-family: $formFont;
+      font-size: $formTitleSize;
+      color: $formColorGrey5;
+      margin: -3% 0 0 12%;
+    }
+  }
+}
+
+
+
+@mixin bulletItem {
+  .bulletItem {
+    display: grid;
+    grid-template-columns: 19px 1fr;
+//    grid-template-rows: 20px;
+//    align-items: center;
+//    justify-items: center;
+    .bulletIcon {
+      margin-top: 10px;
+      width: 10px;
+      height: 10px;
+      background-color: $formColorGrey25;
+      border-radius: 5px;
+    }
+    .bulletText {
+      font-family: $formFont;
+      font-size: $formContSize;
+      color: $formColorGrey75;
+      line-height: 24px;
+    }
+  }
+}
+
+
+@mixin blogItem (
+    $formColorGrey75: rgba(31, 32, 65, 0.75),
+    $formColorGrey5: rgba(31, 32, 65, 0.5),
+    $formColorGrey25: rgba(31, 32, 65, 0.25),
+    $formColorGrey1: rgba(31, 32, 65, 0.1),
+    $formTitleColor: #1f2041,
+    $formFont: ("Montserrat-Light", serif),
+    $formTitleFont: ("Montserrat-Bold", serif),
+    $formIconFont: "Material Icons",
+    $colorGrad: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%),
+    $colorFontGrad: #bc9cff,
+    $sliderColor: linear-gradient(180deg, #6FCF97 0%, #66D2EA 100%),
+    $btnColor: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%),
+    $btnTextColor: #BC9CFF,
+    $formContSize: 14px,
+    $formTitleSize: 12px,
+    $formWidth: 320px,
+    $formWidth75: 266px,
+    $formWidth60: 230px,
+    $formWidthMini: 150px,
+    $formHeight: 44px,
+    $formMenuFont: 24px,
+    $formBordRad: 4px,
+    $formMenuSize: 44px,
+    $formContMarg: 15px,
+    $formDropBtnSize: 30px,
+    $formDropNumSize: 18px,
+    $formCheckSize: 20px,
+    $formAddSize: 48px,
+  ) {
+  .blogItem {
+    display: grid;
+    grid-template-columns: 68px 1fr;
+    grid-template-rows: 50px;
+    .photo {
+      display: grid;
+      justify-items: center;
+      img {
+        margin: -8% -10% -10% -30%;
+      }
+    }
+    .content {
+      display: grid;
+      align-items: center;
+  //    grid-row-gap: 1px;
+      font-size: $formContSize;
+      color: $formColorGrey75;
+//      line-height: 24px;
+      .user {
+        font-family: $formTitleFont;
+      }
+      .time {
+        font-family: $formFont;
+
+      }
+    }
+  }
+}
+
+
+@mixin blogLikeItem (
+    $formColorGrey75: rgba(31, 32, 65, 0.75),
+    $formColorGrey5: rgba(31, 32, 65, 0.5),
+    $formColorGrey25: rgba(31, 32, 65, 0.25),
+    $formColorGrey1: rgba(31, 32, 65, 0.1),
+    $formTitleColor: #1f2041,
+    $formFont: ("Montserrat-Light", serif),
+    $formTitleFont: ("Montserrat-Bold", serif),
+    $formIconFont: "Material Icons",
+    $colorGrad: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%),
+    $colorFontGrad: #bc9cff,
+    $sliderColor: linear-gradient(180deg, #6FCF97 0%, #66D2EA 100%),
+    $btnColor: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%),
+    $btnTextColor: #BC9CFF,
+    $formContSize: 14px,
+    $formTitleSize: 12px,
+    $formWidth: 320px,
+    $formWidth75: 266px,
+    $formWidth60: 230px,
+    $formWidthMini: 150px,
+    $formHeight: 44px,
+    $formMenuFont: 24px,
+    $formBordRad: 4px,
+    $formMenuSize: 44px,
+    $formContMarg: 15px,
+    $formDropBtnSize: 30px,
+    $formDropNumSize: 18px,
+    $formCheckSize: 20px,
+    $formAddSize: 48px,
+  ) {
+  .blogLikeItem {
+    display: grid;
+    grid-template-columns: 68px 1fr;
+    justify-items: center;
+    .likeItem {
+      width: 40px;
+      height: 20px;
+      border: 1px solid $colorFontGrad;
+      border-radius: 10px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      justify-items: center;
+      font-size: 10px;
+      @include gradColor($colorGrad);
+      &.light {
+        border-color: rgba(31, 32, 65, 0.25);
+        background: rgba(31, 32, 65, 0.25);
+        -webkit-background-clip: text;
+      }
+      >.like {
+        font-family: $formIconFont;
+        float: left;
+      }
+      .num {
+        font-family: $formFont;
+        justify-self: start;
+      }
+    }
+    .text {
+      font-family: $formFont;
+      font-size: $formContSize;
+      color: $formColorGrey75;
+      line-height: 24px;
+    }
+  }
+}

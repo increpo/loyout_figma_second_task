@@ -1,0 +1,130 @@
+// use with check_list.pug
+@import "media";
+
+@mixin check_list(
+$_titleFont: ("Montserrat-Bold", serif),
+$_titleFotnSize: 12px,
+$_titleFontColor: #1f2041,
+$_menuColor: rgba(31, 32, 65, 0.5),
+$_menuSize: 24px,
+$_itemFont: ("Montserrat-Light", serif),
+$_itemTitleFont: ("Montserrat-Bold", serif),
+$_itemTitleFontSize: 14px,
+$_itemFontSize: 14px,
+$_itemFontColor: rgba(31, 32, 65, 0.5),
+$_itemWidth: 35px,
+$_checkedColor: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%),
+$_checkboxBorderColor: rgba(31, 32, 65, 0.25),
+$_checkboxBorderRadius: 20%,
+$_checkboxSize: 16px,
+) {
+
+  .check__head {
+    display: grid;
+    grid-template-areas:
+      "title menu";
+    @include media(grid-template-columns, 2fr, $_menuSize*1.76);
+    @include media(grid-template-rows, $_menuSize*1.76);
+    align-items: center;
+    > .check__title {
+      grid-area: title;
+      font-family: $_titleFont;
+      @include media(font-size, $_titleFotnSize);
+      text-transform: uppercase;
+      color: $_titleFontColor;
+      align-self: center;
+      line-height: 190%;
+    }
+    > .check__menu {
+      background-color: blue;
+      grid-area: menu;
+      font-family: "Material Icons";
+      @include media(font-size, $_menuSize);
+      //font-size: $_menuFontSize;
+      background: $_menuColor;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      justify-self: center;
+      text-transform: lowercase;
+      &.open {
+        transform: rotate(180deg);
+      }
+    }
+  }
+  .check__items {
+    .check__item {
+      width: 100%;
+      display: grid;
+      grid-template-areas:
+        "checkbox text";
+      @include media(grid-template-columns, ($_checkboxSize*1.8), 100%);
+      //grid-template-columns: 15% 85%;
+      //align-items: top;
+      @include media(margin, 10px, $_itemWidth*0.02, 0.01px, $_itemWidth*0.02);
+      > .item-checkbox {
+        grid-area: checkbox;
+        @include media(height, $_checkboxSize);
+        @include media(width, $_checkboxSize);
+        text-align: center;
+        border: solid 1px $_checkboxBorderColor;
+        border-radius: $_checkboxBorderRadius;
+      }
+      > .item-text {
+        width: 100%;
+        grid-area: text;
+        font-family: $_itemFont;
+        @include media(font-size, $_itemFontSize);
+        line-height: 150%;
+        color: $_itemFontColor;
+        text-transform: lowercase;
+        &::first-letter {
+          text-transform: uppercase;
+        }
+        &.bold {
+          font-family: $_itemTitleFont;
+          color: black;
+          @include media(font-size, $_itemTitleFontSize);
+          text-transform: lowercase;
+          &::first-letter {
+            text-transform: uppercase;
+          }
+        }
+        >.item-comment {
+          //color: $_itemFontColor;
+        }
+      }
+      > .item-comment {
+        grid-column: 2/2;
+        font-family: $_itemFont;
+        @include media(font-size, $_itemFontSize);
+        color: $_itemFontColor;
+        text-transform: lowercase;
+        &::first-letter {
+          text-transform: uppercase;
+        }
+      }
+      &.check {
+        > .item-checkbox {
+          background: $_checkedColor;
+          //border-color: transparent;
+          > .checkbox-icon {
+            border-radius: $_checkboxBorderRadius;
+            background-color: white;
+            height: 100%;
+            width: 100%;
+            >p {
+              margin: 0;
+              @include media(line-height, $_checkboxSize);
+              font-family: "Material Icons";
+              @include media(font-size, 14px);
+              background: $_checkedColor;
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;
+              text-transform: lowercase;
+            }
+          }
+        }
+      }
+    }
+  }
+}

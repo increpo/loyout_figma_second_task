@@ -1,0 +1,90 @@
+@import "fonts";
+@import "../mixins/media";
+@import "../mixins/form_drop";
+@import "../mixins/buttons";
+
+$_cardHeadFont: "Montserrat-Bold", serif;
+$_cardHeadColor:#1f2041;
+
+$_dropTitleFotnSize: 12px;
+$_dropDescFontSize: 12px;
+$_dropFormFontSize: 14px;
+$_dropMenuFontSize: 24px;
+$_formFontColor: rgba(31, 32, 65, 7.5);
+$_menuColor: rgba(31, 32, 65, 0.5);
+
+@mixin card__find {
+  .find {
+    @include media(width, 380px);
+    @include media(height, 374px);
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    box-sizing: border-box;
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    //padding: 1%;
+  }
+
+  .find__content {
+    //@include media(width, 320px);
+    //@include media(width, 340px);
+    padding: 7.6%;
+  }
+
+  .find__head {
+    @include media(margin-top, 12px);
+    font-family: $_cardHeadFont;
+    @include media(font-size, 23px);
+    @include media(line-height, 30px);
+    color: $_cardHeadColor;
+  }
+
+  .find__dates {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    @include media(margin-top, 17px);
+  }
+
+  .date__arrival {
+    @include media(width, 150px);
+    @include form-drop(
+    $_titleFotnSize: $_dropTitleFotnSize,
+    $_descFontSize: $_dropDescFontSize,
+    $_formFontSize: $_dropFormFontSize,
+    $_menuFontSize: $_dropMenuFontSize,
+    $_formFontColor: $_formFontColor,
+    $_menuColor: $_menuColor,
+    );
+  }
+
+  .date__departure {
+    justify-self: end;
+    @include media(width, 150px);
+    @include form-drop(
+    $_titleFotnSize: $_dropTitleFotnSize,
+    $_descFontSize: $_dropDescFontSize,
+    $_formFontSize: $_dropFormFontSize,
+    $_menuFontSize: $_dropMenuFontSize,
+    $_formFontColor: $_formFontColor,
+    $_menuColor: $_menuColor,
+    );
+  }
+
+
+  .find__guests {
+    @include media(margin-top, 18px);
+    @include form-drop(
+    $_titleFotnSize: $_dropTitleFotnSize,
+    $_descFontSize: $_dropDescFontSize,
+    $_formFontSize: $_dropFormFontSize,
+    $_menuFontSize: $_dropMenuFontSize,
+    $_formFontColor: $_formFontColor,
+    $_menuColor: $_menuColor,
+    );
+  }
+
+  .find__button {
+    @include media(margin-top, 31px);
+    @include button;
+  }
+}

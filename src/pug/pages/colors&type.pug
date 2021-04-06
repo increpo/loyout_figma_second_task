@@ -1,0 +1,41 @@
+extends ../layout/main
+block variables
+  - var currentURL = 'colors&type.html';
+  - var title = 'Colors & Types';
+
+mixin color(text_bold, text_regular)
+  .item
+  .desc
+    p.bold= text_bold
+    p.regular= text_regular
+mixin type(item, desc)
+  .item= item
+  .desc= desc
+  
+block content
+  .colorsTypes
+    .colors
+      .color__shade-100
+        +color('Dark Shade 100%', '#1F2041')
+      .color__shade-75
+        +color('Dark Shade 75%', '#1F2041')
+      .color__shade-50
+        +color('Dark Shade 50%', '#1F2041')
+      .color__shade-25
+        +color('Dark Shade 25%', '#1F2041')
+      .color__shade-5
+        +color('Dark Shade 5%', '#1F2041')
+      .color__purple
+        +color('Purple', '#BC9CFF')
+      .color__green
+        +color('Green', '6FCF97')
+        
+    .types
+      .type__h1
+        +type('H1', 'This one is the sub-section or widget title')
+      .type__h2
+        +type('H2', 'Next one is the item title inside widgets')
+      .type__h3
+        +type('H3', 'THIS IS A LABEL OR CTA TEXT')
+      .type__body
+        +type('Body', 'This is the body text which is used for most of the design, like paragraphs, list, etc.')

@@ -1,0 +1,19 @@
+extends ../layout/mainPages
+include ../includes/mixins/landing
+include ../includes/mixins/cards
+
+block variables
+  - var currentURL = 'landing.html';
+  - var title = 'Landing';
+  
+block content
+  .landing
+    .landing__content
+      .landing__form-find
+        +card__find()
+      .landing__text Лучшие номера для вашей работы, отдыха и просто вдохновения
+  
+block script
+  //-script(src='/assets/js/pages/landing.js')
+  //-script function run() {alert('Спасибо')}
+  //-(onclick="run()")

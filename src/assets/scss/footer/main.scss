@@ -1,0 +1,38 @@
+//here is footer
+@import "../headers&footers/mixins";
+
+footer {
+  grid-area: footer;
+  border-top: 1px solid rgba(31, 32, 65, 0.25);
+}
+
+.footer {
+  width: 100%;
+  //grid-column: 1/4;
+  height: 5em;
+  //  background-color: cyan;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer__pages {
+  width: 100%;
+  box-sizing: border-box;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+}
+
+.footer__content {
+  @include footer;
+  width: 70%;
+  margin-top: 0.1%;
+}
+.footer__content__copyright {
+  width: 100%;//78%;
+
+  @include footer__copyright-bar;
+  margin-top: -0.1%;
+  padding: 0 15% 0 15%;
+}

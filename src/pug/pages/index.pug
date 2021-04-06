@@ -1,11 +1,69 @@
-extends ../layout/main
+extends ../layout/mainPages
 
 block variables
   - var title = 'My first staps in pug';
   - var description = 'Descriptions for my first staps';
   - var pageClass = 'index-page';
+  - var currentURL = 'index.html'
+
+  
+append links
+  style
+    :scss
+      ul.new_list {
+        list-style: none;
+        li {
+          color: blue;
+        }
+      }
+      a.active {
+        color: black;
+      }
+
+mixin menu(menu_items)
+  ul.header__navbar
+    each item in menu_items
+      li.navbar__list: a.navbar__link(href=item.href class=currentURL == item.href ? 'active' : '') #{item.title}
+
+mixin item (title, descr)
+  .item
+    h2.item-title= title
+    p.item-descr= descr
+
+      
 
 block content
+  nav
+    +menu([{'title' : 'Главная страница', 'href' : 'index.html'}])
+  nav
+    +menu([{'title' : 'Блог', 'href' : 'blog.html'}])
+  nav
+    +menu([{'title' : 'Colors & Type', 'href' : 'colors&type.html'}])
+  nav
+    +menu([{'title' : 'Form Elements', 'href' : 'form-elements.html'}])
+  nav
+    +menu([{'title' : 'Cards', 'href' : 'cards.html'}])
+  nav
+    +menu([{'title' : 'Headers & Footers', 'href' : 'headers&footers.html'}])
+  nav
+    +menu([{'title' : 'Landing', 'href' : 'landing.html'}])
+  nav
+    +menu([{'title' : 'Search room / Filter', 'href' : 'search_room.html'}])
+  nav
+    +menu([{'title' : 'Room Details', 'href' : 'room_details.html'}])
+  nav
+    +menu([{'title' : 'Registration', 'href' : 'registration.html'}])
+  nav
+    +menu([{'title' : 'Slider', 'href' : 'slider.html'}])
+  nav
+    +menu([{'title' : 'React first steps', 'href' : 'reactFirstSteps.html'}])
+  nav
+    +menu([{'title': 'todoList App', 'href': 'reactUdemyFirstStep.html'}])
+  nav
+    +menu([{'title': 'starDB App', 'href': 'starDBApp.html'}])
+
+
+
   section
     .container
       h1 It's my first staps in Pug
@@ -17,11 +75,14 @@ block content
         | templating language with a
         | strong focus on performance
         | and powerful features.
+      ul.new_list
+        li first
+        li second
 
     section
       .container
         +item('New title from mixin', 'My mixin\'s description')
 
 
-  block sctipt
-    example-component
+  //-block sctipt
+  //-  example-component

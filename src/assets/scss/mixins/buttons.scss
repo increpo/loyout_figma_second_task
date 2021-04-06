@@ -1,0 +1,81 @@
+@import "media";
+//  .some_button.bord.hover
+//   .button__item
+//     .item__text button text
+//     .item__icon button icon
+
+
+@mixin button(
+$_btnHeight: 44px,
+$_BGColorGradient: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%),
+$_textFont: ("Montserrat-Bold", serif),
+$_textFontSize: 12px,
+$_itemFontColor: white,
+$_bordTextColor: #bc9cff,
+) {
+  .button__item {
+//    margin-top: 30px;
+    display: grid;
+    @include media(grid-template-columns, 2fr, $_btnHeight);
+    @include media(grid-template-rows, $_btnHeight);
+    background: $_BGColorGradient;
+    //color: white;
+    // width: 320px;
+    // height: 44px;
+    border-radius: 22px;
+    align-items: center;
+    .item__text {
+      grid-row: 1/2;
+      grid-column: 1/3;
+      justify-self: center;
+      font-family: $_textFont;
+      @include media(font-size, $_textFontSize)
+      text-transform: uppercase;
+      background: $_itemFontColor;
+      -webkit-background-clip: text;
+      color: $_itemFontColor;
+      //-webkit-text-fill-color: transparent;
+    }
+    .item__icon {
+      grid-row: 1/2;
+      grid-column:2/3;
+      justify-self: center;
+      font-family: "Material Icons";
+      font-size: 24px;
+      margin-right: 2%;
+      color: $_itemFontColor;
+    }
+  }
+
+  @if & {
+    &.bord {
+      .item__text {
+        display: flex;
+        align-self: stretch;
+        justify-self: stretch;
+        align-items: center;
+        justify-content: center;
+        background-color: white;
+        -webkit-background-clip: padding-box;
+        border: 2px solid rgba(255, 255, 255, 0);
+        border-radius: 22px;
+        color: $_bordTextColor;
+      }
+      .item__icon {
+        color: $_bordTextColor;
+        visibility: 1;
+      }
+      &.hover {
+        .item__text {
+          border: 2px solid rgba(255, 255, 255, 0.5);
+        }
+      }
+    }
+  } @else {
+    &.hover {
+      .item__text {
+        border: 2px solid rgba(255, 255, 255, 0.5);
+      }
+    }
+  }
+}

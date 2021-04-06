@@ -1,0 +1,24 @@
+//-block dropVars
+
+  content = [{title: 'title666', menu: 'menu', items: [{text : 'text1', comment: 'comment1'}, {text : 'text2', comment: 'comment2'}]}];
+
+
+mixin check_list(content)
+  each cont in content  
+    
+    .check__head
+      .check__title= cont.title 
+      .check__menu= cont.menu
+      
+    if cont.items 
+      .check__items
+        each item in cont.items
+          .check__item(class= item.check)
+            .item-checkbox
+              .checkbox-icon
+                p= item.check
+            if item.comment
+              .item-text.bold= item.text
+              .item-comment= item.comment
+            else
+              .item-text= item.text

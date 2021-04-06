@@ -1,0 +1,17 @@
+block variables
+
+doctype html
+html(lang='ru')
+  head
+    block metatags
+      include ../includes/modules/metatags
+    title #{title}
+    block links
+      link(href='#')
+    block head
+  body(class=pageClass)
+    .wrapper__pages     
+      include ../includes/modules/headerPages
+      block content
+      include ../includes/modules/footerPages
+  block script

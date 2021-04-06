@@ -1,0 +1,63 @@
+@import "fonts";
+@import "vars";
+@import "mixins";
+
+.wrapper {
+//  grid-template-columns: 4fr 80% 4fr;
+//  background-color: $backGroundColor;
+}
+
+.cards__main {
+  grid-column: 2/3;
+  justify-self: start;
+  @include media(margin, 72px, 110px, 72px, 110px);
+  display: grid;
+  grid-template-areas:
+    "left middle right";
+  grid-template-columns: 2fr 2fr 2fr;
+  @include media(grid-column-gap, 40px);
+}
+
+.card__find {
+  grid-area: left;
+  @include card__find;
+}
+
+.card__booking {
+  grid-area: middle;
+  @include card__booking;
+}
+
+
+.card__calendar {
+  grid-area: right;
+  @include card__calendar;
+}
+
+
+.card__registration {
+  grid-area: left;
+  @include media(margin-top, 412px);
+  @include card__registration;
+}
+
+.card__enter {
+  grid-area: middle;
+  @include media(margin-top, 550px);
+  @include card__enter;
+}
+
+.card__show__room {
+  grid-area: right;
+  @include media(width, 270px);
+  @include media(height, 260px);
+  @include card__show__room;
+  &.lux {
+    @include card__show__room($_sliderIMG: "/assets/img/888.png");
+    margin-top: 127.3%;
+  }
+  &.econom {
+    @include card__show__room($_sliderIMG: "/assets/img/840.png");
+    margin-top: 219.4%;
+  }
+}

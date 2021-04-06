@@ -1,0 +1,109 @@
+//@import 'mixins';
+@import '../mixins/media';
+@import '../mixins/form_drop';
+@import '../mixins/check_list';
+@import '../cards/mixins';
+
+.wrapper__pages {
+  height: 100%;
+  width: 100%;
+}
+
+.searchRoom {
+  //border-bottom: 1px solid rgba(31, 32, 65, 0.25);
+  @include media(padding-bottom, 80px);
+  display: grid;
+  grid-template-columns: 100%;
+  justify-items: center;
+  
+  .searchRoom__content {
+    width: 75%;
+    display: grid;
+    grid-template-columns: 25% 5% 70%;
+    margin-top: 6px;
+  }
+
+  .searchRoom__menu {
+    //background-color: grey;
+    //margin-left: 10%;
+  }
+
+  .menu__arrival {
+    @include media(margin-top, 20px);
+    //@include media(width, 300px);
+    @include form-drop;
+  }
+
+  .menu__guests {
+    @include media(margin-top, 20px);
+    //@include media(width, 300px);
+    @include form-drop;
+  }
+
+  .menu__coast-slider {
+    @include media(margin-top, 20px);
+    //@include media(width, 300px);
+    @include form-drop;
+  }
+  .menu__rools {
+    @include media(margin-top, 20px);
+    //@include media(width, 260px);
+    width: 90%;
+    @include check_list;
+  }
+  .menu__availability {
+    @include media(margin-top, 20px);
+    //@include media(width, 330px);
+    @include check_list;
+  }
+  .menu__facilities {
+    @include media(margin-top, 20px);
+    //@include media(width, 300px);
+    @include form-drop;
+  }
+  .menu__additional {
+    @include media(margin-top, 20px);
+    //@include media(width, 300px);
+    @include check_list;
+  }
+
+  .searchRoom__main {
+    grid-column: 3/3;
+  }
+  .main__title {
+    font-family: "Montserrat-Bold", serif;
+    font-size: 20px;
+    line-height: 200%;
+    @include media(margin-top, 10px);
+    &::first-letter {
+      text-transform: uppercase;
+    }
+  }
+  .main__items {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    .main__item {
+      @include media(margin-top, 20px);
+      @include media(width, 270px);
+      @include media(height, 260px);
+      @include card__show__room;
+    }
+  }
+  .main__pagination {
+    @include media(margin-top, 40px);
+    .pagination__content {
+      @include form-drop;
+    }
+  }
+}
+.menu__facilities {
+  @include media(margin-top, 20px);
+  //@include media(width, 300px);
+  @include form-drop;
+}
+
+.menu__additional {
+  @include media(margin-top, 20px);
+  //@include media(width, 300px);
+  @include check_list;
+}

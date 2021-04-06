@@ -1,0 +1,58 @@
+include ../forms/form_drop
+
+mixin header(content= [{accaunt: '', nav: [{text: 'О нас', icon: ''}, {text: 'Услуги', icon: 'keyboard_arrow_down'}, {text: 'Вакансии', icon: ''}, {text: 'Новости', icon: ''}, {text: 'Соглашения', icon: 'keyboard_arrow_down'}]}])
+  each cont in content
+    .header
+      .header__logo
+        img(src= "/assets/img/HeaderIcon-color.png").header__logo__icon
+        img(src= "/assets/img/TOXIN.png").header__logo__name
+      .header__content
+        .header__nav__bar
+          each nav in cont.nav
+            .nav__bar__item
+              .nav__item.text= nav.text
+              .nav__item.icon= nav.icon
+        .header__accaunt
+          if cont.accaunt
+            .accaunt__user= cont.accaunt
+          else
+            .accaunt__btn-enter.bord
+              .button__item
+                .item__text Войти
+            .accaunt__btn-registration
+              .button__item
+                .item__text Зарегистрироваться
+                
+                
+mixin footer(content= [{nav: [{title: "навигация", cont: ["О нас", "Новости", "Служба поддержки", "Услуги"]}, {title: "о нас", cont: ["О сервисе", "Наша команда", "Вакансии", "Инвесторы"]}, {title: "служба поддержки", cont: ["Соглашения", "Сообщества", "Связь с нами"]}, {title: "Подписка", cont: ["Получайте специальные предложения и новости сервиса"], form: [{form: "Email", menu: "arrow_forward"}]}]}])
+  each cont in content
+    .footer
+      .footer__content-info
+        .footer__publicity
+          .footer__logo
+            img(src= "/assets/img/HeaderIcon-color.png").footer__logo__icon
+            img(src= "/assets/img/TOXIN.png").footer__logo__name
+          .footer__publicity__text Бронирование номеров в лучшем отеле 2019 года по версии ассоциации "Отельные взгляды"
+        each nav in cont.nav
+          .footer__navigation
+            .navigation__title= nav.title
+            each i in nav.cont
+              .navigation__content= i
+            if nav.form
+              .footer__form-email
+                +form-drop(nav.form)
+          
+mixin footer__copyright-bar(creative)
+  .footer__content-copyright
+    if creative
+      .footer__logo
+        img(src= "/assets/img/HeaderIcon-color.png")
+        img(src= "/assets/img/TOXIN.png")
+    .copyright__content Copyright © 2018 Toxin отель. Все права защищены.
+    .copyright__icons
+      .icon-twitter
+      .icon-fb
+      .icon-insta
+
+    
+        

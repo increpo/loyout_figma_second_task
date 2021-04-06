@@ -26,7 +26,8 @@ module.exports = {
 		paths: PATHS
 	},
 	entry: {
-		main: ['@babel/polyfill', `${PATHS.src}`]
+		main: ['@babel/polyfill', `${PATHS.src}`],
+//		formElements: ['@babel/polyfill', `${PATHS.src}/js/pages/formElements.js`]
 	},
 	output: {
 		filename: `${PATHS.assets}/js/[name].[hash].js`,
@@ -52,9 +53,19 @@ module.exports = {
 		}),
 		new VueLoaderPlugin(),
 		new CleanWebpackPlugin(),
+		// new webpack.ProvidePlugin({
+		// 	$: 'jquery',
+		// 	jQuery: 'jquery'
+		// }),
+		// new webpack.ProvidePlugin({
+		// 	$: "jquery/dist/jquery.min.js",
+		// 	jQuery: "jquery/dist/jquery.min.js",
+		// 	"window.jQuery": "jquery/dist/jquery.min.js"
+		// }),
 		...PAGES.map(page => new HTMLWebpackPlugin({
 			template: `${PAGES_DIR}/${page}`, //.pug
-			filename: `./${page.replace(/\.pug/,'.html')}` //.html
+			filename: `./${page.replace(/\.pug/,'.html')}`, //.html
+//			chunks: `${PAGES_DIR}/js/pages/${page}.js`,
 		}))
 //		new HTMLWebpackPlugin({
 //			template: './src/pug/index.pug',
@@ -64,7 +75,7 @@ module.exports = {
 	module: {
 		rules: [
 			{
-				test: /\.js$/,
+				test: /\.m?js$/,
 				use: [
 					{
 						loader:'babel-loader',
@@ -74,7 +85,7 @@ module.exports = {
 							]
 						}
 					}],
-				exclude: '/node_modules/'
+				exclude: /(node_modules|bower_components)/
 			},
 			{
 				test: /\.pug$/,
